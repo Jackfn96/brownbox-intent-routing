@@ -1,0 +1,697 @@
+{"id": 0, "cluster": 30, "goal": "Complete account verification to log in and make a purchase", "kind": "act", "secondary_goal": null}
+{"id": 2, "cluster": 21, "goal": "Cancel an order when the cancel button won't work", "kind": "act", "secondary_goal": null}
+{"id": 3, "cluster": 26, "goal": "Regain access to an account locked after too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 6, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 7, "cluster": 29, "goal": "Order an item that is out of stock", "kind": "act", "secondary_goal": "Find out when an out-of-stock item will be back in stock"}
+{"id": 8, "cluster": 10, "goal": "Get help setting up a newly received item", "kind": "inform", "secondary_goal": null}
+{"id": 9, "cluster": 2, "goal": "Get verification codes to verify mobile number and email for placing an order", "kind": "act", "secondary_goal": null}
+{"id": 11, "cluster": 1, "goal": "Claim warranty on an item after losing the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 12, "cluster": 6, "goal": "Resolve a missed delivery and get an order delivered", "kind": "act", "secondary_goal": null}
+{"id": 14, "cluster": 4, "goal": "Replace a defective item that is not working", "kind": "act", "secondary_goal": null}
+{"id": 15, "cluster": 9, "goal": "Find out why a delayed order hasn't been delivered", "kind": "inform", "secondary_goal": null}
+{"id": 19, "cluster": 18, "goal": "Find out when the warranty on an item starts", "kind": "inform", "secondary_goal": null}
+{"id": 21, "cluster": 30, "goal": "Find out whether an account is needed to make a purchase", "kind": "inform", "secondary_goal": "Learn the return policy for an item"}
+{"id": 22, "cluster": 19, "goal": "Get a verification code to log into an account", "kind": "act", "secondary_goal": null}
+{"id": 23, "cluster": 9, "goal": "Find out the estimated delivery time for an order", "kind": "inform", "secondary_goal": "Expedite shipping for an order"}
+{"id": 25, "cluster": 18, "goal": "Find out how to access warranty details for an item", "kind": "inform", "secondary_goal": null}
+{"id": 27, "cluster": 9, "goal": "Get a delayed order delivered urgently", "kind": "act", "secondary_goal": null}
+{"id": 30, "cluster": 6, "goal": "Find tracking information for a shipped order", "kind": "inform", "secondary_goal": "Get expedited shipping or compensation for a delayed order"}
+{"id": 32, "cluster": 17, "goal": "Reactivate an inactive account to make a purchase", "kind": "act", "secondary_goal": null}
+{"id": 35, "cluster": 1, "goal": "Get a broken item repaired after a warranty repair was denied", "kind": "act", "secondary_goal": null}
+{"id": 36, "cluster": 9, "goal": "Find out when a delayed order will arrive", "kind": "inform", "secondary_goal": "Get compensation for a delayed delivery"}
+{"id": 37, "cluster": 0, "goal": "Exchange an item for a larger size", "kind": "act", "secondary_goal": null}
+{"id": 39, "cluster": 2, "goal": "Sign up for an account without a US phone number for verification", "kind": "act", "secondary_goal": null}
+{"id": 40, "cluster": 9, "goal": "Find out the estimated delivery time for an order", "kind": "inform", "secondary_goal": null}
+{"id": 41, "cluster": 28, "goal": "Return a defective item for a refund of a Cash on Delivery payment", "kind": "act", "secondary_goal": "Get return courier charges reimbursed"}
+{"id": 42, "cluster": 25, "goal": "Get an item shipped to a location where it is unavailable for delivery", "kind": "act", "secondary_goal": null}
+{"id": 43, "cluster": 9, "goal": "Track down a delayed order that was marked out for delivery but not received", "kind": "act", "secondary_goal": null}
+{"id": 44, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 45, "cluster": 9, "goal": "Check the delivery status of a delayed order", "kind": "inform", "secondary_goal": "Get a delayed order delivered faster"}
+{"id": 46, "cluster": 0, "goal": "Return an item that doesn't fit", "kind": "act", "secondary_goal": null}
+{"id": 47, "cluster": 32, "goal": "Get an invoice for a previous order", "kind": "act", "secondary_goal": "Give feedback that invoices are hard to find on the website"}
+{"id": 48, "cluster": 10, "goal": "Find out whether installation by BrownBox affects an item's warranty", "kind": "inform", "secondary_goal": "Get help installing an item"}
+{"id": 51, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 52, "cluster": 6, "goal": "Locate an order marked delivered but not received", "kind": "act", "secondary_goal": null}
+{"id": 54, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": "Have the return fee waived for a defective item"}
+{"id": 55, "cluster": 22, "goal": "Check the status of a refund for a returned item paid by cash on delivery", "kind": "inform", "secondary_goal": "Find out whether return shipping charges will be reimbursed"}
+{"id": 57, "cluster": 6, "goal": "Locate an order marked delivered but not received", "kind": "act", "secondary_goal": null}
+{"id": 58, "cluster": 4, "goal": "Exchange a malfunctioning item for a new one", "kind": "act", "secondary_goal": null}
+{"id": 59, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 60, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 62, "cluster": 7, "goal": "Learn how to schedule a pickup for an item", "kind": "inform", "secondary_goal": null}
+{"id": 63, "cluster": 4, "goal": "Return a defective item that isn't working", "kind": "act", "secondary_goal": null}
+{"id": 65, "cluster": 3, "goal": "Find out a seller's return policy for an item before buying", "kind": "inform", "secondary_goal": null}
+{"id": 67, "cluster": 18, "goal": "Find out the start date of an item's warranty", "kind": "inform", "secondary_goal": null}
+{"id": 68, "cluster": 10, "goal": "Get guidance on installing a newly purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 69, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 70, "cluster": 32, "goal": "Get invoices for previous orders sent", "kind": "act", "secondary_goal": null}
+{"id": 71, "cluster": 2, "goal": "Resolve being unable to log in to the account with a mobile number", "kind": "act", "secondary_goal": "Troubleshoot being unable to log in with the account password"}
+{"id": 72, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 73, "cluster": 8, "goal": "Change the pick-up address for an order", "kind": "act", "secondary_goal": null}
+{"id": 74, "cluster": 33, "goal": "Get help completing sign-up with a corporate email address", "kind": "act", "secondary_goal": null}
+{"id": 75, "cluster": 27, "goal": "Learn how to redeem loyalty points and what they can be used for", "kind": "inform", "secondary_goal": null}
+{"id": 77, "cluster": 14, "goal": "Get a faster delivery option for an order", "kind": "act", "secondary_goal": "Cancel the order for a refund"}
+{"id": 78, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": "Place an order for an out-of-stock item"}
+{"id": 80, "cluster": 12, "goal": "Get a refund for an overcharge on an order", "kind": "act", "secondary_goal": null}
+{"id": 81, "cluster": 32, "goal": "Get a missing invoice for an order", "kind": "act", "secondary_goal": null}
+{"id": 82, "cluster": 32, "goal": "Get the invoice for an order", "kind": "act", "secondary_goal": null}
+{"id": 83, "cluster": 10, "goal": "Find out whether an ordered item includes a wall mount and how to get one", "kind": "inform", "secondary_goal": "Check whether a wall mount accessory is compatible with an ordered item"}
+{"id": 86, "cluster": 31, "goal": "Report inconsistent prices for the same item on the website", "kind": "inform", "secondary_goal": null}
+{"id": 87, "cluster": 27, "goal": "Redeem reward points for an item", "kind": "act", "secondary_goal": null}
+{"id": 89, "cluster": 18, "goal": "Find out the warranty details for a purchased item", "kind": "inform", "secondary_goal": "Get the manufacturer's support contact details"}
+{"id": 90, "cluster": 12, "goal": "Find out why an order was charged more than the listed price", "kind": "inform", "secondary_goal": null}
+{"id": 91, "cluster": 18, "goal": "Find out how changed warranty terms affect a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 93, "cluster": 12, "goal": "Get an unexpected extra charge on an order explained and refunded", "kind": "act", "secondary_goal": null}
+{"id": 94, "cluster": 2, "goal": "Fix a problem logging into the account on the mobile app with a mobile number", "kind": "act", "secondary_goal": null}
+{"id": 95, "cluster": 1, "goal": "File a warranty claim for a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 96, "cluster": 10, "goal": "Find out whether company installation affects an item's warranty", "kind": "inform", "secondary_goal": "Find out how to schedule an installation appointment"}
+{"id": 97, "cluster": 3, "goal": "Get the return fee waived on a returned item's refund", "kind": "act", "secondary_goal": null}
+{"id": 98, "cluster": 9, "goal": "Find out why an order has not been delivered on time", "kind": "inform", "secondary_goal": null}
+{"id": 99, "cluster": 31, "goal": "Report inconsistent pricing for the same item and get it resolved", "kind": "act", "secondary_goal": null}
+{"id": 100, "cluster": 16, "goal": "Learn how to register an item for warranty benefits", "kind": "inform", "secondary_goal": null}
+{"id": 101, "cluster": 26, "goal": "Regain account access after exceeding verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 102, "cluster": 24, "goal": "Get the promised exchange-offer discount applied when exchanging an item", "kind": "act", "secondary_goal": null}
+{"id": 103, "cluster": 14, "goal": "Ask about expedited delivery options for a purchase", "kind": "inform", "secondary_goal": null}
+{"id": 104, "cluster": 9, "goal": "Get a delayed order that hasn't arrived delivered quickly", "kind": "act", "secondary_goal": null}
+{"id": 105, "cluster": 7, "goal": "Learn the in-store pickup process for an order", "kind": "inform", "secondary_goal": "Find out the store location and working hours"}
+{"id": 106, "cluster": 34, "goal": "Change the password for an account", "kind": "act", "secondary_goal": null}
+{"id": 107, "cluster": 2, "goal": "Verify mobile number and email to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 108, "cluster": 9, "goal": "Get a delayed order that was out for delivery but not received delivered urgently", "kind": "act", "secondary_goal": null}
+{"id": 109, "cluster": 0, "goal": "Exchange a wrong item received for the item ordered", "kind": "act", "secondary_goal": null}
+{"id": 110, "cluster": 5, "goal": "Find out the delivery charges for an item before purchasing", "kind": "inform", "secondary_goal": null}
+{"id": 111, "cluster": 17, "goal": "Deactivate an account", "kind": "act", "secondary_goal": null}
+{"id": 112, "cluster": 13, "goal": "Return a damaged item", "kind": "act", "secondary_goal": null}
+{"id": 114, "cluster": 16, "goal": "Learn how to register an item for warranty", "kind": "inform", "secondary_goal": "Find out what the item's warranty covers and how long it lasts"}
+{"id": 115, "cluster": 10, "goal": "Get help installing a monitor that shows no display", "kind": "inform", "secondary_goal": null}
+{"id": 116, "cluster": 34, "goal": "Change the password for an account", "kind": "act", "secondary_goal": "Find out how to update the address on an account"}
+{"id": 117, "cluster": 31, "goal": "Understand why the same book title is listed at different prices", "kind": "inform", "secondary_goal": null}
+{"id": 118, "cluster": 12, "goal": "Find out why an order had unexpected extra charges", "kind": "inform", "secondary_goal": null}
+{"id": 120, "cluster": 9, "goal": "Find out why an order hasn't arrived and get it delivered", "kind": "inform", "secondary_goal": null}
+{"id": 122, "cluster": 14, "goal": "Get an item that can't ship to their location delivered faster", "kind": "act", "secondary_goal": null}
+{"id": 123, "cluster": 0, "goal": "Return an item that doesn't fit for a refund", "kind": "act", "secondary_goal": null}
+{"id": 124, "cluster": 16, "goal": "Register an item for warranty benefits", "kind": "inform", "secondary_goal": null}
+{"id": 125, "cluster": 30, "goal": "Find out whether an account is needed to make a purchase", "kind": "inform", "secondary_goal": null}
+{"id": 126, "cluster": 12, "goal": "Get a refund for an overcharge on an order", "kind": "act", "secondary_goal": "Correct a wrong billing address on an invoice"}
+{"id": 127, "cluster": 26, "goal": "Regain access to an account locked by failed verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 128, "cluster": 21, "goal": "Cancel an order that can't be cancelled online", "kind": "act", "secondary_goal": null}
+{"id": 130, "cluster": 18, "goal": "Check whether an item is still under warranty", "kind": "inform", "secondary_goal": null}
+{"id": 131, "cluster": 19, "goal": "Fix not receiving the verification code needed to complete a purchase", "kind": "act", "secondary_goal": null}
+{"id": 132, "cluster": 16, "goal": "Find out how to register an item with the brand for warranty", "kind": "inform", "secondary_goal": null}
+{"id": 133, "cluster": 9, "goal": "Find out why a delayed order hasn't arrived", "kind": "inform", "secondary_goal": "Ask whether expedited shipping costs extra"}
+{"id": 134, "cluster": 18, "goal": "Find out how changes to warranty terms after purchase affect an item's warranty", "kind": "inform", "secondary_goal": null}
+{"id": 135, "cluster": 20, "goal": "Report an item delivered in a tampered package that appears used", "kind": "act", "secondary_goal": "Apply a discount code to a replacement order"}
+{"id": 137, "cluster": 32, "goal": "Obtain invoices for previous orders", "kind": "act", "secondary_goal": "Find out why they were charged twice for the same item"}
+{"id": 139, "cluster": 5, "goal": "Find out delivery charges and shipping speeds for an item", "kind": "inform", "secondary_goal": null}
+{"id": 140, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 141, "cluster": 11, "goal": "Resolve a mismatch in warranty terms between the website and the warranty card", "kind": "inform", "secondary_goal": "Find out if the warranty can be claimed without the lost warranty card"}
+{"id": 142, "cluster": 5, "goal": "Understand the delivery charges for an item before purchasing", "kind": "inform", "secondary_goal": "Find out the cost of faster shipping options"}
+{"id": 143, "cluster": 3, "goal": "Find out about faster shipping options for a return", "kind": "inform", "secondary_goal": null}
+{"id": 145, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 146, "cluster": 24, "goal": "Learn how to use an exchange offer when buying an item", "kind": "inform", "secondary_goal": null}
+{"id": 151, "cluster": 18, "goal": "Access the warranty details for a purchased item", "kind": "inform", "secondary_goal": "Reset a forgotten account password"}
+{"id": 152, "cluster": 10, "goal": "Ask whether professional installation of an item is available and if it affects the warranty", "kind": "inform", "secondary_goal": null}
+{"id": 153, "cluster": 13, "goal": "Return a faulty item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 154, "cluster": 12, "goal": "Find out what an unexpected extra charge on an order is for", "kind": "inform", "secondary_goal": null}
+{"id": 155, "cluster": 1, "goal": "Get a repair for an item after the service center denied the request", "kind": "act", "secondary_goal": null}
+{"id": 156, "cluster": 0, "goal": "Return a wrong item received and exchange it for the correct one", "kind": "act", "secondary_goal": null}
+{"id": 158, "cluster": 23, "goal": "Get a shipping status update for an order", "kind": "inform", "secondary_goal": null}
+{"id": 159, "cluster": 6, "goal": "Get help receiving a missed package delivery", "kind": "act", "secondary_goal": null}
+{"id": 160, "cluster": 2, "goal": "Verify the mobile number and email address on an account", "kind": "act", "secondary_goal": null}
+{"id": 161, "cluster": 3, "goal": "Find out why they were asked to ship an item back", "kind": "inform", "secondary_goal": null}
+{"id": 162, "cluster": 14, "goal": "Get faster delivery for an order to their location", "kind": "act", "secondary_goal": null}
+{"id": 163, "cluster": 13, "goal": "Get a refund for a return shipping charge", "kind": "act", "secondary_goal": null}
+{"id": 164, "cluster": 10, "goal": "Ask whether a wall mount accessory is available for purchase for an item", "kind": "inform", "secondary_goal": "Add a wall mount accessory to an existing order"}
+{"id": 165, "cluster": 18, "goal": "Find out how changes to warranty terms affect an item's warranty", "kind": "inform", "secondary_goal": null}
+{"id": 166, "cluster": 23, "goal": "Understand conflicting order statuses shown for an order", "kind": "inform", "secondary_goal": "Find out when an order will arrive"}
+{"id": 167, "cluster": 22, "goal": "Get a missing refund for a returned item processed", "kind": "act", "secondary_goal": null}
+{"id": 168, "cluster": 14, "goal": "Get faster delivery for an order", "kind": "act", "secondary_goal": null}
+{"id": 169, "cluster": 10, "goal": "Find out who is responsible for installing a purchased item", "kind": "inform", "secondary_goal": "Get guidance on how to install the item"}
+{"id": 170, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 171, "cluster": 6, "goal": "Get a missing accessory that should have come with an order", "kind": "act", "secondary_goal": null}
+{"id": 175, "cluster": 4, "goal": "Get a quick replacement for a faulty item", "kind": "act", "secondary_goal": null}
+{"id": 176, "cluster": 19, "goal": "Get help receiving a verification code for a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 179, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 181, "cluster": 20, "goal": "Report a tampered delivery package and get the possibly damaged item resolved", "kind": "act", "secondary_goal": null}
+{"id": 182, "cluster": 4, "goal": "Get a malfunctioning item repaired or replaced after the return period expired", "kind": "act", "secondary_goal": null}
+{"id": 183, "cluster": 22, "goal": "Get help with a missing refund for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 186, "cluster": 18, "goal": "Find out the warranty details for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 187, "cluster": 3, "goal": "Find out a seller's return policy for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 190, "cluster": 23, "goal": "Check the shipping status of an order", "kind": "inform", "secondary_goal": "Find out about international express shipping options for the order"}
+{"id": 194, "cluster": 21, "goal": "Cancel an order that is no longer needed", "kind": "act", "secondary_goal": null}
+{"id": 197, "cluster": 14, "goal": "Find out about faster delivery options for an order", "kind": "inform", "secondary_goal": null}
+{"id": 198, "cluster": 20, "goal": "Exchange an item that arrived in a tampered package", "kind": "act", "secondary_goal": "Expedite shipping of the replacement item"}
+{"id": 204, "cluster": 13, "goal": "Return an item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 205, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": null}
+{"id": 206, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": null}
+{"id": 207, "cluster": 17, "goal": "Reactivate an inactive account to regain login access", "kind": "act", "secondary_goal": "Prevent the account from being deactivated without notice in the future"}
+{"id": 208, "cluster": 5, "goal": "Find out why an order was charged a delivery fee instead of qualifying for free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 209, "cluster": 31, "goal": "Find out why an item shows different prices on the product and checkout pages", "kind": "inform", "secondary_goal": null}
+{"id": 210, "cluster": 2, "goal": "Find out how to verify mobile number and email address to complete a purchase", "kind": "inform", "secondary_goal": null}
+{"id": 213, "cluster": 24, "goal": "Learn about the exchange offer and discount for trading in an old appliance", "kind": "inform", "secondary_goal": null}
+{"id": 215, "cluster": 24, "goal": "Apply a missed exchange offer discount to an existing order", "kind": "act", "secondary_goal": null}
+{"id": 216, "cluster": 27, "goal": "Learn how to redeem loyalty points and whether they expire", "kind": "inform", "secondary_goal": "Find out whether returning an item forfeits its loyalty points"}
+{"id": 217, "cluster": 32, "goal": "Get a missing invoice for an order", "kind": "act", "secondary_goal": "Get a refund for a duplicate charge on an order"}
+{"id": 218, "cluster": 15, "goal": "Add a new email address to an account", "kind": "act", "secondary_goal": null}
+{"id": 219, "cluster": 0, "goal": "Exchange a wrong item received for the correct one", "kind": "act", "secondary_goal": null}
+{"id": 220, "cluster": 2, "goal": "Get help logging in to an account with a mobile number", "kind": "act", "secondary_goal": null}
+{"id": 221, "cluster": 0, "goal": "Return an item that is incompatible with their device", "kind": "act", "secondary_goal": null}
+{"id": 223, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 224, "cluster": 6, "goal": "Get a missing delivery from a split order delivered urgently", "kind": "act", "secondary_goal": "Ask why orders from different sellers were not delivered together"}
+{"id": 225, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 226, "cluster": 7, "goal": "Learn about the delivery process for an order", "kind": "inform", "secondary_goal": null}
+{"id": 227, "cluster": 0, "goal": "Exchange a wrong item received for the correct one", "kind": "act", "secondary_goal": null}
+{"id": 228, "cluster": 9, "goal": "Track a delayed order and get it delivered sooner", "kind": "act", "secondary_goal": null}
+{"id": 229, "cluster": 2, "goal": "Find out why and how to verify mobile number and email to log in", "kind": "inform", "secondary_goal": null}
+{"id": 231, "cluster": 13, "goal": "Return a faulty item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 234, "cluster": 25, "goal": "Get an item shipped to a location where it is listed as unavailable for shipping", "kind": "act", "secondary_goal": null}
+{"id": 235, "cluster": 24, "goal": "Get an additional discount on an item", "kind": "act", "secondary_goal": null}
+{"id": 236, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": "Find out about the warranty for an item"}
+{"id": 238, "cluster": 9, "goal": "Find out why a delayed order hasn't arrived and when it will", "kind": "inform", "secondary_goal": null}
+{"id": 239, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 241, "cluster": 14, "goal": "Find out if expedited delivery is available for an item", "kind": "inform", "secondary_goal": "Place an order for the item with standard delivery"}
+{"id": 243, "cluster": 0, "goal": "Return an incorrect item received instead of the one ordered", "kind": "act", "secondary_goal": null}
+{"id": 244, "cluster": 6, "goal": "Get a missed delivery of an order rescheduled urgently", "kind": "act", "secondary_goal": null}
+{"id": 245, "cluster": 3, "goal": "Find out the return fee for an item", "kind": "inform", "secondary_goal": "Return an item via scheduled pickup"}
+{"id": 246, "cluster": 21, "goal": "Cancel an order that has not shipped yet", "kind": "act", "secondary_goal": null}
+{"id": 247, "cluster": 16, "goal": "Sign up for an extended warranty on a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 249, "cluster": 9, "goal": "Find out when a delayed order will be delivered", "kind": "inform", "secondary_goal": null}
+{"id": 251, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 253, "cluster": 28, "goal": "Return a non-working item paid by cash on delivery for a refund", "kind": "act", "secondary_goal": "Get reimbursed for courier charges paid on delivery"}
+{"id": 254, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 255, "cluster": 15, "goal": "Change the email address linked to an account", "kind": "act", "secondary_goal": null}
+{"id": 256, "cluster": 3, "goal": "Find the seller's return policy for an item", "kind": "inform", "secondary_goal": null}
+{"id": 258, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 259, "cluster": 1, "goal": "Claim warranty on a faulty item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 260, "cluster": 18, "goal": "Find out how warranty term changes affect a purchased item", "kind": "inform", "secondary_goal": "Purchase an extended warranty plan for the item"}
+{"id": 261, "cluster": 0, "goal": "Return an item that is too small for a refund", "kind": "act", "secondary_goal": null}
+{"id": 262, "cluster": 20, "goal": "Report a damaged item and get it resolved", "kind": "act", "secondary_goal": null}
+{"id": 264, "cluster": 3, "goal": "Find out why they were asked to ship back an item", "kind": "inform", "secondary_goal": "Get instructions and a shipping label to return the item"}
+{"id": 266, "cluster": 9, "goal": "Find out why an approved order hasn't shipped yet", "kind": "inform", "secondary_goal": null}
+{"id": 267, "cluster": 7, "goal": "Learn how to place an order for an item", "kind": "inform", "secondary_goal": "Find out when the order will be delivered"}
+{"id": 268, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 269, "cluster": 12, "goal": "Get an explanation of unexpected charges on an order bill", "kind": "inform", "secondary_goal": "Get help with installing an item"}
+{"id": 270, "cluster": 19, "goal": "Get account verified to log in after not receiving a verification code", "kind": "act", "secondary_goal": null}
+{"id": 271, "cluster": 28, "goal": "Understand how an instant cashback offer on a purchase works", "kind": "inform", "secondary_goal": null}
+{"id": 272, "cluster": 9, "goal": "Get a late express-shipped order delivered urgently", "kind": "act", "secondary_goal": null}
+{"id": 274, "cluster": 2, "goal": "Learn how to verify a mobile number or email to log in to an account", "kind": "inform", "secondary_goal": null}
+{"id": 275, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 276, "cluster": 33, "goal": "Sign up for an account using a corporate email address", "kind": "act", "secondary_goal": null}
+{"id": 277, "cluster": 8, "goal": "Arrange to pick up an order instead of receiving delivery", "kind": "act", "secondary_goal": null}
+{"id": 278, "cluster": 4, "goal": "Return a defective item", "kind": "act", "secondary_goal": null}
+{"id": 279, "cluster": 25, "goal": "Check whether an item is available for international shipping", "kind": "inform", "secondary_goal": null}
+{"id": 281, "cluster": 9, "goal": "Get a delayed order delivered faster", "kind": "act", "secondary_goal": null}
+{"id": 282, "cluster": 3, "goal": "Find out why they were asked to ship an ordered item", "kind": "inform", "secondary_goal": null}
+{"id": 284, "cluster": 23, "goal": "Check the confirmation and status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 285, "cluster": 0, "goal": "Exchange a wrong item received for the correct one", "kind": "act", "secondary_goal": null}
+{"id": 286, "cluster": 13, "goal": "Return an unsatisfactory item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 287, "cluster": 22, "goal": "Get a refund for a returned item that hasn't been refunded yet", "kind": "act", "secondary_goal": null}
+{"id": 289, "cluster": 13, "goal": "Return an item that wasn't as expected for a refund", "kind": "act", "secondary_goal": null}
+{"id": 292, "cluster": 1, "goal": "Claim warranty on a faulty item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 293, "cluster": 13, "goal": "Return a damaged item", "kind": "act", "secondary_goal": null}
+{"id": 295, "cluster": 2, "goal": "Verify a mobile number to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 297, "cluster": 3, "goal": "Ask about the return check fee deducted from a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 298, "cluster": 22, "goal": "Get a missing refund for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 299, "cluster": 11, "goal": "Clarify conflicting warranty terms for an item", "kind": "inform", "secondary_goal": "Get the warranty terms on the website updated"}
+{"id": 302, "cluster": 23, "goal": "Check the confirmation and status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 305, "cluster": 32, "goal": "Get a missing invoice for an order", "kind": "act", "secondary_goal": "Confirm the payment method used for an order"}
+{"id": 306, "cluster": 19, "goal": "Get a verification code that was not received for an order", "kind": "act", "secondary_goal": null}
+{"id": 307, "cluster": 21, "goal": "Cancel an order", "kind": "act", "secondary_goal": null}
+{"id": 308, "cluster": 2, "goal": "Verify mobile number to regain access to account login", "kind": "act", "secondary_goal": null}
+{"id": 309, "cluster": 9, "goal": "Find out why an order stuck at the hub hasn't been sent out for delivery", "kind": "inform", "secondary_goal": "Expedite delivery of a delayed order"}
+{"id": 311, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 312, "cluster": 11, "goal": "Clarify conflicting warranty terms for an item", "kind": "inform", "secondary_goal": "Get a replacement copy of a lost warranty card"}
+{"id": 314, "cluster": 14, "goal": "Get faster delivery for an item to their location", "kind": "act", "secondary_goal": null}
+{"id": 315, "cluster": 6, "goal": "Complain about a rude courier who delivered a damaged package", "kind": "act", "secondary_goal": "Get a refund for an item that arrived damaged"}
+{"id": 316, "cluster": 27, "goal": "Find out how many loyalty points were earned on a purchase", "kind": "inform", "secondary_goal": null}
+{"id": 317, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": null}
+{"id": 319, "cluster": 10, "goal": "Find out whether an item comes with a wall mount", "kind": "inform", "secondary_goal": "Add a compatible wall mount to an existing order"}
+{"id": 321, "cluster": 26, "goal": "Regain access to an account locked by too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 322, "cluster": 19, "goal": "Get a verification code that isn't arriving for an order", "kind": "act", "secondary_goal": null}
+{"id": 323, "cluster": 25, "goal": "Order an item that shows as unavailable for shipping to their location", "kind": "act", "secondary_goal": null}
+{"id": 324, "cluster": 18, "goal": "Check whether an item is under warranty and find its warranty details", "kind": "inform", "secondary_goal": null}
+{"id": 325, "cluster": 31, "goal": "Resolve a difference between the price paid and the advertised price for an item", "kind": "act", "secondary_goal": null}
+{"id": 326, "cluster": 12, "goal": "Resolve an overcharge on an order", "kind": "act", "secondary_goal": null}
+{"id": 328, "cluster": 3, "goal": "Get a missing courier charge reimbursement for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 330, "cluster": 20, "goal": "Exchange an item that arrived in a tampered package for the same item", "kind": "act", "secondary_goal": null}
+{"id": 333, "cluster": 3, "goal": "Find out the return policy for an item before buying", "kind": "inform", "secondary_goal": "Find out the warranty coverage for an item"}
+{"id": 334, "cluster": 8, "goal": "Change the pickup address for an order", "kind": "act", "secondary_goal": null}
+{"id": 337, "cluster": 22, "goal": "Get a delayed refund for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 339, "cluster": 19, "goal": "Resend a verification link to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 340, "cluster": 9, "goal": "Find out when a delayed order will be delivered", "kind": "inform", "secondary_goal": null}
+{"id": 341, "cluster": 1, "goal": "Get a denied repair request for an item reconsidered", "kind": "act", "secondary_goal": null}
+{"id": 342, "cluster": 11, "goal": "Clarify which warranty terms apply to an item when the retailer's and brand's terms differ", "kind": "inform", "secondary_goal": null}
+{"id": 343, "cluster": 13, "goal": "Return a wrong item received for a refund", "kind": "act", "secondary_goal": null}
+{"id": 345, "cluster": 4, "goal": "Return a defective item past the return window", "kind": "act", "secondary_goal": null}
+{"id": 346, "cluster": 6, "goal": "Get an order that was delivered to the wrong address redelivered to the correct address", "kind": "act", "secondary_goal": "Expedite the delivery of the order"}
+{"id": 347, "cluster": 9, "goal": "Get a delayed order delivered in time for an event", "kind": "act", "secondary_goal": null}
+{"id": 348, "cluster": 28, "goal": "Return an item from a Cash on Delivery order for a refund", "kind": "act", "secondary_goal": null}
+{"id": 349, "cluster": 1, "goal": "Resolve a warranty terms mismatch and missing warranty card for an item", "kind": "act", "secondary_goal": null}
+{"id": 350, "cluster": 8, "goal": "Change the pick-up address for an order", "kind": "act", "secondary_goal": "Get a delayed order delivered faster"}
+{"id": 353, "cluster": 6, "goal": "Check the status of an undelivered order", "kind": "inform", "secondary_goal": "Expedite shipping for an order"}
+{"id": 354, "cluster": 6, "goal": "Get a missing order that was marked delivered but never received", "kind": "act", "secondary_goal": null}
+{"id": 358, "cluster": 33, "goal": "Sign up for an account using a corporate email address", "kind": "act", "secondary_goal": null}
+{"id": 359, "cluster": 2, "goal": "Get help logging into an account that requires mobile or email verification", "kind": "act", "secondary_goal": null}
+{"id": 364, "cluster": 4, "goal": "Return a defective item", "kind": "act", "secondary_goal": null}
+{"id": 365, "cluster": 0, "goal": "Exchange an item received in the wrong color for the one ordered", "kind": "act", "secondary_goal": null}
+{"id": 366, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": "Speak to a supervisor about the refused return"}
+{"id": 368, "cluster": 24, "goal": "Get an exchange-offer discount applied to an order", "kind": "act", "secondary_goal": null}
+{"id": 369, "cluster": 15, "goal": "Update the email address on an account to regain login access", "kind": "act", "secondary_goal": null}
+{"id": 370, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 371, "cluster": 4, "goal": "Return a faulty item that is not working correctly", "kind": "act", "secondary_goal": null}
+{"id": 372, "cluster": 18, "goal": "Find out how to access the warranty details for an item", "kind": "inform", "secondary_goal": null}
+{"id": 373, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 375, "cluster": 21, "goal": "Cancel an order that is still processing", "kind": "act", "secondary_goal": null}
+{"id": 378, "cluster": 12, "goal": "Get an unexpected extra charge on an order explained and waived", "kind": "act", "secondary_goal": null}
+{"id": 379, "cluster": 14, "goal": "Get faster delivery for an order", "kind": "act", "secondary_goal": "Find out when an order will arrive"}
+{"id": 380, "cluster": 10, "goal": "Add a compatible wall mount to an existing order", "kind": "act", "secondary_goal": null}
+{"id": 381, "cluster": 28, "goal": "Pay for an item with cash on delivery, which isn't offered for it", "kind": "act", "secondary_goal": "Find out how secure the payment gateway is"}
+{"id": 384, "cluster": 6, "goal": "Get contact details for the seller's courier service about a delayed delivery", "kind": "inform", "secondary_goal": null}
+{"id": 385, "cluster": 9, "goal": "Find out when a delayed order will be delivered", "kind": "inform", "secondary_goal": "Cancel the delayed order for a refund"}
+{"id": 386, "cluster": 22, "goal": "Find out how long a refund takes when returning an incompatible item", "kind": "inform", "secondary_goal": null}
+{"id": 389, "cluster": 10, "goal": "Get help installing and connecting a new monitor", "kind": "inform", "secondary_goal": null}
+{"id": 390, "cluster": 21, "goal": "Cancel an order after finding a better deal elsewhere", "kind": "act", "secondary_goal": null}
+{"id": 391, "cluster": 17, "goal": "Deactivate an account", "kind": "act", "secondary_goal": "Return a poor-quality item for a refund"}
+{"id": 392, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 393, "cluster": 10, "goal": "Get help assembling a newly received item", "kind": "inform", "secondary_goal": null}
+{"id": 396, "cluster": 30, "goal": "Find out whether an account is needed to shop and how to create one", "kind": "inform", "secondary_goal": "Regain access to a locked account by resetting the password"}
+{"id": 397, "cluster": 16, "goal": "Sign up for an extended warranty on an item", "kind": "act", "secondary_goal": null}
+{"id": 398, "cluster": 8, "goal": "Add a new delivery address to an account", "kind": "act", "secondary_goal": "Change the delivery date for an order"}
+{"id": 400, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": "Expedite the refund process"}
+{"id": 401, "cluster": 28, "goal": "Get a delayed refund for a returned Cash on Delivery order", "kind": "act", "secondary_goal": "Get reimbursed for courier charges paid for the return"}
+{"id": 402, "cluster": 9, "goal": "Find out why a delayed order hasn't arrived", "kind": "inform", "secondary_goal": "Complain about high shipping charges on an order"}
+{"id": 404, "cluster": 2, "goal": "Fix a problem logging into the app with a mobile number", "kind": "act", "secondary_goal": null}
+{"id": 407, "cluster": 15, "goal": "Change the email address linked to an order", "kind": "act", "secondary_goal": null}
+{"id": 409, "cluster": 5, "goal": "Find out why an item doesn't qualify for free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 410, "cluster": 8, "goal": "Change the delivery address for an order", "kind": "act", "secondary_goal": null}
+{"id": 412, "cluster": 13, "goal": "Return a faulty item for an immediate refund", "kind": "act", "secondary_goal": null}
+{"id": 413, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 414, "cluster": 22, "goal": "Get a missing refund for a returned item resolved", "kind": "act", "secondary_goal": null}
+{"id": 415, "cluster": 28, "goal": "Find out how to get an instant cashback offer on an item", "kind": "inform", "secondary_goal": null}
+{"id": 418, "cluster": 0, "goal": "Exchange a wrong item received for the correct one", "kind": "act", "secondary_goal": "Expedite shipping of the replacement item"}
+{"id": 420, "cluster": 18, "goal": "Get warranty details for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 422, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 423, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 424, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 428, "cluster": 5, "goal": "Find out why an order was charged a delivery fee instead of free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 431, "cluster": 6, "goal": "Find out the status of an order whose tracking is not updating", "kind": "inform", "secondary_goal": null}
+{"id": 432, "cluster": 20, "goal": "Exchange an item that arrived in a tampered package", "kind": "act", "secondary_goal": "Expedite shipping of the replacement item"}
+{"id": 433, "cluster": 5, "goal": "Find out why an order was charged for delivery instead of getting free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 434, "cluster": 17, "goal": "Reactivate an inactive account to regain login access", "kind": "act", "secondary_goal": null}
+{"id": 435, "cluster": 3, "goal": "Arrange a pickup to return an unwanted item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 436, "cluster": 33, "goal": "Sign up for an account using a corporate email address that is being rejected", "kind": "act", "secondary_goal": null}
+{"id": 439, "cluster": 32, "goal": "Get a missing invoice for an order", "kind": "act", "secondary_goal": null}
+{"id": 440, "cluster": 0, "goal": "Return an item that doesn't fit", "kind": "act", "secondary_goal": "Find out whether freebies received with the item can be returned too"}
+{"id": 442, "cluster": 10, "goal": "Find out who is responsible for installing a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 443, "cluster": 24, "goal": "Find out about exchange offers available for a purchased item", "kind": "inform", "secondary_goal": "Get a better deal on the purchased item"}
+{"id": 444, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 445, "cluster": 28, "goal": "Find out the available refund modes for a canceled order", "kind": "inform", "secondary_goal": null}
+{"id": 447, "cluster": 2, "goal": "Get help logging in to the mobile app with a mobile number", "kind": "act", "secondary_goal": null}
+{"id": 448, "cluster": 6, "goal": "Complain about a rude courier who mishandled a delivery", "kind": "act", "secondary_goal": "Fix an item that is not working correctly"}
+{"id": 449, "cluster": 1, "goal": "Claim warranty for a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 450, "cluster": 17, "goal": "Deactivate an account", "kind": "act", "secondary_goal": null}
+{"id": 451, "cluster": 18, "goal": "Find out the warranty details for an item", "kind": "inform", "secondary_goal": null}
+{"id": 452, "cluster": 18, "goal": "Find out how changed warranty terms affect a previously purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 454, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 455, "cluster": 6, "goal": "Get an order delivered to the wrong address redelivered to the correct address quickly", "kind": "act", "secondary_goal": null}
+{"id": 456, "cluster": 19, "goal": "Get a verification code that was not received for a purchase", "kind": "act", "secondary_goal": null}
+{"id": 461, "cluster": 13, "goal": "Return a damaged, non-working item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 462, "cluster": 9, "goal": "Find out the delivery status and timing of an order", "kind": "inform", "secondary_goal": null}
+{"id": 464, "cluster": 25, "goal": "Find out whether an item can be shipped internationally", "kind": "inform", "secondary_goal": "Get recommendations for alternative items available for international shipping"}
+{"id": 466, "cluster": 19, "goal": "Get a verification code for an order that isn't arriving by phone or email", "kind": "act", "secondary_goal": null}
+{"id": 467, "cluster": 18, "goal": "Find the warranty details for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 468, "cluster": 11, "goal": "Resolve a mismatch in warranty terms between the website and the warranty card", "kind": "act", "secondary_goal": "Get help with a misplaced warranty card"}
+{"id": 469, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 470, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": "Find out the dimensions of an ordered item"}
+{"id": 471, "cluster": 7, "goal": "Schedule a pickup for an ordered item", "kind": "act", "secondary_goal": null}
+{"id": 472, "cluster": 8, "goal": "Add a new delivery address to an account", "kind": "act", "secondary_goal": null}
+{"id": 475, "cluster": 10, "goal": "Find out whether a purchased item needs installation or is ready to use", "kind": "inform", "secondary_goal": null}
+{"id": 480, "cluster": 23, "goal": "Confirm that an order was successfully placed", "kind": "inform", "secondary_goal": "Find out the estimated delivery date for an order"}
+{"id": 481, "cluster": 4, "goal": "Exchange a malfunctioning item for a new one", "kind": "act", "secondary_goal": null}
+{"id": 482, "cluster": 13, "goal": "Return a damaged item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 483, "cluster": 3, "goal": "Learn how the return pickup process works for an item", "kind": "inform", "secondary_goal": null}
+{"id": 484, "cluster": 9, "goal": "Find out why an expedited order hasn't shipped yet", "kind": "inform", "secondary_goal": null}
+{"id": 485, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 486, "cluster": 9, "goal": "Get a delayed order that is stuck at the local hub out for delivery today", "kind": "act", "secondary_goal": null}
+{"id": 487, "cluster": 27, "goal": "Find out how many loyalty points a purchase earns", "kind": "inform", "secondary_goal": "Learn how to redeem loyalty points"}
+{"id": 488, "cluster": 12, "goal": "Find out why an order had an unexpected extra charge", "kind": "inform", "secondary_goal": "Get a refund for the extra charge"}
+{"id": 489, "cluster": 2, "goal": "Sign up for an account using an international phone number", "kind": "act", "secondary_goal": null}
+{"id": 490, "cluster": 26, "goal": "Regain account access after exceeding verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 494, "cluster": 0, "goal": "Return an item that doesn't fit, avoiding the rude courier", "kind": "act", "secondary_goal": null}
+{"id": 495, "cluster": 8, "goal": "Add a new delivery address to an account", "kind": "act", "secondary_goal": null}
+{"id": 497, "cluster": 0, "goal": "Return a wrong-size item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 499, "cluster": 7, "goal": "Combine orders from different sellers into one delivery", "kind": "act", "secondary_goal": "Cancel the orders to avoid double shipping charges"}
+{"id": 500, "cluster": 3, "goal": "Find out why they were asked to ship back a purchased item", "kind": "inform", "secondary_goal": "Learn how to return a recalled item"}
+{"id": 501, "cluster": 22, "goal": "Get a refund that hasn't arrived in the bank account", "kind": "act", "secondary_goal": null}
+{"id": 502, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 507, "cluster": 26, "goal": "Unlock an account after too many failed verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 509, "cluster": 9, "goal": "Find out why an order hasn't been delivered", "kind": "inform", "secondary_goal": "Cancel the delayed order for a refund"}
+{"id": 513, "cluster": 31, "goal": "Find out why the same item is listed at two different prices", "kind": "inform", "secondary_goal": null}
+{"id": 514, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 516, "cluster": 8, "goal": "Change the pick-up address for an order", "kind": "act", "secondary_goal": null}
+{"id": 519, "cluster": 10, "goal": "Get guidance on setting up a newly received item", "kind": "inform", "secondary_goal": null}
+{"id": 520, "cluster": 9, "goal": "Get a delayed order stuck at the hub delivered urgently", "kind": "act", "secondary_goal": null}
+{"id": 521, "cluster": 6, "goal": "Get contact details for the seller's courier service for an order", "kind": "inform", "secondary_goal": null}
+{"id": 522, "cluster": 1, "goal": "Claim the warranty on a faulty item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 523, "cluster": 7, "goal": "Learn about the delivery process for an order", "kind": "inform", "secondary_goal": null}
+{"id": 525, "cluster": 10, "goal": "Get help assembling a newly purchased item", "kind": "inform", "secondary_goal": "Find out whether installation is the brand's or the retailer's responsibility"}
+{"id": 528, "cluster": 9, "goal": "Get a delayed order delivered in time", "kind": "act", "secondary_goal": null}
+{"id": 529, "cluster": 31, "goal": "Understand why the same item is listed at different prices", "kind": "inform", "secondary_goal": null}
+{"id": 530, "cluster": 17, "goal": "Reactivate a deactivated account", "kind": "act", "secondary_goal": null}
+{"id": 531, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 532, "cluster": 18, "goal": "Find out when the warranty period starts for an item", "kind": "inform", "secondary_goal": null}
+{"id": 535, "cluster": 2, "goal": "Verify mobile number and email address on account", "kind": "act", "secondary_goal": null}
+{"id": 537, "cluster": 2, "goal": "Log in to an account using a mobile number", "kind": "act", "secondary_goal": null}
+{"id": 538, "cluster": 14, "goal": "Get an item shipped to their location with faster delivery", "kind": "act", "secondary_goal": null}
+{"id": 539, "cluster": 20, "goal": "Get a replacement for an item delivered in a tampered package", "kind": "act", "secondary_goal": null}
+{"id": 541, "cluster": 30, "goal": "Learn the account requirements for making a purchase", "kind": "inform", "secondary_goal": "Find out about current discounts or promotions on an item"}
+{"id": 542, "cluster": 14, "goal": "Get expedited delivery for an item they want to purchase", "kind": "act", "secondary_goal": null}
+{"id": 543, "cluster": 25, "goal": "Check the availability and shipping status of an international order", "kind": "inform", "secondary_goal": "Cancel the order for a refund"}
+{"id": 545, "cluster": 6, "goal": "Arrange another delivery attempt for a missed order", "kind": "act", "secondary_goal": null}
+{"id": 547, "cluster": 13, "goal": "Return a faulty item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 548, "cluster": 8, "goal": "Change the pickup address for an order", "kind": "act", "secondary_goal": null}
+{"id": 550, "cluster": 26, "goal": "Regain access to an account locked after too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 551, "cluster": 6, "goal": "Get help with an order that has not been delivered", "kind": "act", "secondary_goal": "Get compensation for the delivery delay"}
+{"id": 552, "cluster": 0, "goal": "Return an item that is incompatible with their setup", "kind": "act", "secondary_goal": null}
+{"id": 553, "cluster": 0, "goal": "Exchange an item that doesn't fit for a bigger size", "kind": "act", "secondary_goal": null}
+{"id": 554, "cluster": 22, "goal": "Find out why a refund for a returned item hasn't arrived", "kind": "inform", "secondary_goal": null}
+{"id": 555, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 557, "cluster": 18, "goal": "Find out the warranty details for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 558, "cluster": 27, "goal": "Check loyalty points earned on a purchase", "kind": "inform", "secondary_goal": "Learn how to redeem loyalty points"}
+{"id": 560, "cluster": 17, "goal": "Reactivate an account deactivated for inactivity", "kind": "act", "secondary_goal": null}
+{"id": 563, "cluster": 1, "goal": "Get help with a faulty item after a repair request was denied", "kind": "act", "secondary_goal": null}
+{"id": 564, "cluster": 3, "goal": "Find out why an item must be shipped back", "kind": "inform", "secondary_goal": "Return a recalled item for a refund or replacement"}
+{"id": 565, "cluster": 12, "goal": "Get a refund for an overcharge on an order", "kind": "act", "secondary_goal": null}
+{"id": 566, "cluster": 14, "goal": "Get a faster delivery option for an item purchase", "kind": "act", "secondary_goal": null}
+{"id": 567, "cluster": 4, "goal": "Return a defective item", "kind": "act", "secondary_goal": null}
+{"id": 568, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": "Get faster delivery for the replacement item"}
+{"id": 569, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 571, "cluster": 8, "goal": "Add a new delivery address to the account for a recent order", "kind": "act", "secondary_goal": null}
+{"id": 572, "cluster": 4, "goal": "Get help with a malfunctioning item after the return period expired", "kind": "act", "secondary_goal": null}
+{"id": 573, "cluster": 24, "goal": "Get a price-drop discount on a recent purchase", "kind": "act", "secondary_goal": null}
+{"id": 574, "cluster": 0, "goal": "Return an item received in the wrong color using a faster return shipping option", "kind": "act", "secondary_goal": null}
+{"id": 575, "cluster": 7, "goal": "Learn how to schedule a pickup for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 576, "cluster": 0, "goal": "Return an item that doesn't fit for a refund", "kind": "act", "secondary_goal": null}
+{"id": 578, "cluster": 0, "goal": "Resolve receiving the wrong item in an order", "kind": "act", "secondary_goal": null}
+{"id": 580, "cluster": 10, "goal": "Learn how to put on a newly received item correctly", "kind": "inform", "secondary_goal": null}
+{"id": 581, "cluster": 3, "goal": "Learn about the pickup process for returning an item", "kind": "inform", "secondary_goal": null}
+{"id": 582, "cluster": 8, "goal": "Change the pickup/delivery address for an order in transit", "kind": "act", "secondary_goal": null}
+{"id": 583, "cluster": 23, "goal": "Confirm the status of a recent order", "kind": "inform", "secondary_goal": null}
+{"id": 585, "cluster": 9, "goal": "Find out why an order hasn't been delivered yet", "kind": "inform", "secondary_goal": null}
+{"id": 586, "cluster": 33, "goal": "Sign up for an account using a corporate email address", "kind": "act", "secondary_goal": "Find out whether a personal email address can be used to sign up instead"}
+{"id": 587, "cluster": 6, "goal": "Get a missed delivery of an order completed urgently", "kind": "act", "secondary_goal": null}
+{"id": 589, "cluster": 15, "goal": "Regain access to an account after changing email address", "kind": "act", "secondary_goal": null}
+{"id": 591, "cluster": 4, "goal": "Exchange a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 592, "cluster": 4, "goal": "Return a malfunctioning item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 593, "cluster": 19, "goal": "Get a verification code sent so they can complete a purchase", "kind": "act", "secondary_goal": "Find out the warranty period and coverage for an item"}
+{"id": 594, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": "Place a backorder for the out-of-stock item"}
+{"id": 595, "cluster": 10, "goal": "Get help installing an item, specifically attaching wheels to the frame", "kind": "inform", "secondary_goal": null}
+{"id": 596, "cluster": 26, "goal": "Regain access to an account locked after too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 599, "cluster": 2, "goal": "Get help verifying mobile number and email to complete a purchase", "kind": "inform", "secondary_goal": "Resolve a payment that is not going through at checkout"}
+{"id": 600, "cluster": 8, "goal": "Change the pick-up address for an item", "kind": "act", "secondary_goal": null}
+{"id": 603, "cluster": 2, "goal": "Learn how to log in to the mobile app with a mobile number", "kind": "inform", "secondary_goal": null}
+{"id": 604, "cluster": 18, "goal": "Find out whether the warranty terms for an item have changed", "kind": "inform", "secondary_goal": null}
+{"id": 605, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 606, "cluster": 5, "goal": "Find out why an order didn't qualify for free delivery", "kind": "inform", "secondary_goal": "Add white glove delivery to an order"}
+{"id": 607, "cluster": 9, "goal": "Find out why a delayed order with paid expedited shipping hasn't arrived", "kind": "inform", "secondary_goal": null}
+{"id": 610, "cluster": 10, "goal": "Get help installing an item", "kind": "inform", "secondary_goal": null}
+{"id": 611, "cluster": 2, "goal": "Verify mobile number and email address to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 612, "cluster": 28, "goal": "Find out the refund timeline for a returned Cash on Delivery order", "kind": "inform", "secondary_goal": "Expedite the refund for a returned item"}
+{"id": 615, "cluster": 25, "goal": "Get an item shipped to their location", "kind": "act", "secondary_goal": "Get faster delivery options for an order"}
+{"id": 618, "cluster": 31, "goal": "Find out why an item's price differs from what a friend paid", "kind": "inform", "secondary_goal": null}
+{"id": 619, "cluster": 16, "goal": "Sign up for an extended warranty on a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 620, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 623, "cluster": 30, "goal": "Find out whether an account is needed to make a purchase", "kind": "inform", "secondary_goal": "Get guidance on how to create an account"}
+{"id": 625, "cluster": 21, "goal": "Get help with an unresponsive 'Cancel' button on a return page", "kind": "act", "secondary_goal": null}
+{"id": 628, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 633, "cluster": 2, "goal": "Find out why login requires verification and how to verify without access to the old mobile number", "kind": "inform", "secondary_goal": null}
+{"id": 635, "cluster": 9, "goal": "Find out when a delayed order will arrive", "kind": "inform", "secondary_goal": "Get a refund of express delivery charges for a late order"}
+{"id": 637, "cluster": 13, "goal": "Return a used item that didn't meet expectations for a refund", "kind": "act", "secondary_goal": null}
+{"id": 639, "cluster": 23, "goal": "Understand what the order statuses in the order history mean", "kind": "inform", "secondary_goal": null}
+{"id": 640, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 641, "cluster": 21, "goal": "Cancel an order", "kind": "act", "secondary_goal": null}
+{"id": 642, "cluster": 14, "goal": "Get faster delivery for an order needed urgently", "kind": "act", "secondary_goal": "Cancel the order for a refund"}
+{"id": 644, "cluster": 22, "goal": "Find out why a refund for a returned item hasn't arrived", "kind": "inform", "secondary_goal": null}
+{"id": 645, "cluster": 10, "goal": "Get help setting up an item", "kind": "inform", "secondary_goal": null}
+{"id": 647, "cluster": 34, "goal": "Change the password for an account", "kind": "act", "secondary_goal": null}
+{"id": 648, "cluster": 6, "goal": "Get an urgent redelivery of an order whose delivery was not attempted", "kind": "act", "secondary_goal": null}
+{"id": 649, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 651, "cluster": 8, "goal": "Change the pickup address for an order", "kind": "act", "secondary_goal": "Get a refund for the order"}
+{"id": 652, "cluster": 2, "goal": "Get help receiving an OTP code to verify an order", "kind": "act", "secondary_goal": null}
+{"id": 653, "cluster": 34, "goal": "Reset a forgotten password to regain account access", "kind": "act", "secondary_goal": null}
+{"id": 654, "cluster": 5, "goal": "Find out delivery charges and shipping speed for an item", "kind": "inform", "secondary_goal": "Find out about any ongoing discounts or offers for the item"}
+{"id": 655, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 656, "cluster": 6, "goal": "Get a missed delivery reattempted", "kind": "act", "secondary_goal": "Expedite the delivery of an order"}
+{"id": 657, "cluster": 3, "goal": "Understand a return check received after returning an item", "kind": "inform", "secondary_goal": "Get the return fees deducted from a refund waived"}
+{"id": 658, "cluster": 7, "goal": "Get help placing an order for an item on the website", "kind": "inform", "secondary_goal": null}
+{"id": 660, "cluster": 0, "goal": "Return an item that doesn't fit for a refund", "kind": "act", "secondary_goal": null}
+{"id": 661, "cluster": 21, "goal": "Cancel an order that has not shipped yet", "kind": "act", "secondary_goal": null}
+{"id": 663, "cluster": 21, "goal": "Get an approved but unshipped order shipped urgently", "kind": "act", "secondary_goal": null}
+{"id": 664, "cluster": 2, "goal": "Verify a mobile number and email address on the account", "kind": "act", "secondary_goal": null}
+{"id": 665, "cluster": 13, "goal": "Return a faulty item for a refund to the original payment method", "kind": "act", "secondary_goal": null}
+{"id": 666, "cluster": 2, "goal": "Log in to the mobile app with a mobile number", "kind": "act", "secondary_goal": "Reset a forgotten password"}
+{"id": 667, "cluster": 5, "goal": "Find out why an order didn't qualify for free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 669, "cluster": 1, "goal": "Get a damaged item repaired after the service center denied the request", "kind": "act", "secondary_goal": null}
+{"id": 670, "cluster": 3, "goal": "Find out the fastest shipping options available for returning an item", "kind": "inform", "secondary_goal": null}
+{"id": 671, "cluster": 2, "goal": "Find out whether an international phone number can be used to sign up for an account", "kind": "inform", "secondary_goal": "Learn how to track an order after placing it"}
+{"id": 672, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 673, "cluster": 9, "goal": "Find out why an order hasn't shipped yet", "kind": "inform", "secondary_goal": "Cancel an order for a full refund"}
+{"id": 674, "cluster": 9, "goal": "Find out when a delayed order will arrive", "kind": "inform", "secondary_goal": null}
+{"id": 675, "cluster": 22, "goal": "Check the status of a delayed refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 676, "cluster": 6, "goal": "Resolve an order that was not received after the delivery date passed", "kind": "act", "secondary_goal": null}
+{"id": 677, "cluster": 31, "goal": "Understand why the same item is listed at different prices", "kind": "inform", "secondary_goal": "Add the cheaper edition of the item to the cart"}
+{"id": 678, "cluster": 25, "goal": "Get an item shipped to their country where it shows as unavailable", "kind": "act", "secondary_goal": null}
+{"id": 679, "cluster": 22, "goal": "Resolve a delayed refund for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 684, "cluster": 20, "goal": "Return an item delivered in a tampered package for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 685, "cluster": 1, "goal": "Find out whether warranty can be obtained without a lost warranty card", "kind": "inform", "secondary_goal": null}
+{"id": 686, "cluster": 1, "goal": "Make a warranty claim for a faulty item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 687, "cluster": 31, "goal": "Find out why the same item is listed at different prices", "kind": "inform", "secondary_goal": null}
+{"id": 688, "cluster": 29, "goal": "Get help ordering an out-of-stock item", "kind": "act", "secondary_goal": null}
+{"id": 689, "cluster": 31, "goal": "Find out why the same item has different prices", "kind": "inform", "secondary_goal": "Get a discount applied to the higher-priced item"}
+{"id": 690, "cluster": 19, "goal": "Get a verification code that isn't arriving so a purchase can be completed", "kind": "act", "secondary_goal": null}
+{"id": 691, "cluster": 6, "goal": "Get an undelivered order delivered after a failed delivery attempt", "kind": "act", "secondary_goal": null}
+{"id": 692, "cluster": 18, "goal": "Get the warranty details for an item", "kind": "inform", "secondary_goal": null}
+{"id": 693, "cluster": 3, "goal": "Return a damaged item after failed return pickups", "kind": "act", "secondary_goal": null}
+{"id": 694, "cluster": 25, "goal": "Find the international shipping option for an item", "kind": "inform", "secondary_goal": null}
+{"id": 695, "cluster": 15, "goal": "Change the email address linked to an account", "kind": "act", "secondary_goal": null}
+{"id": 697, "cluster": 14, "goal": "Learn about expedited delivery options for an item before purchasing", "kind": "inform", "secondary_goal": "Find out how to track a package once shipped"}
+{"id": 698, "cluster": 5, "goal": "Find out why an order is not eligible for free delivery", "kind": "inform", "secondary_goal": "Learn how to join the loyalty program"}
+{"id": 699, "cluster": 7, "goal": "Learn how to place an order for an item on the website", "kind": "inform", "secondary_goal": null}
+{"id": 700, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": "Expedite the refund"}
+{"id": 701, "cluster": 1, "goal": "Claim a warranty replacement for a defective item", "kind": "act", "secondary_goal": null}
+{"id": 702, "cluster": 9, "goal": "Find out when a delayed order will arrive", "kind": "inform", "secondary_goal": null}
+{"id": 703, "cluster": 2, "goal": "Verify mobile number and email address to receive a verification code", "kind": "act", "secondary_goal": null}
+{"id": 704, "cluster": 19, "goal": "Get help receiving a verification code for an order", "kind": "act", "secondary_goal": null}
+{"id": 705, "cluster": 26, "goal": "Regain access to an account locked after too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 706, "cluster": 2, "goal": "Get past a mobile number or email verification prompt to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 707, "cluster": 1, "goal": "Claim warranty on a faulty replacement item", "kind": "act", "secondary_goal": null}
+{"id": 708, "cluster": 9, "goal": "Check the status of a delayed order", "kind": "inform", "secondary_goal": null}
+{"id": 709, "cluster": 24, "goal": "Find out about exchange offer discounts on an item", "kind": "inform", "secondary_goal": null}
+{"id": 710, "cluster": 5, "goal": "Find out the standard shipping charges for an item", "kind": "inform", "secondary_goal": "Find out how long delivery of an item will take"}
+{"id": 711, "cluster": 16, "goal": "Register an item for warranty benefits", "kind": "act", "secondary_goal": null}
+{"id": 712, "cluster": 28, "goal": "Find out the refund timeline for a Cash on Delivery return", "kind": "inform", "secondary_goal": "Speed up a delayed refund"}
+{"id": 714, "cluster": 18, "goal": "Find out when the warranty on an item starts", "kind": "inform", "secondary_goal": null}
+{"id": 716, "cluster": 0, "goal": "Exchange an ill-fitting item for a different size", "kind": "act", "secondary_goal": null}
+{"id": 717, "cluster": 26, "goal": "Unlock an account locked after too many failed verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 720, "cluster": 1, "goal": "Claim the warranty on an item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 721, "cluster": 9, "goal": "Find out when an order will be delivered", "kind": "inform", "secondary_goal": "Find out how much was charged for shipping"}
+{"id": 722, "cluster": 3, "goal": "Return an unused item and get the return fee waived", "kind": "act", "secondary_goal": null}
+{"id": 723, "cluster": 9, "goal": "Complain about a late delivery of an order", "kind": "inform", "secondary_goal": "Find out why extra shipping charges were applied to an order"}
+{"id": 724, "cluster": 34, "goal": "Change the password for an account", "kind": "act", "secondary_goal": "Update the shipping address on an account"}
+{"id": 725, "cluster": 13, "goal": "Return a damaged item for a replacement", "kind": "act", "secondary_goal": "Expedite the replacement shipment"}
+{"id": 726, "cluster": 17, "goal": "Reactivate a deactivated account", "kind": "act", "secondary_goal": "Find a specific item and add it to the cart"}
+{"id": 727, "cluster": 4, "goal": "Return a damaged, malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 729, "cluster": 0, "goal": "Return an item that is the wrong size", "kind": "act", "secondary_goal": null}
+{"id": 731, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": "Find out the dimensions and weight of the package"}
+{"id": 732, "cluster": 4, "goal": "Exchange a defective item for a new one", "kind": "act", "secondary_goal": null}
+{"id": 733, "cluster": 17, "goal": "Reactivate a deactivated account", "kind": "act", "secondary_goal": null}
+{"id": 735, "cluster": 1, "goal": "Claim the warranty on a faulty replacement item", "kind": "act", "secondary_goal": null}
+{"id": 736, "cluster": 28, "goal": "Return a faulty item paid by cash on delivery for a refund", "kind": "act", "secondary_goal": null}
+{"id": 737, "cluster": 4, "goal": "Return a faulty item", "kind": "act", "secondary_goal": "Get the return fee waived for a faulty item"}
+{"id": 738, "cluster": 4, "goal": "Get a replacement or refund for a malfunctioning item past the return window", "kind": "act", "secondary_goal": null}
+{"id": 740, "cluster": 1, "goal": "Claim warranty on a malfunctioning item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 741, "cluster": 7, "goal": "Get help placing an order for an item on the website", "kind": "inform", "secondary_goal": "Find out when an order will arrive"}
+{"id": 742, "cluster": 2, "goal": "Get help receiving the OTP for mobile verification", "kind": "act", "secondary_goal": "Find out which email address is registered on the account"}
+{"id": 743, "cluster": 9, "goal": "Find out why an order hasn't arrived and when it will be delivered", "kind": "inform", "secondary_goal": "Speed up delivery of a delayed order"}
+{"id": 745, "cluster": 10, "goal": "Get help installing an item", "kind": "inform", "secondary_goal": null}
+{"id": 746, "cluster": 4, "goal": "Return a malfunctioning item for a refund", "kind": "act", "secondary_goal": "Get the return check fee waived"}
+{"id": 747, "cluster": 9, "goal": "Find out why an order hasn't been delivered yet", "kind": "inform", "secondary_goal": null}
+{"id": 748, "cluster": 27, "goal": "Find out how many loyalty points were earned from a purchase", "kind": "inform", "secondary_goal": "Learn how the loyalty program works and how to redeem points"}
+{"id": 749, "cluster": 34, "goal": "Reset the password for an account they can't log into", "kind": "act", "secondary_goal": null}
+{"id": 750, "cluster": 32, "goal": "Get invoices for previous orders resent", "kind": "act", "secondary_goal": null}
+{"id": 751, "cluster": 6, "goal": "Find out where an order is because tracking isn't working", "kind": "inform", "secondary_goal": null}
+{"id": 752, "cluster": 24, "goal": "Learn about the exchange offer on an item and the trade-in value of an old one", "kind": "inform", "secondary_goal": null}
+{"id": 754, "cluster": 1, "goal": "Claim the warranty on a broken item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 755, "cluster": 15, "goal": "Update the account email address to regain login access", "kind": "act", "secondary_goal": null}
+{"id": 756, "cluster": 9, "goal": "Check the status of a delayed order stuck at the local hub", "kind": "inform", "secondary_goal": null}
+{"id": 757, "cluster": 34, "goal": "Reset a forgotten password to regain account access", "kind": "act", "secondary_goal": null}
+{"id": 758, "cluster": 3, "goal": "Get reimbursed for courier charges paid to return an item", "kind": "act", "secondary_goal": null}
+{"id": 759, "cluster": 21, "goal": "Cancel an order", "kind": "act", "secondary_goal": "Return a shipped item"}
+{"id": 760, "cluster": 14, "goal": "Upgrade an order to faster delivery", "kind": "act", "secondary_goal": null}
+{"id": 761, "cluster": 6, "goal": "Get an order that never arrived delivered", "kind": "act", "secondary_goal": null}
+{"id": 764, "cluster": 14, "goal": "Find out about faster delivery options for an item before ordering", "kind": "inform", "secondary_goal": null}
+{"id": 765, "cluster": 10, "goal": "Find out who is responsible for installing an item and how to install it", "kind": "inform", "secondary_goal": null}
+{"id": 766, "cluster": 6, "goal": "Check the status of an order that cannot be tracked", "kind": "inform", "secondary_goal": null}
+{"id": 770, "cluster": 7, "goal": "Learn about the pickup process for an ordered item", "kind": "inform", "secondary_goal": null}
+{"id": 773, "cluster": 15, "goal": "Change the email address on an account", "kind": "act", "secondary_goal": null}
+{"id": 776, "cluster": 1, "goal": "Claim the warranty for a faulty item", "kind": "act", "secondary_goal": null}
+{"id": 777, "cluster": 17, "goal": "Deactivate an account", "kind": "act", "secondary_goal": "Remove an item from order history"}
+{"id": 778, "cluster": 29, "goal": "Get help buying an item that is out of stock", "kind": "act", "secondary_goal": "Find out when the out-of-stock item will be back in stock"}
+{"id": 779, "cluster": 6, "goal": "Resolve a package marked delivered but not received", "kind": "act", "secondary_goal": null}
+{"id": 780, "cluster": 31, "goal": "Find out why the same item is listed at different prices", "kind": "inform", "secondary_goal": null}
+{"id": 781, "cluster": 28, "goal": "Get Cash on Delivery enabled for an item purchase", "kind": "act", "secondary_goal": "Learn how to pay for an order by credit card"}
+{"id": 782, "cluster": 3, "goal": "Find out the shipping options available for returning an item", "kind": "inform", "secondary_goal": "Return a faulty item for a replacement"}
+{"id": 783, "cluster": 14, "goal": "Get faster delivery for an ordered item", "kind": "act", "secondary_goal": "Find out why some items can't be shipped to their location"}
+{"id": 784, "cluster": 28, "goal": "Pay for an order with Cash on Delivery when the option is unavailable", "kind": "act", "secondary_goal": null}
+{"id": 785, "cluster": 18, "goal": "Find out the warranty details for an item", "kind": "inform", "secondary_goal": "Find out how to recover forgotten login details"}
+{"id": 786, "cluster": 6, "goal": "Track down an order that never arrived despite being marked delivered", "kind": "inform", "secondary_goal": null}
+{"id": 787, "cluster": 23, "goal": "Confirm that an order was placed successfully and check its status", "kind": "inform", "secondary_goal": null}
+{"id": 788, "cluster": 6, "goal": "Track a shipped order that has no tracking information", "kind": "inform", "secondary_goal": null}
+{"id": 789, "cluster": 5, "goal": "Find out the standard shipping cost for an item", "kind": "inform", "secondary_goal": "Find out how to get free shipping on an order"}
+{"id": 790, "cluster": 30, "goal": "Find out whether an account is needed to buy an item and how to create one", "kind": "inform", "secondary_goal": null}
+{"id": 792, "cluster": 12, "goal": "Get a refund for an incorrect charge on an order invoice", "kind": "act", "secondary_goal": null}
+{"id": 793, "cluster": 11, "goal": "Clarify conflicting warranty terms between the retailer and brand websites for an item", "kind": "inform", "secondary_goal": null}
+{"id": 794, "cluster": 10, "goal": "Get help assembling an item delivered in parts from different sellers", "kind": "inform", "secondary_goal": null}
+{"id": 796, "cluster": 9, "goal": "Get a delayed order delivered after it was marked out for delivery", "kind": "act", "secondary_goal": null}
+{"id": 797, "cluster": 0, "goal": "Exchange a wrong item received for the correct model", "kind": "act", "secondary_goal": null}
+{"id": 798, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": "Fix a 'Cancel' button that does not work during the return process"}
+{"id": 801, "cluster": 8, "goal": "Add a new delivery address to the account for an order", "kind": "act", "secondary_goal": "Set the new address as the default delivery address"}
+{"id": 803, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 804, "cluster": 22, "goal": "Find out the status of a delayed refund for a returned damaged item", "kind": "inform", "secondary_goal": null}
+{"id": 805, "cluster": 25, "goal": "Find out why an item can't be shipped to their location", "kind": "inform", "secondary_goal": "Order a similar item that can be shipped to their location"}
+{"id": 808, "cluster": 10, "goal": "Find out whether installing an item affects its warranty", "kind": "inform", "secondary_goal": "Get help installing an item that doesn't fit properly"}
+{"id": 810, "cluster": 17, "goal": "Reactivate an inactive account", "kind": "act", "secondary_goal": null}
+{"id": 812, "cluster": 9, "goal": "Find out when a delayed order will arrive", "kind": "inform", "secondary_goal": "Get tracking details for an order"}
+{"id": 814, "cluster": 13, "goal": "Return a faulty item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 815, "cluster": 27, "goal": "Learn how to redeem loyalty points earned from a purchase", "kind": "inform", "secondary_goal": null}
+{"id": 818, "cluster": 16, "goal": "Learn how to sign up for an extended warranty on an item", "kind": "inform", "secondary_goal": null}
+{"id": 820, "cluster": 20, "goal": "Report a tampered package containing an item that doesn't work and get it resolved", "kind": "act", "secondary_goal": null}
+{"id": 821, "cluster": 4, "goal": "Return a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 822, "cluster": 7, "goal": "Place an order for an item", "kind": "act", "secondary_goal": null}
+{"id": 823, "cluster": 16, "goal": "Learn how to register an item for warranty", "kind": "inform", "secondary_goal": null}
+{"id": 824, "cluster": 31, "goal": "Understand why the same item is listed at different prices on different pages", "kind": "inform", "secondary_goal": "Get the discounted price on the page without the sale"}
+{"id": 827, "cluster": 14, "goal": "Upgrade an order to a faster delivery option", "kind": "act", "secondary_goal": null}
+{"id": 828, "cluster": 6, "goal": "Resolve a missed delivery and reschedule it to a convenient time", "kind": "act", "secondary_goal": null}
+{"id": 829, "cluster": 27, "goal": "Redeem reward points for an item after the website rejected the redemption", "kind": "act", "secondary_goal": null}
+{"id": 830, "cluster": 3, "goal": "Find out why a return refund was less than the amount paid", "kind": "inform", "secondary_goal": null}
+{"id": 831, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 832, "cluster": 1, "goal": "Get help with a denied repair request for a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 833, "cluster": 5, "goal": "Find out why an order was charged for shipping instead of qualifying for free delivery", "kind": "inform", "secondary_goal": null}
+{"id": 834, "cluster": 4, "goal": "Return a defective item", "kind": "act", "secondary_goal": null}
+{"id": 835, "cluster": 34, "goal": "Change the password for an account", "kind": "act", "secondary_goal": null}
+{"id": 840, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 841, "cluster": 15, "goal": "Regain access to an account after changing the email address", "kind": "act", "secondary_goal": null}
+{"id": 843, "cluster": 13, "goal": "Return a faulty item for a refund and arrange return shipping", "kind": "act", "secondary_goal": null}
+{"id": 844, "cluster": 3, "goal": "Find out the seller's return policy for an item", "kind": "inform", "secondary_goal": null}
+{"id": 845, "cluster": 20, "goal": "Return or exchange an item delivered in a tampered package", "kind": "act", "secondary_goal": null}
+{"id": 847, "cluster": 3, "goal": "Find out why an item must be shipped back", "kind": "inform", "secondary_goal": null}
+{"id": 848, "cluster": 6, "goal": "Get the missing second package of a split order delivered quickly", "kind": "act", "secondary_goal": null}
+{"id": 849, "cluster": 6, "goal": "Report an order marked delivered but never received", "kind": "act", "secondary_goal": null}
+{"id": 852, "cluster": 3, "goal": "Understand a return check and fee applied to a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 853, "cluster": 6, "goal": "Locate a package marked delivered but not received", "kind": "act", "secondary_goal": null}
+{"id": 854, "cluster": 26, "goal": "Regain access to a locked account by resetting the verification code", "kind": "act", "secondary_goal": null}
+{"id": 855, "cluster": 4, "goal": "Return a defective item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 856, "cluster": 13, "goal": "Return a damaged item", "kind": "act", "secondary_goal": "Get the return fee waived"}
+{"id": 857, "cluster": 24, "goal": "Get an exchange offer discount on a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 859, "cluster": 1, "goal": "File a warranty claim for a malfunctioning item", "kind": "act", "secondary_goal": null}
+{"id": 860, "cluster": 6, "goal": "Get an order that was delivered to the wrong address sent to the correct address", "kind": "act", "secondary_goal": null}
+{"id": 862, "cluster": 24, "goal": "Get the promised exchange offer discount applied to an order", "kind": "act", "secondary_goal": null}
+{"id": 863, "cluster": 13, "goal": "Return an item for a refund", "kind": "act", "secondary_goal": "Speed up the refund for a cash-on-delivery order"}
+{"id": 864, "cluster": 5, "goal": "Find out why an order was charged a delivery fee instead of free delivery", "kind": "inform", "secondary_goal": "Confirm the delivery date for an order"}
+{"id": 865, "cluster": 11, "goal": "Find out which of two conflicting warranty terms for an item is accurate", "kind": "inform", "secondary_goal": null}
+{"id": 866, "cluster": 28, "goal": "Pay for an item with Cash on Delivery", "kind": "act", "secondary_goal": "Learn how to complete the payment process online"}
+{"id": 868, "cluster": 14, "goal": "Find out about expedited delivery options for an item", "kind": "inform", "secondary_goal": "Find a nearby store that has the item in stock"}
+{"id": 869, "cluster": 11, "goal": "Clarify a mismatch between the website and warranty card warranty terms", "kind": "inform", "secondary_goal": "Get a replacement copy of a lost warranty card"}
+{"id": 870, "cluster": 6, "goal": "Resolve a package marked delivered but not received", "kind": "act", "secondary_goal": null}
+{"id": 871, "cluster": 0, "goal": "Return an item that doesn't fit for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 872, "cluster": 1, "goal": "Claim warranty on a defective replacement item", "kind": "act", "secondary_goal": null}
+{"id": 873, "cluster": 1, "goal": "Get help with a missing warranty card for an item", "kind": "act", "secondary_goal": "Clarify conflicting warranty terms between the website and the warranty card"}
+{"id": 874, "cluster": 25, "goal": "Order an item that is unavailable for shipping to their location", "kind": "act", "secondary_goal": null}
+{"id": 878, "cluster": 16, "goal": "Register an item with the brand for warranty benefits", "kind": "act", "secondary_goal": null}
+{"id": 881, "cluster": 21, "goal": "Cancel an order when the cancel button isn't working", "kind": "act", "secondary_goal": null}
+{"id": 882, "cluster": 22, "goal": "Get a delayed refund for a returned item processed", "kind": "act", "secondary_goal": null}
+{"id": 885, "cluster": 29, "goal": "Find out when an out-of-stock item will be available again", "kind": "inform", "secondary_goal": "Find out whether international shipping is available and its cost and time"}
+{"id": 886, "cluster": 25, "goal": "Order an item that shows as unavailable for shipping to their location", "kind": "act", "secondary_goal": null}
+{"id": 887, "cluster": 4, "goal": "Get a replacement for a faulty item that won't turn on", "kind": "act", "secondary_goal": null}
+{"id": 888, "cluster": 13, "goal": "Return a faulty item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 889, "cluster": 17, "goal": "Reactivate a deactivated account", "kind": "act", "secondary_goal": null}
+{"id": 890, "cluster": 3, "goal": "Find out about faster shipping options for returning an item", "kind": "inform", "secondary_goal": null}
+{"id": 891, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": null}
+{"id": 893, "cluster": 0, "goal": "Exchange a wrong item received for the correct one", "kind": "act", "secondary_goal": null}
+{"id": 894, "cluster": 4, "goal": "Return or exchange a defective item", "kind": "act", "secondary_goal": null}
+{"id": 897, "cluster": 6, "goal": "Find out how to contact the seller's courier to track a package", "kind": "inform", "secondary_goal": null}
+{"id": 899, "cluster": 2, "goal": "Learn why and how to verify a mobile number and email address for account login", "kind": "inform", "secondary_goal": null}
+{"id": 900, "cluster": 31, "goal": "Find out why an ordered item's price has since changed on the website", "kind": "inform", "secondary_goal": null}
+{"id": 903, "cluster": 13, "goal": "Return an item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 904, "cluster": 0, "goal": "Return an item that doesn't fit", "kind": "act", "secondary_goal": null}
+{"id": 905, "cluster": 11, "goal": "Clarify which warranty period applies given a mismatch between the website and the warranty card", "kind": "inform", "secondary_goal": null}
+{"id": 906, "cluster": 23, "goal": "Check the confirmation and status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 907, "cluster": 2, "goal": "Get an OTP to verify mobile number and email to complete a purchase", "kind": "act", "secondary_goal": null}
+{"id": 908, "cluster": 9, "goal": "Find out the status and delivery date of a delayed order", "kind": "inform", "secondary_goal": "Get compensation for the delivery delay and tracking issue"}
+{"id": 909, "cluster": 0, "goal": "Return a wrong-size item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 912, "cluster": 3, "goal": "Learn the return policy and process for an item", "kind": "inform", "secondary_goal": "Learn how product tags work on the website"}
+{"id": 913, "cluster": 6, "goal": "Get an order that was delivered to the wrong address redelivered to the correct address", "kind": "act", "secondary_goal": null}
+{"id": 914, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 915, "cluster": 25, "goal": "Order an item that is unavailable for their location", "kind": "act", "secondary_goal": null}
+{"id": 916, "cluster": 2, "goal": "Verify a mobile number to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 918, "cluster": 4, "goal": "Return a malfunctioning item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 923, "cluster": 6, "goal": "Find out how to contact the seller's courier service providers", "kind": "inform", "secondary_goal": null}
+{"id": 925, "cluster": 33, "goal": "Sign up for an account using a corporate email address", "kind": "act", "secondary_goal": null}
+{"id": 926, "cluster": 0, "goal": "Exchange an item that doesn't fit for a different size", "kind": "act", "secondary_goal": null}
+{"id": 928, "cluster": 6, "goal": "Resolve an order marked delivered but never received", "kind": "act", "secondary_goal": null}
+{"id": 929, "cluster": 9, "goal": "Find out when a late order will be delivered", "kind": "inform", "secondary_goal": null}
+{"id": 930, "cluster": 2, "goal": "Find out why login requires verification and how to verify a mobile number", "kind": "inform", "secondary_goal": null}
+{"id": 931, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": "Schedule a pickup for the return shipment"}
+{"id": 932, "cluster": 22, "goal": "Find out why a refund for a returned item hasn't arrived", "kind": "inform", "secondary_goal": null}
+{"id": 933, "cluster": 2, "goal": "Sign up for an account when the website won't accept a phone number", "kind": "act", "secondary_goal": "Find a specific item to purchase"}
+{"id": 935, "cluster": 6, "goal": "Get contact details for the courier handling an order to track it", "kind": "inform", "secondary_goal": null}
+{"id": 936, "cluster": 21, "goal": "Cancel an order when the cancel button isn't working", "kind": "act", "secondary_goal": "Learn how to return the item once it arrives"}
+{"id": 937, "cluster": 13, "goal": "Return or get a refund for an item that arrived damaged", "kind": "act", "secondary_goal": null}
+{"id": 938, "cluster": 2, "goal": "Get help verifying an email address to access an account", "kind": "act", "secondary_goal": "Get help verifying a mobile number on the account"}
+{"id": 940, "cluster": 9, "goal": "Check the status of a delayed order", "kind": "inform", "secondary_goal": null}
+{"id": 941, "cluster": 10, "goal": "Get help installing a washing machine, including whether installation service is offered", "kind": "inform", "secondary_goal": null}
+{"id": 942, "cluster": 23, "goal": "Confirm whether an order has been processed", "kind": "inform", "secondary_goal": null}
+{"id": 943, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": "Prevent a rude courier from being assigned to future deliveries"}
+{"id": 944, "cluster": 26, "goal": "Fix an account login blocked by too many verification code attempts", "kind": "act", "secondary_goal": null}
+{"id": 946, "cluster": 12, "goal": "Get a refund for an overcharge on an order invoice", "kind": "act", "secondary_goal": null}
+{"id": 947, "cluster": 1, "goal": "Learn how to file a warranty claim for a malfunctioning item", "kind": "inform", "secondary_goal": null}
+{"id": 948, "cluster": 2, "goal": "Find out why login requires verifying a mobile number or email and how to complete it", "kind": "inform", "secondary_goal": null}
+{"id": 950, "cluster": 16, "goal": "Sign up for an extended warranty on a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 951, "cluster": 10, "goal": "Get help installing a toy item", "kind": "inform", "secondary_goal": null}
+{"id": 952, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 953, "cluster": 15, "goal": "Change the email address linked to an account", "kind": "act", "secondary_goal": null}
+{"id": 954, "cluster": 22, "goal": "Get a missing refund for a returned item", "kind": "act", "secondary_goal": null}
+{"id": 955, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 956, "cluster": 14, "goal": "Get an order delivered faster than the available delivery options allow", "kind": "act", "secondary_goal": null}
+{"id": 957, "cluster": 1, "goal": "Claim the warranty on an item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 958, "cluster": 15, "goal": "Change the email address used to log in to an account", "kind": "act", "secondary_goal": null}
+{"id": 959, "cluster": 18, "goal": "Find out if the warranty covers a faulty item bought online", "kind": "inform", "secondary_goal": null}
+{"id": 963, "cluster": 23, "goal": "Check the status of an order", "kind": "inform", "secondary_goal": null}
+{"id": 964, "cluster": 27, "goal": "Learn how to redeem loyalty points on a purchase", "kind": "inform", "secondary_goal": "Learn how to earn loyalty points"}
+{"id": 966, "cluster": 3, "goal": "Remove an unwanted warranty charge from an invoice and get a refund", "kind": "act", "secondary_goal": null}
+{"id": 967, "cluster": 11, "goal": "Clarify conflicting warranty terms between the website and the warranty card", "kind": "inform", "secondary_goal": "Find out how to claim the warranty for an item"}
+{"id": 968, "cluster": 13, "goal": "Return an unsuitable item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 970, "cluster": 9, "goal": "Get a delayed, unshipped order delivered as soon as possible", "kind": "act", "secondary_goal": null}
+{"id": 971, "cluster": 8, "goal": "Change the pickup address for an order", "kind": "act", "secondary_goal": null}
+{"id": 972, "cluster": 2, "goal": "Log in to the mobile app by linking a mobile number to the account", "kind": "act", "secondary_goal": null}
+{"id": 973, "cluster": 18, "goal": "Find out the start date of an item's warranty", "kind": "inform", "secondary_goal": null}
+{"id": 974, "cluster": 4, "goal": "Return a faulty item for a replacement", "kind": "act", "secondary_goal": null}
+{"id": 976, "cluster": 13, "goal": "Return an unsatisfactory item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 977, "cluster": 20, "goal": "Exchange an item that arrived in a tampered, opened package for a new one", "kind": "act", "secondary_goal": null}
+{"id": 978, "cluster": 6, "goal": "Return unwanted free items that came with an order", "kind": "act", "secondary_goal": null}
+{"id": 979, "cluster": 4, "goal": "Return a defective item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 980, "cluster": 1, "goal": "File a warranty claim for a broken item without the warranty card", "kind": "act", "secondary_goal": null}
+{"id": 982, "cluster": 13, "goal": "Return a damaged item for a refund", "kind": "act", "secondary_goal": null}
+{"id": 983, "cluster": 1, "goal": "Find out if warranty coverage is possible without the warranty card", "kind": "inform", "secondary_goal": null}
+{"id": 984, "cluster": 27, "goal": "Learn how to redeem loyalty points for a discount", "kind": "inform", "secondary_goal": null}
+{"id": 985, "cluster": 9, "goal": "Find out why an order has not been delivered yet", "kind": "inform", "secondary_goal": null}
+{"id": 986, "cluster": 18, "goal": "Access the warranty details for a purchased item", "kind": "inform", "secondary_goal": null}
+{"id": 987, "cluster": 9, "goal": "Find out the delivery method and timing for an order", "kind": "inform", "secondary_goal": "Expedite delivery of an order"}
+{"id": 989, "cluster": 28, "goal": "Return a faulty item paid by cash on delivery for a refund", "kind": "act", "secondary_goal": null}
+{"id": 990, "cluster": 28, "goal": "Find out how to pay cash on delivery for an item", "kind": "inform", "secondary_goal": "Find out how long delivery of an item will take"}
+{"id": 991, "cluster": 18, "goal": "Find out if a malfunctioning item is covered under warranty", "kind": "inform", "secondary_goal": null}
+{"id": 992, "cluster": 17, "goal": "Reactivate an inactive account", "kind": "act", "secondary_goal": "Get servicing for a malfunctioning item"}
+{"id": 993, "cluster": 12, "goal": "Understand unexpected charges on an order bill", "kind": "inform", "secondary_goal": null}
+{"id": 994, "cluster": 7, "goal": "Combine orders from different sellers into one delivery to avoid double shipping charges", "kind": "act", "secondary_goal": null}
+{"id": 997, "cluster": 11, "goal": "Resolve a mismatch between the website's warranty terms and the brand's warranty terms for a purchased item", "kind": "act", "secondary_goal": null}
+{"id": 998, "cluster": 22, "goal": "Check the status of a refund for a returned item", "kind": "inform", "secondary_goal": "Get an email confirmation of the refund"}
+{"id": 999, "cluster": 9, "goal": "Get a late order delivered", "kind": "act", "secondary_goal": null}
