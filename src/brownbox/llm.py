@@ -4,19 +4,21 @@ Every call returns a validated Pydantic object or raises LLMError. Nothing ever 
 to a default answer: a failed call is reported as a failure.
 """
 
+import dataclasses
 import hashlib
 import json
 import time
 from dataclasses import dataclass
 from functools import cache
-from pathlib import Path
 from typing import Literal
 
 import anthropic
 from dotenv import load_dotenv
 from pydantic import BaseModel, ValidationError
 
-CACHE_DIR = Path(__file__).resolve().parents[2] / ".cache" / "llm"
+from brownbox.paths import CACHE
+
+CACHE_DIR = CACHE / "llm"
 MAX_ATTEMPTS = 3
 # Fail a stuck request fast and retry it. The SDK default (10 min, 2 retries) let one
 # hung connection block a worker for half an hour.
@@ -25,6 +27,7 @@ SDK_RETRIES = 3
 
 # Models that accept Anthropic's server-side refusal fallback in its "default" form.
 FALLBACK_MODELS = {"claude-opus-5-5", "claude-sonnet-5-5"}
+FALLBACK_BETA = "server-side-fallback-2026-07-01"
 
 Effort = Literal["low", "medium", "high"]
 
@@ -48,16 +51,16 @@ class Request:
 
 
 class Usage(BaseModel):
-    input_tokens: int  # Uncached input only.
+    input_tokens: int  # Uncached input.
     output_tokens: int
-    cached_input_tokens: int  # Read from the prompt cache (cheap).
-    cache_write_tokens: int = 0  # Written to the prompt cache (1.25x). Not recorded before.
+    cache_read_tokens: int  # Read from the prompt cache (cheap).
+    cache_write_tokens: int  # Written to the prompt cache (1.25x).
     latency_s: float
 
 
 @dataclass(frozen=True)
-class Reply[R: BaseModel]:
-    output: R
+class Reply[T: BaseModel]:
+    output: T
     usage: Usage
     from_cache: bool
 
@@ -67,11 +70,8 @@ def structured[T: BaseModel](req: Request, schema: type[T]) -> Reply[T]:
     path = CACHE_DIR / f"{cache_key(req, schema)}.json"
     if path.exists():
         cached = json.loads(path.read_text())
-        return Reply(
-            schema.model_validate(cached["output"]),
-            Usage.model_validate(cached["usage"]),
-            from_cache=True,
-        )
+        output = schema.model_validate(cached["output"])
+        return Reply(output, Usage.model_validate(cached["usage"]), from_cache=True)
 
     errors = []
     for _ in range(MAX_ATTEMPTS):
@@ -81,34 +81,28 @@ def structured[T: BaseModel](req: Request, schema: type[T]) -> Reply[T]:
             errors.append(str(e))
             continue
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(
-            json.dumps({"output": output.model_dump(mode="json"), "usage": usage.model_dump()})
-        )
+        record = {"output": output.model_dump(mode="json"), "usage": usage.model_dump()}
+        path.write_text(json.dumps(record))
         return Reply(output, usage, from_cache=False)
     raise LLMError(f"{req.model}: no valid output after {MAX_ATTEMPTS} attempts: {errors}")
 
 
 def cache_key(req: Request, schema: type[BaseModel]) -> str:
-    payload = {**req.__dict__, "schema": schema.model_json_schema()}
+    payload = {**dataclasses.asdict(req), "schema": schema.model_json_schema()}
     return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
 
 @cache
-def _anthropic() -> anthropic.Anthropic:
+def _client() -> anthropic.Anthropic:
     load_dotenv()  # ANTHROPIC_API_KEY from .env; a variable already set in the shell wins.
     return anthropic.Anthropic(timeout=TIMEOUT_S, max_retries=SDK_RETRIES)
 
 
 def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usage]:
-    extra: dict[str, object] = {}
-    if req.effort:
-        extra["output_config"] = {"effort": req.effort}
-    if req.model in FALLBACK_MODELS:
-        extra |= {"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
-
+    fallback = req.model in FALLBACK_MODELS
     start = time.perf_counter()
     try:
-        msg = _anthropic().beta.messages.parse(
+        msg = _client().beta.messages.parse(
             model=req.model,
             max_tokens=req.max_tokens,
             # Cache the system prompt, which is the same on every call. The user message
@@ -116,7 +110,9 @@ def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usag
             system=[{"type": "text", "text": req.system, "cache_control": {"type": "ephemeral"}}],
             messages=[{"role": "user", "content": req.user}],
             output_format=schema,
-            **extra,  # type: ignore[arg-type]
+            output_config={"effort": req.effort} if req.effort else anthropic.omit,
+            betas=[FALLBACK_BETA] if fallback else anthropic.omit,
+            fallbacks="default" if fallback else anthropic.omit,
         )
     except ValidationError as e:
         raise InvalidOutput(str(e)) from e
@@ -129,7 +125,7 @@ def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usag
     return msg.parsed_output, Usage(
         input_tokens=msg.usage.input_tokens,
         output_tokens=msg.usage.output_tokens,
-        cached_input_tokens=msg.usage.cache_read_input_tokens or 0,
+        cache_read_tokens=msg.usage.cache_read_input_tokens or 0,
         cache_write_tokens=msg.usage.cache_creation_input_tokens or 0,
         latency_s=latency,
     )

@@ -9,8 +9,8 @@ from pathlib import Path
 import pandas as pd
 
 from brownbox.models import Conversation, Split, Turn
+from brownbox.paths import DATA, ROOT
 
-DATA = Path(__file__).resolve().parents[2] / "data"
 PARSED = DATA / "parsed.jsonl"
 LOCKED_IDS = DATA / "locked_ids.txt"
 
@@ -77,10 +77,8 @@ def main() -> None:
         int(i): parse_turns(text) for i, text in zip(df["id"], df["conversation"], strict=True)
     }
 
-    dropped = sorted(
-        i for i, turns in parsed.items() if not any(t.role == "customer" for t in turns)
-    )
-    usable = {i: turns for i, turns in parsed.items() if i not in dropped}
+    usable = {i: turns for i, turns in parsed.items() if any(t.role == "customer" for t in turns)}
+    dropped = sorted(parsed.keys() - usable.keys())
 
     split = make_split(list(usable))
     with PARSED.open("w") as f:
@@ -91,7 +89,7 @@ def main() -> None:
 
     print(f"parsed {len(parsed)}, dropped {len(dropped)} with no customer turn: {dropped}")
     print(f"usable {len(usable)}: {dict(Counter(split.values()))}")
-    print(f"wrote {PARSED.relative_to(DATA.parent)} and {LOCKED_IDS.relative_to(DATA.parent)}")
+    print(f"wrote {PARSED.relative_to(ROOT)} and {LOCKED_IDS.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

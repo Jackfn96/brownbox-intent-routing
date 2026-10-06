@@ -12,7 +12,6 @@ import random
 from collections import Counter
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
 from typing import Literal
 
 import numpy as np
@@ -25,14 +24,16 @@ from sklearn.metrics import silhouette_score
 from brownbox import llm
 from brownbox.models import Conversation
 from brownbox.parse import load
+from brownbox.paths import RESULTS, ROOT
 
-OUT = Path(__file__).resolve().parents[2] / "results" / "discovery"
+OUT = RESULTS / "discovery"
 GOAL_MODEL = "claude-opus-5-5"
 NAME_MODEL = "claude-opus-5-5"
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 N_CLUSTERS = 35  # Deliberately more than we expect intents: merging is easier than splitting.
 K_SWEEP = range(15, 60, 5)
 EXAMPLES_PER_NAME = 20
+EXAMPLES_IN_REPORT = 6
 WORKERS = 8
 SEED = 42
 
@@ -50,6 +51,16 @@ class ClusterName(BaseModel):
     description: str = Field(description="One sentence describing the requests in this group.")
     coherence: Literal["tight", "mixed"]
     mixed_with: str | None = Field(description="If mixed: what else is in the group.")
+
+
+COHERENCE = {"tight": "one kind of request", "mixed": "mixed requests"}
+
+
+class Cluster(ClusterName):
+    cluster: int
+    size: int
+    act_share: float
+    ids: list[int]
 
 
 GOAL_SYSTEM = """You read a customer support conversation from BrownBox, an online retailer, \
@@ -105,6 +116,18 @@ def summarise(conv: Conversation) -> Goal:
     return llm.structured(req, Goal).output
 
 
+def name_cluster(goals: list[str]) -> ClusterName:
+    sample = random.Random(SEED).sample(goals, min(len(goals), EXAMPLES_PER_NAME))
+    req = llm.Request(
+        model=NAME_MODEL,
+        system=NAME_SYSTEM,
+        user="\n".join(f"- {g}" for g in sorted(sample)),
+        max_tokens=2000,
+        effort="medium",
+    )
+    return llm.structured(req, ClusterName).output
+
+
 def embed(texts: list[str]) -> NDArray[np.float32]:
     vectors = np.array(list(TextEmbedding(EMBED_MODEL).embed(texts)), dtype=np.float32)
     return vectors / np.linalg.norm(vectors, axis=1, keepdims=True)
@@ -116,16 +139,12 @@ def cluster(vectors: NDArray[np.float32], k: int) -> NDArray[np.int64]:
     return labels
 
 
-def name_cluster(goals: list[str]) -> ClusterName:
-    sample = random.Random(SEED).sample(goals, min(len(goals), EXAMPLES_PER_NAME))
-    req = llm.Request(
-        model=NAME_MODEL,
-        system=NAME_SYSTEM,
-        user="\n".join(f"- {g}" for g in sorted(sample)),
-        max_tokens=2000,
-        effort="medium",
-    )
-    return llm.structured(req, ClusterName).output
+def number_by_size(labels: NDArray[np.int64]) -> NDArray[np.int64]:
+    """Renumber clusters 1..k from largest to smallest; equal sizes keep the clusterer's order."""
+    old_ids, sizes = np.unique(labels, return_counts=True)
+    order = old_ids[np.lexsort((old_ids, -sizes))]
+    new_id = {int(old): rank for rank, old in enumerate(order, start=1)}
+    return np.array([new_id[int(old)] for old in labels], dtype=np.int64)
 
 
 def run_all[I, O](fn: Callable[[I], O], items: list[I], label: str) -> list[O]:
@@ -149,42 +168,41 @@ def main() -> None:
     sweep = {
         k: float(silhouette_score(vectors, cluster(vectors, k), metric="cosine")) for k in K_SWEEP
     }
-    labels = cluster(vectors, N_CLUSTERS)
+    labels = number_by_size(cluster(vectors, N_CLUSTERS))
+    members = [np.flatnonzero(labels == c).tolist() for c in range(1, N_CLUSTERS + 1)]
 
-    members: dict[int, list[int]] = {c: [] for c in range(N_CLUSTERS)}
-    for i, c in enumerate(labels):
-        members[int(c)].append(i)
     print(f"naming {N_CLUSTERS} clusters with {NAME_MODEL}...", flush=True)
-    names = run_all(name_cluster, [[goals[i].goal for i in members[c]] for c in members], "names")
+    names = run_all(name_cluster, [[goals[i].goal for i in m] for m in members], "names")
+    clusters = [
+        Cluster(
+            cluster=c,
+            **name.model_dump(),
+            size=len(m),
+            act_share=sum(goals[i].kind == "act" for i in m) / len(m),
+            ids=[convs[i].id for i in m],
+        )
+        for c, (m, name) in enumerate(zip(members, names, strict=True), start=1)
+    ]
 
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / "goals.jsonl").open("w") as f:
         for conv, goal, c in zip(convs, goals, labels, strict=True):
             f.write(json.dumps({"id": conv.id, "cluster": int(c), **goal.model_dump()}) + "\n")
-    clusters = [
-        {
-            "cluster": c,
-            **names[c].model_dump(),
-            "size": len(members[c]),
-            "act_share": sum(goals[i].kind == "act" for i in members[c]) / len(members[c]),
-            "ids": [convs[i].id for i in members[c]],
-        }
-        for c in members
-    ]
-    (OUT / "clusters.json").write_text(json.dumps(clusters, indent=2))
+    (OUT / "clusters.json").write_text(json.dumps([c.model_dump() for c in clusters], indent=2))
     (OUT / "report.md").write_text(report(convs, goals, labels, clusters, sweep))
-    print(f"wrote {OUT.relative_to(OUT.parents[1])}/: goals.jsonl, clusters.json, report.md")
+    (OUT / "all-clusters.md").write_text(full_listing(convs, goals, clusters))
+    print(f"wrote {OUT.relative_to(ROOT)}/: goals.jsonl, clusters.json, report.md, all-clusters.md")
 
 
 def report(
     convs: list[Conversation],
     goals: list[Goal],
     labels: NDArray[np.int64],
-    clusters: list[dict[str, object]],
+    clusters: list[Cluster],
     sweep: dict[int, float],
 ) -> str:
     n = len(convs)
-    by_size = sorted(clusters, key=lambda c: -int(str(c["size"])))
+    goal_by_id = {conv.id: goal for conv, goal in zip(convs, goals, strict=True)}
     lines = [
         "# Discovery report",
         "",
@@ -193,27 +211,26 @@ def report(
         "",
         "## Clusters by size",
         "",
-        "| # | Name | Size | Share | Act | Coherence |",
+        "Clusters are numbered 1 (largest) upwards. *Mixed* means the LLM naming the cluster saw "
+        "two or more different requests in it: the first place to look for a split.",
+        "",
+        "| # | Name | Size | Share | Act | Contents |",
         "|---|---|---|---|---|---|",
     ]
-    for c in by_size:
-        size = int(str(c["size"]))
-        act = float(str(c["act_share"]))
-        lines.append(
-            f"| {c['cluster']} | {c['name']} | {size} | {size / n:.1%} | {act:.0%} "
-            f"| {c['coherence']} |"
-        )
+    lines += [
+        f"| {c.cluster} | {c.name} | {c.size} | {c.size / n:.1%} | {c.act_share:.0%} "
+        f"| {COHERENCE[c.coherence]} |"
+        for c in clusters
+    ]
 
     lines += ["", "## Each cluster", ""]
-    for c in by_size:
-        ids = [int(i) for i in c["ids"]]  # type: ignore[attr-defined]
-        index = {conv.id: k for k, conv in enumerate(convs)}
-        lines += [f"### {c['cluster']}. {c['name']} ({c['size']})", "", str(c["description"])]
-        if c["mixed_with"]:
-            lines.append(f"\n**Mixed with:** {c['mixed_with']}")
+    for c in clusters:
+        lines += [f"### {c.cluster}. {c.name} ({c.size})", "", c.description]
+        if c.mixed_with:
+            lines.append(f"\n**Mixed with:** {c.mixed_with}")
         lines.append("")
-        for i in sorted(random.Random(SEED).sample(ids, min(len(ids), 6))):
-            lines.append(f"- {goals[index[i]].goal} `#{i}`")
+        sample = random.Random(SEED).sample(c.ids, min(c.size, EXAMPLES_IN_REPORT))
+        lines += [f"- {goal_by_id[i].goal} `#{i}`" for i in sorted(sample)]
         lines.append("")
 
     secondary = [(conv.id, g) for conv, g in zip(convs, goals, strict=True) if g.secondary_goal]
@@ -258,6 +275,35 @@ def report(
             *[f"> {text[:300]}" for text in first],
             "",
         ]
+    return "\n".join(lines) + "\n"
+
+
+def full_listing(convs: list[Conversation], goals: list[Goal], clusters: list[Cluster]) -> str:
+    """Every cluster with every member's goal: the evidence for merging and splitting by hand."""
+    n = len(convs)
+    goal_by_id = {conv.id: goal for conv, goal in zip(convs, goals, strict=True)}
+    lines = [
+        "# All clusters",
+        "",
+        f"Every DEV conversation's goal, grouped by cluster, largest first ({n} conversations). "
+        "`act` means the customer wants something done; `inform` means information only. "
+        "*Mixed requests* means the LLM naming the cluster saw two or more different requests "
+        "in it: the first place to look for a split.",
+    ]
+    for c in clusters:
+        lines += [
+            "",
+            f"## {c.cluster}. {c.name}: {c.size} ({c.size / n:.1%}), {c.act_share:.0%} act, "
+            f"{COHERENCE[c.coherence]}",
+            "",
+            c.description,
+        ]
+        if c.mixed_with:
+            lines += ["", f"**Mixed with:** {c.mixed_with}"]
+        lines += ["", "| Conversation | Kind | Goal | Second request |", "|---|---|---|---|"]
+        for i in sorted(c.ids):
+            g = goal_by_id[i]
+            lines.append(f"| {i} | {g.kind} | {g.goal} | {g.secondary_goal or ''} |")
     return "\n".join(lines) + "\n"
 
 

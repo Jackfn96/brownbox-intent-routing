@@ -1,11 +1,11 @@
 """Write a random sample of DEV conversations to a markdown file for reading by hand."""
 
 import random
-from pathlib import Path
 
 from brownbox.parse import load
+from brownbox.paths import NOTES, ROOT
 
-OUT = Path(__file__).resolve().parents[2] / "notes" / "reading-sample.md"
+OUT = NOTES / "reading-sample.md"
 SEED = 7
 N = 50
 
@@ -43,7 +43,7 @@ def main() -> None:
                 parts.append(f"\n*{turn.speaker}:* {text}\n")
         parts.append("\n---\n")
     OUT.write_text("".join(parts))
-    print(f"wrote {N} conversations to {OUT.relative_to(OUT.parents[1])}")
+    print(f"wrote {N} conversations to {OUT.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

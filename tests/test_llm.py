@@ -1,4 +1,5 @@
-from collections.abc import Iterator
+import dataclasses
+from collections.abc import Callable, Iterator
 from pathlib import Path
 
 import pytest
@@ -11,25 +12,43 @@ class Answer(BaseModel):
     label: str
 
 
-USAGE = llm.Usage(input_tokens=10, output_tokens=2, cached_input_tokens=0, latency_s=0.1)
+USAGE = llm.Usage(
+    input_tokens=10, output_tokens=2, cache_read_tokens=0, cache_write_tokens=0, latency_s=0.1
+)
 REQ = llm.Request(model="claude-haiku-4-5", system="Classify.", user="Where is my order?")
+Provider = Callable[[llm.Request, type[Answer]], tuple[Answer, llm.Usage]]
+UseProvider = Callable[[Provider], list[llm.Request]]
+
+
+@pytest.fixture(autouse=True)
+def cache_dir(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> Path:
+    monkeypatch.setattr(llm, "CACHE_DIR", tmp_path)
+    return tmp_path
 
 
 @pytest.fixture
-def calls(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> list[llm.Request]:
-    """Point the cache at a temp dir and record every provider call. Default reply: 'ok'."""
-    monkeypatch.setattr(llm, "CACHE_DIR", tmp_path)
-    made: list[llm.Request] = []
+def use_provider(monkeypatch: pytest.MonkeyPatch) -> UseProvider:
+    """Replace the real API call with `fake` and record every request it receives."""
 
-    def fake(req: llm.Request, schema: type[Answer]) -> tuple[Answer, llm.Usage]:
-        made.append(req)
-        return schema(label="ok"), USAGE
+    def install(fake: Provider) -> list[llm.Request]:
+        calls: list[llm.Request] = []
 
-    monkeypatch.setattr(llm, "_call_provider", fake)
-    return made
+        def recording(req: llm.Request, schema: type[Answer]) -> tuple[Answer, llm.Usage]:
+            calls.append(req)
+            return fake(req, schema)
+
+        monkeypatch.setattr(llm, "_call_provider", recording)
+        return calls
+
+    return install
 
 
-def test_second_identical_call_comes_from_cache(calls: list[llm.Request]) -> None:
+def ok(req: llm.Request, schema: type[Answer]) -> tuple[Answer, llm.Usage]:
+    return schema(label="ok"), USAGE
+
+
+def test_second_identical_call_comes_from_cache(use_provider: UseProvider) -> None:
+    calls = use_provider(ok)
     first = llm.structured(REQ, Answer)
     second = llm.structured(REQ, Answer)
     assert (first.output.label, first.from_cache) == ("ok", False)
@@ -37,14 +56,14 @@ def test_second_identical_call_comes_from_cache(calls: list[llm.Request]) -> Non
     assert len(calls) == 1
 
 
-def test_each_run_has_its_own_cache_slot(calls: list[llm.Request]) -> None:
+def test_each_run_has_its_own_cache_slot(use_provider: UseProvider) -> None:
+    calls = use_provider(ok)
     llm.structured(REQ, Answer)
-    llm.structured(llm.Request(**{**REQ.__dict__, "run": 1}), Answer)
+    llm.structured(dataclasses.replace(REQ, run=1), Answer)
     assert len(calls) == 2
 
 
-def test_invalid_output_is_retried(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    monkeypatch.setattr(llm, "CACHE_DIR", tmp_path)
+def test_invalid_output_is_retried(use_provider: UseProvider) -> None:
     attempts: Iterator[Exception | tuple[Answer, llm.Usage]] = iter(
         [llm.InvalidOutput("truncated"), (Answer(label="ok"), USAGE)]
     )
@@ -55,41 +74,31 @@ def test_invalid_output_is_retried(monkeypatch: pytest.MonkeyPatch, tmp_path: Pa
             raise result
         return result
 
-    monkeypatch.setattr(llm, "_call_provider", flaky)
+    use_provider(flaky)
     assert llm.structured(REQ, Answer).output.label == "ok"
 
 
-def test_always_invalid_raises_instead_of_defaulting(
-    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+def test_always_invalid_raises_and_caches_nothing(
+    use_provider: UseProvider, cache_dir: Path
 ) -> None:
-    monkeypatch.setattr(llm, "CACHE_DIR", tmp_path)
-    count = 0
-
     def broken(req: llm.Request, schema: type[Answer]) -> tuple[Answer, llm.Usage]:
-        nonlocal count
-        count += 1
         raise llm.InvalidOutput("bad json")
 
-    monkeypatch.setattr(llm, "_call_provider", broken)
+    calls = use_provider(broken)
     with pytest.raises(llm.LLMError):
         llm.structured(REQ, Answer)
-    assert count == llm.MAX_ATTEMPTS
-    assert not list(tmp_path.iterdir())  # Failures are never cached.
+    assert len(calls) == llm.MAX_ATTEMPTS
+    assert not list(cache_dir.iterdir())
 
 
-def test_refusal_is_not_retried(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
-    monkeypatch.setattr(llm, "CACHE_DIR", tmp_path)
-    count = 0
-
+def test_refusal_is_not_retried(use_provider: UseProvider) -> None:
     def refuses(req: llm.Request, schema: type[Answer]) -> tuple[Answer, llm.Usage]:
-        nonlocal count
-        count += 1
         raise llm.LLMError("refused")
 
-    monkeypatch.setattr(llm, "_call_provider", refuses)
+    calls = use_provider(refuses)
     with pytest.raises(llm.LLMError):
         llm.structured(REQ, Answer)
-    assert count == 1
+    assert len(calls) == 1
 
 
 def test_cache_key_changes_with_prompt_and_schema() -> None:
@@ -97,5 +106,5 @@ def test_cache_key_changes_with_prompt_and_schema() -> None:
         name: str
 
     base = llm.cache_key(REQ, Answer)
-    assert llm.cache_key(llm.Request(**{**REQ.__dict__, "system": "Other."}), Answer) != base
+    assert llm.cache_key(dataclasses.replace(REQ, system="Other."), Answer) != base
     assert llm.cache_key(REQ, Other) != base

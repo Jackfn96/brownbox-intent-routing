@@ -19,6 +19,12 @@ def test_format_transcript_labels_customer_and_keeps_staff_names() -> None:
     )
 
 
+def test_number_by_size_makes_the_largest_cluster_1() -> None:
+    labels = np.array([7, 3, 3, 3, 0, 0, 7, 0, 5], dtype=np.int64)
+    # Sizes: 3 -> 3, 0 -> 3, 7 -> 2, 5 -> 1. Ties keep the clusterer's order (0 before 3).
+    assert discover.number_by_size(labels).tolist() == [3, 2, 2, 2, 1, 1, 3, 1, 4]
+
+
 def test_run_all_keeps_input_order() -> None:
     assert discover.run_all(lambda x: x * 2, list(range(120)), "test") == [
         x * 2 for x in range(120)

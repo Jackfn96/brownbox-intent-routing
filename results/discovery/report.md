@@ -4,47 +4,49 @@
 
 ## Clusters by size
 
-| # | Name | Size | Share | Act | Coherence |
+Clusters are numbered 1 (largest) upwards. *Mixed* means the LLM naming the cluster saw two or more different requests in it: the first place to look for a split.
+
+| # | Name | Size | Share | Act | Contents |
 |---|---|---|---|---|---|
-| 4 | Return or replace defective item | 62 | 8.9% | 100% | tight |
-| 9 | Track a late delivery | 50 | 7.2% | 28% | tight |
-| 6 | Resolve a failed delivery | 42 | 6.0% | 71% | mixed |
-| 2 | Verify phone/email to log in | 37 | 5.3% | 73% | tight |
-| 13 | Return item for refund | 35 | 5.0% | 100% | tight |
-| 0 | Return or exchange wrong item | 30 | 4.3% | 100% | tight |
-| 3 | Understand return policy and fees | 30 | 4.3% | 23% | mixed |
-| 1 | Claim warranty on faulty item | 29 | 4.2% | 90% | tight |
-| 10 | Get help installing an item | 27 | 3.9% | 4% | tight |
-| 18 | Check item warranty details | 27 | 3.9% | 0% | tight |
-| 22 | Check status of return refund | 25 | 3.6% | 40% | tight |
-| 23 | Check order status | 22 | 3.2% | 0% | tight |
-| 14 | Get faster delivery | 20 | 2.9% | 70% | tight |
-| 8 | Update order address details | 16 | 2.3% | 100% | tight |
-| 28 | Pay or get refund via COD | 16 | 2.3% | 62% | mixed |
-| 5 | Understand delivery charges | 15 | 2.2% | 0% | tight |
-| 7 | Learn how to order and receive | 14 | 2.0% | 29% | mixed |
-| 12 | Dispute an order overcharge | 14 | 2.0% | 57% | tight |
-| 17 | Reactivate an inactive account | 14 | 2.0% | 100% | mixed |
-| 21 | Cancel an order | 14 | 2.0% | 100% | tight |
-| 31 | Explain inconsistent item pricing | 14 | 2.0% | 14% | tight |
-| 25 | Ship item to unavailable location | 13 | 1.9% | 62% | tight |
-| 16 | Register item for warranty | 12 | 1.7% | 50% | tight |
-| 19 | Get missing verification code | 12 | 1.7% | 100% | tight |
-| 24 | Get exchange offer discount | 12 | 1.7% | 58% | mixed |
-| 26 | Unlock account after verification lockout | 12 | 1.7% | 100% | tight |
-| 11 | Clarify conflicting warranty terms | 11 | 1.6% | 18% | tight |
-| 15 | Change account email address | 11 | 1.6% | 100% | tight |
-| 20 | Replace item from tampered package | 11 | 1.6% | 100% | tight |
-| 27 | Check and redeem loyalty points | 11 | 1.6% | 18% | tight |
-| 29 | Get out-of-stock item | 9 | 1.3% | 33% | tight |
-| 32 | Get invoice for an order | 9 | 1.3% | 100% | tight |
-| 34 | Change or reset password | 8 | 1.1% | 100% | tight |
-| 30 | Check if account needed to buy | 7 | 1.0% | 14% | tight |
-| 33 | Sign up with corporate email | 6 | 0.9% | 100% | tight |
+| 1 | Return or replace defective item | 62 | 8.9% | 100% | one kind of request |
+| 2 | Track a late delivery | 50 | 7.2% | 28% | one kind of request |
+| 3 | Resolve a failed delivery | 42 | 6.0% | 71% | mixed requests |
+| 4 | Verify phone/email to log in | 37 | 5.3% | 73% | one kind of request |
+| 5 | Return item for refund | 35 | 5.0% | 100% | one kind of request |
+| 6 | Return or exchange wrong item | 30 | 4.3% | 100% | one kind of request |
+| 7 | Understand return policy and fees | 30 | 4.3% | 23% | mixed requests |
+| 8 | Claim warranty on faulty item | 29 | 4.2% | 90% | one kind of request |
+| 9 | Get help installing an item | 27 | 3.9% | 4% | one kind of request |
+| 10 | Check item warranty details | 27 | 3.9% | 0% | one kind of request |
+| 11 | Check status of return refund | 25 | 3.6% | 40% | one kind of request |
+| 12 | Check order status | 22 | 3.2% | 0% | one kind of request |
+| 13 | Get faster delivery | 20 | 2.9% | 70% | one kind of request |
+| 14 | Update order address details | 16 | 2.3% | 100% | one kind of request |
+| 15 | Pay or get refund via COD | 16 | 2.3% | 62% | mixed requests |
+| 16 | Understand delivery charges | 15 | 2.2% | 0% | one kind of request |
+| 17 | Learn how to order and receive | 14 | 2.0% | 29% | mixed requests |
+| 18 | Dispute an order overcharge | 14 | 2.0% | 57% | one kind of request |
+| 19 | Reactivate an inactive account | 14 | 2.0% | 100% | mixed requests |
+| 20 | Cancel an order | 14 | 2.0% | 100% | one kind of request |
+| 21 | Explain inconsistent item pricing | 14 | 2.0% | 14% | one kind of request |
+| 22 | Ship item to unavailable location | 13 | 1.9% | 62% | one kind of request |
+| 23 | Register item for warranty | 12 | 1.7% | 50% | one kind of request |
+| 24 | Get missing verification code | 12 | 1.7% | 100% | one kind of request |
+| 25 | Get exchange offer discount | 12 | 1.7% | 58% | mixed requests |
+| 26 | Unlock account after verification lockout | 12 | 1.7% | 100% | one kind of request |
+| 27 | Clarify conflicting warranty terms | 11 | 1.6% | 18% | one kind of request |
+| 28 | Change account email address | 11 | 1.6% | 100% | one kind of request |
+| 29 | Replace item from tampered package | 11 | 1.6% | 100% | one kind of request |
+| 30 | Check and redeem loyalty points | 11 | 1.6% | 18% | one kind of request |
+| 31 | Get out-of-stock item | 9 | 1.3% | 33% | one kind of request |
+| 32 | Get invoice for an order | 9 | 1.3% | 100% | one kind of request |
+| 33 | Change or reset password | 8 | 1.1% | 100% | one kind of request |
+| 34 | Check if account needed to buy | 7 | 1.0% | 14% | one kind of request |
+| 35 | Sign up with corporate email | 6 | 0.9% | 100% | one kind of request |
 
 ## Each cluster
 
-### 4. Return or replace defective item (62)
+### 1. Return or replace defective item (62)
 
 Customers want to return, exchange, or get a refund or replacement for an item that is defective, faulty, or malfunctioning, including one case past the return window.
 
@@ -55,7 +57,7 @@ Customers want to return, exchange, or get a refund or replacement for an item t
 - Return a malfunctioning item for a refund `#569`
 - Exchange a defective item for a new one `#732`
 
-### 9. Track a late delivery (50)
+### 2. Track a late delivery (50)
 
 Customers want to know where their delayed or unshipped order is, why it's late, when it will arrive, and in some cases want it expedited.
 
@@ -66,7 +68,7 @@ Customers want to know where their delayed or unshipped order is, why it's late,
 - Get a delayed order delivered faster `#281`
 - Check the status of a delayed order stuck at the local hub `#756`
 
-### 6. Resolve a failed delivery (42)
+### 3. Resolve a failed delivery (42)
 
 Customers want help with orders that didn't reach them properly — missed deliveries to reschedule, packages marked delivered but not received, wrong-address or split-order deliveries, tracking and courier contact details, and complaints about rude couriers.
 
@@ -79,7 +81,7 @@ Customers want help with orders that didn't reach them properly — missed deliv
 - Arrange another delivery attempt for a missed order `#545`
 - Get contact details for the courier handling an order to track it `#935`
 
-### 2. Verify phone/email to log in (37)
+### 4. Verify phone/email to log in (37)
 
 Customers need help verifying their mobile number or email (including getting OTPs) to log in, sign up, or complete a purchase, including issues with international numbers or lost access to an old number.
 
@@ -90,7 +92,7 @@ Customers need help verifying their mobile number or email (including getting OT
 - Sign up for an account using an international phone number `#489`
 - Log in to an account using a mobile number `#537`
 
-### 13. Return item for refund (35)
+### 5. Return item for refund (35)
 
 Customers want to return damaged, faulty, or unsatisfactory items, mostly for a refund and occasionally for a replacement or a refunded return shipping charge.
 
@@ -101,7 +103,7 @@ Customers want to return damaged, faulty, or unsatisfactory items, mostly for a 
 - Return a damaged item for a refund `#620`
 - Return a damaged item for a refund `#982`
 
-### 0. Return or exchange wrong item (30)
+### 6. Return or exchange wrong item (30)
 
 Customers want to return or exchange items that were the wrong model, color, or size, or that don't fit or aren't compatible, for a refund or the correct replacement.
 
@@ -112,7 +114,7 @@ Customers want to return or exchange items that were the wrong model, color, or 
 - Resolve receiving the wrong item in an order `#578`
 - Return an item that is the wrong size `#729`
 
-### 3. Understand return policy and fees (30)
+### 7. Understand return policy and fees (30)
 
 Customers ask about return policies, why they must ship items back, return shipping and pickup options, and fees or deductions from return refunds, including requests to waive fees or reimburse courier costs.
 
@@ -125,7 +127,7 @@ Customers ask about return policies, why they must ship items back, return shipp
 - Return an unused item and get the return fee waived `#722`
 - Find out why a return refund was less than the amount paid `#830`
 
-### 1. Claim warranty on faulty item (29)
+### 8. Claim warranty on faulty item (29)
 
 Customers want to file a warranty claim or get a repair for a faulty, broken, or defective item (including replacements), often without the warranty card or after a service center denied the repair.
 
@@ -136,7 +138,7 @@ Customers want to file a warranty claim or get a repair for a faulty, broken, or
 - Claim the warranty for a faulty item `#776`
 - Claim warranty on a defective replacement item `#872`
 
-### 10. Get help installing an item (27)
+### 9. Get help installing an item (27)
 
 Customers want guidance on installing, assembling, or setting up a purchased item, including who is responsible for installation, whether installation affects the warranty, and whether wall mount accessories are included or available.
 
@@ -147,7 +149,7 @@ Customers want guidance on installing, assembling, or setting up a purchased ite
 - Get help setting up an item `#645`
 - Get help assembling an item delivered in parts from different sellers `#794`
 
-### 18. Check item warranty details (27)
+### 10. Check item warranty details (27)
 
 Customers want to find or access the warranty details for a purchased item, including coverage, warranty start date, and how changed warranty terms affect their item.
 
@@ -158,7 +160,7 @@ Customers want to find or access the warranty details for a purchased item, incl
 - Get the warranty details for an item `#692`
 - Find out if the warranty covers a faulty item bought online `#959`
 
-### 22. Check status of return refund (25)
+### 11. Check status of return refund (25)
 
 Customers who returned an item want to know the status of their refund, why it hasn't arrived, or how long it will take, and want delayed or missing refunds processed.
 
@@ -169,7 +171,7 @@ Customers who returned an item want to know the status of their refund, why it h
 - Get a delayed refund for a returned item processed `#882`
 - Check the status of a refund for a returned item `#998`
 
-### 23. Check order status (22)
+### 12. Check order status (22)
 
 Customers want to confirm an order was placed or processed and find out its current or shipping status, including understanding what displayed order statuses mean.
 
@@ -180,7 +182,7 @@ Customers want to confirm an order was placed or processed and find out its curr
 - Check the confirmation and status of an order `#906`
 - Check the status of an order `#952`
 
-### 14. Get faster delivery (20)
+### 13. Get faster delivery (20)
 
 Customers want to learn about or obtain expedited or faster shipping for an item or order, either before purchase or as an upgrade to an existing order.
 
@@ -191,7 +193,7 @@ Customers want to learn about or obtain expedited or faster shipping for an item
 - Get faster delivery for an order `#379`
 - Get faster delivery for an ordered item `#783`
 
-### 8. Update order address details (16)
+### 14. Update order address details (16)
 
 Customers want to change the pickup or delivery address for an order, or add a new delivery address to their account.
 
@@ -202,7 +204,7 @@ Customers want to change the pickup or delivery address for an order, or add a n
 - Change the pickup address for an order `#651`
 - Change the pickup address for an order `#971`
 
-### 28. Pay or get refund via COD (16)
+### 15. Pay or get refund via COD (16)
 
 Customers want to use Cash on Delivery for purchases (often when it's unavailable) or return COD-paid items and learn how and when their refund arrives.
 
@@ -215,7 +217,7 @@ Customers want to use Cash on Delivery for purchases (often when it's unavailabl
 - Pay for an item with Cash on Delivery `#866`
 - Find out how to pay cash on delivery for an item `#990`
 
-### 5. Understand delivery charges (15)
+### 16. Understand delivery charges (15)
 
 Customers want to know the shipping cost and speed for an item, or why their order was charged a delivery fee instead of qualifying for free delivery.
 
@@ -226,7 +228,7 @@ Customers want to know the shipping cost and speed for an item, or why their ord
 - Find out why an order is not eligible for free delivery `#698`
 - Find out the standard shipping charges for an item `#710`
 
-### 7. Learn how to order and receive (14)
+### 17. Learn how to order and receive (14)
 
 Customers want guidance on placing an order on the website and on how it will reach them, whether through delivery, scheduled or in-store pickup, or combining orders from different sellers into one shipment.
 
@@ -239,7 +241,7 @@ Customers want guidance on placing an order on the website and on how it will re
 - Learn how to place an order for an item on the website `#699`
 - Get help placing an order for an item on the website `#741`
 
-### 12. Dispute an order overcharge (14)
+### 18. Dispute an order overcharge (14)
 
 Customers want unexpected extra charges or overcharges on an order explained and, in many cases, refunded or waived.
 
@@ -250,7 +252,7 @@ Customers want unexpected extra charges or overcharges on an order explained and
 - Find out why an order had an unexpected extra charge `#488`
 - Get a refund for an overcharge on an order `#565`
 
-### 17. Reactivate an inactive account (14)
+### 19. Reactivate an inactive account (14)
 
 Customers want to restore access to accounts that were deactivated or went inactive so they can log in or make purchases, while a few want to deactivate their account.
 
@@ -263,7 +265,7 @@ Customers want to restore access to accounts that were deactivated or went inact
 - Reactivate a deactivated account `#733`
 - Deactivate an account `#777`
 
-### 21. Cancel an order (14)
+### 20. Cancel an order (14)
 
 Customers want to cancel orders that are still processing or unshipped, often because they no longer need them, found a better deal, or the online cancel button isn't working.
 
@@ -274,7 +276,7 @@ Customers want to cancel orders that are still processing or unshipped, often be
 - Cancel an order that has not shipped yet `#661`
 - Get an approved but unshipped order shipped urgently `#663`
 
-### 31. Explain inconsistent item pricing (14)
+### 21. Explain inconsistent item pricing (14)
 
 Customers want to know why the same item appears at different prices across listings, pages, checkout, over time, or compared with what others paid, and sometimes want the discrepancy resolved.
 
@@ -285,7 +287,7 @@ Customers want to know why the same item appears at different prices across list
 - Find out why the same item is listed at different prices `#687`
 - Find out why the same item has different prices `#689`
 
-### 25. Ship item to unavailable location (13)
+### 22. Ship item to unavailable location (13)
 
 Customers want to know whether an item can be shipped to their country or location, often internationally, and to get it ordered or delivered despite it showing as unavailable there.
 
@@ -296,7 +298,7 @@ Customers want to know whether an item can be shipped to their country or locati
 - Find the international shipping option for an item `#694`
 - Order an item that is unavailable for shipping to their location `#874`
 
-### 16. Register item for warranty (12)
+### 23. Register item for warranty (12)
 
 Customers want to register a purchased item with the brand for warranty benefits or sign up for an extended warranty on it.
 
@@ -307,7 +309,7 @@ Customers want to register a purchased item with the brand for warranty benefits
 - Register an item with the brand for warranty benefits `#878`
 - Sign up for an extended warranty on a purchased item `#950`
 
-### 19. Get missing verification code (12)
+### 24. Get missing verification code (12)
 
 Customers are not receiving the verification code or link needed to complete a purchase or log into their account and want it resent or the issue fixed.
 
@@ -318,7 +320,7 @@ Customers are not receiving the verification code or link needed to complete a p
 - Get a verification code that isn't arriving so a purchase can be completed `#690`
 - Get help receiving a verification code for an order `#704`
 
-### 24. Get exchange offer discount (12)
+### 25. Get exchange offer discount (12)
 
 Customers want to learn about or have exchange (trade-in) offer discounts applied to new or existing orders, including missed or promised discounts.
 
@@ -342,7 +344,7 @@ Customers want to regain access to their BrownBox account after it was locked or
 - Regain access to a locked account by resetting the verification code `#854`
 - Fix an account login blocked by too many verification code attempts `#944`
 
-### 11. Clarify conflicting warranty terms (11)
+### 27. Clarify conflicting warranty terms (11)
 
 Customers want to know which warranty terms actually apply to an item when the retailer's website conflicts with the warranty card or the brand's website.
 
@@ -353,7 +355,7 @@ Customers want to know which warranty terms actually apply to an item when the r
 - Clarify conflicting warranty terms between the website and the warranty card `#967`
 - Resolve a mismatch between the website's warranty terms and the brand's warranty terms for a purchased item `#997`
 
-### 15. Change account email address (11)
+### 28. Change account email address (11)
 
 Customers want to change, update, or add the email address linked to their account (or an order), often to regain login access after an email change.
 
@@ -364,7 +366,7 @@ Customers want to change, update, or add the email address linked to their accou
 - Change the email address linked to an account `#953`
 - Change the email address used to log in to an account `#958`
 
-### 20. Replace item from tampered package (11)
+### 29. Replace item from tampered package (11)
 
 Customers received items in tampered or opened packages, sometimes damaged, used, or not working, and want to report it and get an exchange or replacement.
 
@@ -375,7 +377,7 @@ Customers received items in tampered or opened packages, sometimes damaged, used
 - Return or exchange an item delivered in a tampered package `#845`
 - Exchange an item that arrived in a tampered, opened package for a new one `#977`
 
-### 27. Check and redeem loyalty points (11)
+### 30. Check and redeem loyalty points (11)
 
 Customers want to know how many loyalty points a purchase earned and how to redeem those points for discounts or items, including when a redemption fails on the website.
 
@@ -386,7 +388,7 @@ Customers want to know how many loyalty points a purchase earned and how to rede
 - Learn how to redeem loyalty points on a purchase `#964`
 - Learn how to redeem loyalty points for a discount `#984`
 
-### 29. Get out-of-stock item (9)
+### 31. Get out-of-stock item (9)
 
 Customers want to know when an out-of-stock item will be restocked or want help ordering an item that is currently unavailable.
 
@@ -408,7 +410,7 @@ Customers want a missing or previously issued invoice for one or more past order
 - Get a missing invoice for an order `#217`
 - Get invoices for previous orders resent `#750`
 
-### 34. Change or reset password (8)
+### 33. Change or reset password (8)
 
 Customers want to change their account password or reset a forgotten password to regain access to their account.
 
@@ -419,7 +421,7 @@ Customers want to change their account password or reset a forgotten password to
 - Reset a forgotten password to regain account access `#757`
 - Change the password for an account `#835`
 
-### 30. Check if account needed to buy (7)
+### 34. Check if account needed to buy (7)
 
 Customers want to know whether they need an account to make a purchase, what the account requirements are, and how to create or verify one.
 
@@ -430,7 +432,7 @@ Customers want to know whether they need an account to make a purchase, what the
 - Find out whether an account is needed to make a purchase `#623`
 - Find out whether an account is needed to buy an item and how to create one `#790`
 
-### 33. Sign up with corporate email (6)
+### 35. Sign up with corporate email (6)
 
 Customers want to create a BrownBox account using a corporate email address, including cases where the address is rejected during sign-up.
 
@@ -485,52 +487,52 @@ Silhouette (cosine) for each k. Higher means tighter, better-separated clusters.
 
 Check each goal says what the customer wanted, not how it ended.
 
-**#42** goal: *Get an item shipped to a location where it is unavailable for delivery* (cluster 25)
+**#42** goal: *Get an item shipped to a location where it is unavailable for delivery* (cluster 22)
 
 > Hi Emily, I am trying to order a Wet Grinder from your website, but it's not available for shipping to my location. Can you help me with this?
 > I live in a small town in Texas.
 
-**#140** goal: *Return a defective item for a replacement* (cluster 4)
+**#140** goal: *Return a defective item for a replacement* (cluster 1)
 
 > Hi John, I received my food processor yesterday, but it's not working correctly. I want to return it and get a replacement.
 > Sure, my order number is #987654321, and my email address is xyz@gmail.com.
 
-**#155** goal: *Get a repair for an item after the service center denied the request* (cluster 1)
+**#155** goal: *Get a repair for an item after the service center denied the request* (cluster 8)
 
 > Hi John, I have a problem with my refrigerator. It's not cooling, and I requested a repair, but the service center denied it. I'm really upset about it.
 > Sure, my order number is #987654321, and my email address is xyz@gmail.com.
 
-**#204** goal: *Return an item for a refund* (cluster 13)
+**#204** goal: *Return an item for a refund* (cluster 5)
 
 > Hi, I recently received an electric kettle I ordered, but I'd like to return it and get a refund.
 > Sure, it's BB123456789.
 
-**#322** goal: *Get a verification code that isn't arriving for an order* (cluster 19)
+**#322** goal: *Get a verification code that isn't arriving for an order* (cluster 24)
 
 > Hi Sarah, I'm having trouble receiving the OTP or verification code for my jeans order. This is really frustrating!
 > Sure, my order number is BB789012, and my email address is john.doe@email.com.
 
-**#354** goal: *Get a missing order that was marked delivered but never received* (cluster 6)
+**#354** goal: *Get a missing order that was marked delivered but never received* (cluster 3)
 
 > Hi Sarah, I am calling to inquire about my order for a shirt. It was supposed to be delivered yesterday, but I haven't received it yet.
 > The order number is #BB789034, and my name is Lily Smith.
 
-**#404** goal: *Fix a problem logging into the app with a mobile number* (cluster 2)
+**#404** goal: *Fix a problem logging into the app with a mobile number* (cluster 4)
 
 > Hi John, I recently purchased a BP monitor from your website, and I'm having trouble logging in with my mobile number on the mobile app.
 > It's the BP Monitor app.
 
-**#804** goal: *Find out the status of a delayed refund for a returned damaged item* (cluster 22)
+**#804** goal: *Find out the status of a delayed refund for a returned damaged item* (cluster 11)
 
 > Hello, I need assistance with my recent return and exchange request for a Kitchen Chimney.
 > Yes, it's 123456789.
 
-**#946** goal: *Get a refund for an overcharge on an order invoice* (cluster 12)
+**#946** goal: *Get a refund for an overcharge on an order invoice* (cluster 18)
 
 > Hi Rachel, I'm calling because I received an invoice for a ceiling fan that I purchased on your website, and I noticed that I was overcharged. I'm not happy about this.
 > Yes, it's 123456.
 
-**#993** goal: *Understand unexpected charges on an order bill* (cluster 12)
+**#993** goal: *Understand unexpected charges on an order bill* (cluster 18)
 
 > Hi, I received my order for a shirt, but I noticed there are hidden charges on my bill. Can you help me understand what they are for?
 > Sure, it's 123456.
