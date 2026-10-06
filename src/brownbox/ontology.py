@@ -16,6 +16,7 @@ from brownbox.parse import load
 from brownbox.paths import ROOT
 
 ONTOLOGY = ROOT / "ontology" / "ontology.yaml"
+READABLE = ROOT / "ontology" / "ONTOLOGY.md"
 
 # Outcomes the classifier can return that are not intents.
 RESERVED_IDS = {"other", "unclear"}
@@ -114,6 +115,67 @@ def non_dev_examples(ontology: Ontology, dev_ids: set[int]) -> list[str]:
     ]
 
 
+PARTICIPATION_TEXT = {"ai": "AI handles it", "handoff": "Hand off to a person", "never": "Never"}
+
+
+def render_markdown(ontology: Ontology) -> str:
+    """The readable version of the ontology. Generated, so it can never drift from the YAML."""
+    lines = [
+        f"# BrownBox intent ontology, v{ontology.version}",
+        "",
+        "Generated from `ontology.yaml` by `make ontology`. Edit the YAML, not this file.",
+        "",
+        "| Domain | Intents |",
+        "|---|---|",
+    ]
+    for d in ontology.domains:
+        names = [i.name for i in ontology.intents if i.domain == d.id]
+        lines.append(f"| {d.name} | {', '.join(names)} |")
+
+    for d in ontology.domains:
+        lines += ["", f"## {d.name}"]
+        for i in (i for i in ontology.intents if i.domain == d.id):
+            facts = [
+                i.kind,
+                "identity check" if i.requires_verification else "no identity check",
+                PARTICIPATION_TEXT[i.participation],
+                f"agent `{i.agent}`",
+            ]
+            lines += ["", f"### {i.name} (`{i.id}`)", "", i.definition, "", " · ".join(facts), ""]
+            lines += [f"- **Includes:** {'; '.join(i.includes)}"]
+            if i.excludes:
+                lines.append(f"- **Excludes:** {'; '.join(i.excludes)}")
+            lines += [f"- **vs `{other}`:** {note}" for other, note in i.boundaries.items()]
+            if i.signoff_actions:
+                lines.append(f"- **Needs sign-off:** {'; '.join(i.signoff_actions)}")
+            if i.fraud_signals:
+                lines.append(f"- **Fraud signals:** {'; '.join(i.fraud_signals)}")
+            lines.append(f"- **Examples:** {', '.join(f'#{e}' for e in i.examples)}")
+
+    lines += [
+        "",
+        "## Guards",
+        "",
+        "Checked on every customer message; a guard overrides any intent.",
+    ]
+    for g in ontology.guards:
+        lines += [
+            "",
+            f"### {g.name} (`{g.id}`): {PARTICIPATION_TEXT[g.participation]}",
+            "",
+            g.definition,
+            "",
+            f"- **Fires on:** {'; '.join(g.fires_on)}",
+            f"- **Not on:** {'; '.join(g.not_on)}",
+        ]
+
+    lines += ["", "## Agents", "", "| Agent | Intents |", "|---|---|"]
+    for agent in sorted({i.agent for i in ontology.intents}):
+        ids = [f"`{i.id}`" for i in ontology.intents if i.agent == agent]
+        lines.append(f"| `{agent}` | {', '.join(ids)} |")
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     ontology = load_ontology()
     leaks = non_dev_examples(ontology, {c.id for c in load("dev")})
@@ -127,6 +189,8 @@ def main() -> None:
         f"{len({i.agent for i in ontology.intents})} agents"
     )
     print(f"participation: {dict(sorted(by_level.items()))}; {with_signoff} with sign-off actions")
+    READABLE.write_text(render_markdown(ontology))
+    print(f"wrote {READABLE.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 """Core data types shared across the pipeline."""
 
-from typing import Literal
+from typing import Literal, Self
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 Role = Literal["customer", "staff"]
 Split = Literal["dev", "practice", "locked"]
@@ -22,3 +22,25 @@ class Conversation(BaseModel):
     id: int
     split: Split
     turns: tuple[Turn, ...]
+
+
+class GoldLabel(BaseModel):
+    """One hand label. Intent ids are checked against the ontology by the labelling tool."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    id: int
+    primary: str  # The first thing the customer wants done: an intent id, or "other".
+    secondary: str | None = None  # A second, separate request, if any.
+    clear_at: int = Field(ge=1)  # Customer message where the intent becomes clear.
+    switch_at: int | None = Field(default=None, ge=2)  # Customer message where they change request.
+    switch_to: str | None = None
+    guards: tuple[str, ...] = ()
+    mode: Literal["blind", "assisted"]
+    ontology_version: str
+
+    @model_validator(mode="after")
+    def check_switch(self) -> Self:
+        if (self.switch_at is None) != (self.switch_to is None):
+            raise ValueError("switch_at and switch_to go together")
+        return self

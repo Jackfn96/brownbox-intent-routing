@@ -1,4 +1,4 @@
-.PHONY: all format lint type-check test parse reading-sample discover ontology
+.PHONY: all format lint type-check test parse reading-sample discover ontology label
 
 # Run after every change: format, lint, type-check, tests.
 all: format lint type-check test
@@ -26,3 +26,6 @@ discover:
 
 ontology:
 	uv run python -m brownbox.ontology
+
+label:
+	uv run python -m brownbox.label

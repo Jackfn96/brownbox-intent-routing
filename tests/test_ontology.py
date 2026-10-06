@@ -3,7 +3,7 @@ from typing import Any
 import pytest
 from pydantic import ValidationError
 
-from brownbox.ontology import Ontology, non_dev_examples
+from brownbox.ontology import Ontology, non_dev_examples, render_markdown
 
 
 def intent(id: str, **overrides: Any) -> dict[str, Any]:
@@ -75,3 +75,13 @@ def test_invalid_ontology_is_rejected(data: dict[str, Any], message: str) -> Non
 def test_non_dev_examples_are_reported() -> None:
     o = Ontology.model_validate(ontology(intent("cancel_order", examples=[1, 999])))
     assert non_dev_examples(o, dev_ids={1, 2}) == ["cancel_order: #999"]
+
+
+def test_render_markdown_lists_every_intent_and_guard() -> None:
+    o = Ontology.model_validate(
+        ontology(intent("cancel_order", signoff_actions=["Refund to another card"]))
+    )
+    text = render_markdown(o)
+    assert "### cancel order (`cancel_order`)" in text
+    assert "**Needs sign-off:** Refund to another card" in text
+    assert "### Fraud (`fraud`): Never" in text
