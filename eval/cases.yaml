@@ -1,0 +1,358 @@
+# Hand-written test cases: guards and changes of request, which the data barely contains.
+# Drafted by Claude for review. Validate with `make cases`. Message numbers count customer
+# messages only (C1, C2...). When a guard fires, `primary` is still the closest intent.
+
+# --- Fraud or takeover: first message -------------------------------------------------
+- id: 9001
+  kind: guard
+  note: Victim reports an order they never placed.
+  turns:
+    - [customer, "Hi, there's an order on my account for a laptop that I never placed. I've no idea who made it."]
+  primary: cancel_order
+  guards: {fraud_or_takeover: 1}
+
+- id: 9002
+  kind: guard
+  note: Charges on the card the customer didn't make.
+  turns:
+    - [customer, "I've just seen two charges from BrownBox on my card that I didn't make. I haven't bought anything from you in months."]
+  primary: charge_dispute
+  guards: {fraud_or_takeover: 1}
+
+- id: 9003
+  kind: guard
+  note: An unrequested login code suggests someone else is trying to get in.
+  turns:
+    - [customer, "I got a verification code text from you just now but I wasn't trying to log in. Is someone in my account?"]
+  primary: login_verification
+  guards: {fraud_or_takeover: 1}
+
+- id: 9004
+  kind: guard
+  note: Account email changed without the customer's knowledge.
+  turns:
+    - [customer, "The email on my BrownBox account has been changed and I didn't do it. Now I can't get in."]
+  primary: change_email
+  guards: {fraud_or_takeover: 1}
+
+# --- Fraud or takeover: partway through an ordinary request ------------------------------
+- id: 9005
+  kind: guard
+  note: Ordinary return, then the refund is redirected to someone else's account.
+  turns:
+    - [customer, "I'd like to return the blender I bought, it stopped working after a week."]
+    - [agent, "Sorry to hear that. I can help with a return. Could I take your order number?"]
+    - [customer, "BB55210. Also, can the refund go to my brother's bank account instead? I'll give you his details."]
+  primary: initiate_return
+  guards: {fraud_or_takeover: 2}
+
+- id: 9006
+  kind: guard
+  note: Password reset, then asks for the link to go to a new email.
+  turns:
+    - [customer, "I forgot my password and need to reset it."]
+    - [agent, "I can send a reset link to the email address on your account."]
+    - [customer, "I don't have access to that email any more. Can you send it to newaddress@mail.com instead?"]
+  primary: password_reset
+  guards: {fraud_or_takeover: 2}
+
+- id: 9007
+  kind: guard
+  note: Login help, then asks the agent to read out the one-time code.
+  turns:
+    - [customer, "I'm not getting the verification code to log in."]
+    - [agent, "Let me resend it to the number on your account."]
+    - [customer, "That number isn't mine any more. Can you just read the code out to me here?"]
+  primary: login_verification
+  guards: {fraud_or_takeover: 2}
+
+- id: 9008
+  kind: guard
+  note: Late order, then admits it's someone else's account and wants a refund to their own card.
+  turns:
+    - [customer, "My order hasn't arrived, it was due yesterday."]
+    - [agent, "I'm sorry about that. Could I have the order number?"]
+    - [customer, "I don't have it. It's my husband's account, he asked me to sort it out. Can you just refund it to my card?"]
+  primary: order_not_arrived
+  guards: {fraud_or_takeover: 2}
+
+- id: 9009
+  kind: guard
+  note: Reactivation, then asks to change the phone number and skip verification.
+  turns:
+    - [customer, "My account was deactivated and I'd like it back."]
+    - [agent, "I can help. I'll need to verify your identity first."]
+    - [customer, "Can you also change the phone number to 07700 900123 while you're at it? And skip the checks, I'm in a hurry."]
+  primary: reactivate_account
+  guards: {fraud_or_takeover: 2}
+
+- id: 9010
+  kind: guard
+  note: Ordinary overcharge question, then unrecognised charges appear.
+  turns:
+    - [customer, "I think I've been overcharged on my last order."]
+    - [agent, "Let me check. Can I have the order number?"]
+    - [customer, "BB10032. Actually, looking at my statement there are three more BrownBox charges I don't recognise at all."]
+  primary: charge_dispute
+  guards: {fraud_or_takeover: 2}
+
+- id: 9011
+  kind: guard
+  note: Fraud only shows at the third message, after tracking reveals a delivery they didn't order.
+  turns:
+    - [customer, "Hi, where's my order? The app says it's out for delivery."]
+    - [agent, "Could I have the order number?"]
+    - [customer, "BB78110."]
+    - [agent, "It shows as delivered at 2pm today to 22 Station Road."]
+    - [customer, "I don't live there and I never ordered anything to that address. Someone must be using my account."]
+  primary: order_not_arrived
+  guards: {fraud_or_takeover: 3}
+
+- id: 9012
+  kind: guard
+  note: Redirect a high-value order straight after an account change, refusing verification.
+  turns:
+    - [customer, "I need to change the delivery address on my order."]
+    - [agent, "Sure. Can I verify your account first? I'll send a code to your email."]
+    - [customer, "That won't work, I changed the email this morning. Just send the £900 TV to 14 Mill Lane instead."]
+  primary: change_delivery_address
+  guards: {fraud_or_takeover: 2}
+
+# --- Fraud traps: must NOT fire --------------------------------------------------------
+- id: 9013
+  kind: trap
+  note: Stolen from the doorstep is a lost parcel, not account fraud.
+  turns:
+    - [customer, "My parcel says delivered but it isn't here. I think it was stolen from my doorstep."]
+  primary: order_not_arrived
+
+- id: 9014
+  kind: trap
+  note: A tampered package is a return, not fraud.
+  turns:
+    - [customer, "The box arrived ripped open and the seal on the item was broken. I want a replacement."]
+  primary: initiate_return
+
+- id: 9015
+  kind: trap
+  note: A forgotten password is routine.
+  turns:
+    - [customer, "I forgot my password, can you help me reset it?"]
+  primary: password_reset
+
+- id: 9016
+  kind: trap
+  note: Locked after the customer's own wrong attempts.
+  turns:
+    - [customer, "My account is locked because I typed the code wrong too many times."]
+  primary: account_lockout
+
+- id: 9017
+  kind: trap
+  note: Doesn't understand a fee on their own order; that's a question, not fraud.
+  turns:
+    - [customer, "There's a £4.99 charge on my order that I don't recognise. What is it for?"]
+  primary: charge_dispute
+
+- id: 9018
+  kind: trap
+  note: A family member ordered by mistake with permission to use the account.
+  turns:
+    - [customer, "My son placed an order on my account by mistake. Can I cancel it?"]
+  primary: cancel_order
+
+# --- Wants a human ----------------------------------------------------------------------
+- id: 9019
+  kind: guard
+  note: Asks for a person straight away, with no request yet.
+  turns:
+    - [customer, "Can I speak to a real person please?"]
+  primary: other
+  guards: {wants_human: 1}
+
+- id: 9020
+  kind: guard
+  note: Return in progress, then asks for a supervisor.
+  turns:
+    - [customer, "I want to return my headphones."]
+    - [agent, "Happy to help. Is the item damaged?"]
+    - [customer, "Yes. Look, I've been through this twice already. I want to speak to your supervisor."]
+  primary: initiate_return
+  guards: {wants_human: 2}
+
+- id: 9021
+  kind: trap
+  note: Asking the agent to check with colleagues is not asking for a human.
+  turns:
+    - [customer, "My refund hasn't arrived yet."]
+    - [agent, "Let me look into it for you."]
+    - [customer, "Can you check with your team how long it usually takes?"]
+  primary: refund_status
+
+# --- Complaint --------------------------------------------------------------------------
+- id: 9022
+  kind: guard
+  note: A formal complaint about a courier.
+  turns:
+    - [customer, "I want to make a formal complaint. Your courier threw my parcel over the fence and was rude to me."]
+  primary: other
+  guards: {complaint: 1}
+
+- id: 9023
+  kind: guard
+  note: Charged twice, then threatens to escalate outside BrownBox.
+  turns:
+    - [customer, "I was charged twice for my order."]
+    - [agent, "I'm sorry about that, let me check."]
+    - [customer, "This is the third time this has happened. I'll be reporting this to trading standards."]
+  primary: charge_dispute
+  guards: {complaint: 2}
+
+- id: 9024
+  kind: trap
+  note: Frustration while still pursuing the request is not a complaint.
+  turns:
+    - [customer, "My order still hasn't arrived and it's so annoying, I needed it for the weekend."]
+  primary: order_not_arrived
+
+# --- Unsupported language -----------------------------------------------------------------
+- id: 9025
+  kind: guard
+  note: Spanish from the first message.
+  turns:
+    - [customer, "Hola, mi pedido no ha llegado todavía. ¿Pueden ayudarme?"]
+  primary: order_not_arrived
+  guards: {unsupported_language: 1}
+
+- id: 9026
+  kind: guard
+  note: Starts in English, then switches to Spanish.
+  turns:
+    - [customer, "Hi, I want to return an item."]
+    - [agent, "Of course. What's the issue with it?"]
+    - [customer, "Lo siento, mi inglés no es bueno. ¿Puedo hablar en español? El producto está roto."]
+  primary: initiate_return
+  guards: {unsupported_language: 2}
+
+- id: 9027
+  kind: trap
+  note: A product name in another language is still English.
+  turns:
+    - [customer, "Has my order for the Café Olé espresso machine shipped yet?"]
+  primary: order_status
+
+# --- Two guards at once -------------------------------------------------------------------
+- id: 9028
+  kind: guard
+  note: Hacked account and asks for a person, both in the first message.
+  turns:
+    - [customer, "Someone has hacked my account and ordered things. I want to speak to someone now."]
+  primary: other
+  guards: {fraud_or_takeover: 1, wants_human: 1}
+
+# --- Changes of request -------------------------------------------------------------------
+- id: 9101
+  kind: switch
+  note: Late order, then gives up and cancels.
+  turns:
+    - [customer, "Where is my order? It was meant to arrive on Monday."]
+    - [agent, "I've checked and it's delayed by two more days."]
+    - [customer, "Two more days? Forget it, I'd rather just cancel it."]
+  primary: order_not_arrived
+  switch_at: 2
+  switch_to: cancel_order
+
+- id: 9102
+  kind: steady
+  note: A follow-up about refund timing inside a return is not a switch.
+  turns:
+    - [customer, "I want to return the jacket, it's the wrong size."]
+    - [agent, "No problem. Would you like a refund or an exchange?"]
+    - [customer, "A refund please. How long do refunds usually take?"]
+  primary: initiate_return
+
+- id: 9103
+  kind: addon
+  note: Invoice sorted, then adds a separate loyalty points question.
+  turns:
+    - [customer, "Can I get an invoice for my last order?"]
+    - [agent, "Sure, I've emailed it to you."]
+    - [customer, "Thanks. Also, my loyalty points from that order haven't shown up."]
+  primary: invoice_request
+  secondary: loyalty_points
+
+- id: 9104
+  kind: switch
+  note: Starts as a warranty question, becomes a warranty claim at the third message.
+  turns:
+    - [customer, "Hi, when does the warranty on my washing machine start?"]
+    - [agent, "It starts from the delivery date."]
+    - [customer, "OK, good to know."]
+    - [agent, "Is there anything else I can help with?"]
+    - [customer, "Yes actually, it won't spin at all now. I want it repaired under warranty."]
+  primary: warranty_info
+  switch_at: 3
+  switch_to: warranty_claim
+
+- id: 9105
+  kind: steady
+  note: Vague opener; the intent only becomes clear at the third message.
+  turns:
+    - [customer, "I have a question about my order."]
+    - [agent, "Sure, what's the order number?"]
+    - [customer, "BB33012."]
+    - [agent, "Thanks. What can I help with?"]
+    - [customer, "I want to cancel it, it hasn't shipped yet."]
+  primary: cancel_order
+  clear_at: 3
+
+- id: 9106
+  kind: addon
+  note: Delivery cost answered, then a separate question about shipping to Jersey.
+  turns:
+    - [customer, "How much is delivery for a fridge?"]
+    - [agent, "Standard delivery is £30."]
+    - [customer, "OK. Do you deliver to Jersey as well?"]
+  primary: delivery_charges
+  secondary: shipping_availability
+
+- id: 9107
+  kind: steady
+  note: Exchange becomes a refund; still the same return intent, not a switch.
+  turns:
+    - [customer, "I want to exchange my shoes for a bigger size."]
+    - [agent, "I'm afraid the bigger size is out of stock."]
+    - [customer, "Then I'll just return them for a refund."]
+  primary: initiate_return
+
+- id: 9108
+  kind: switch
+  note: Address change abandoned for a cancellation.
+  turns:
+    - [customer, "I'd like to change the delivery address on my order."]
+    - [agent, "Sure, what's the order number?"]
+    - [customer, "Actually, don't worry about the address. Can you cancel the whole order instead?"]
+  primary: change_delivery_address
+  switch_at: 2
+  switch_to: cancel_order
+
+- id: 9109
+  kind: switch
+  note: Policy question turns into starting a return.
+  turns:
+    - [customer, "What's your return policy for electronics?"]
+    - [agent, "Most electronics can be returned within 30 days."]
+    - [customer, "Great, then I want to return this speaker I bought last week, it crackles."]
+  primary: return_policy
+  switch_at: 2
+  switch_to: initiate_return
+
+- id: 9110
+  kind: addon
+  note: Refund chase, then adds a fee dispute.
+  turns:
+    - [customer, "My refund for the kettle hasn't come through."]
+    - [agent, "It was issued yesterday and should arrive in 3 to 5 days."]
+    - [customer, "OK thanks. I was also charged a £5 return fee even though it was faulty. I want that back."]
+  primary: refund_status
+  secondary: charge_dispute

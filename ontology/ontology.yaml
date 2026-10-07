@@ -11,12 +11,19 @@
 # Participation: who runs the conversation.
 #   ai       the AI handles it
 #   handoff  a person handles it (emotional, relationship or legal risk)
-#   never    no automation at all (security)
+#   never    no automated handling (security): the AI sends one fixed, pre-approved hand-over
+#            message and transfers to a specialist team. It generates nothing else, asks
+#            nothing and takes no action.
 # signoff_actions: risky actions inside an AI intent. The AI prepares them; a person approves.
 # Money rule (policy-based): standard refunds to the original payment method are AI actions.
 # Money moving outside standard policy (another payment method, waivers, goodwill, out-of-policy
 # returns) needs sign-off.
-# Guards run on every customer message and override any intent.
+# Guards run on every customer message, including the first, and override any intent: the
+# routing decision is a lookup in code, not something the model decides. When a guard fires,
+# still record the closest intent (for reporting); the guard decides the routing.
+# When a guard fires at any message: the AI stops from that message on; the conversation never
+# returns to the AI; pending sign-off actions are cancelled; actions already taken in the
+# conversation are listed in the hand-over for the specialist to review or reverse.
 #
 # "other" (nothing fits) and "unclear" (not enough said yet) are classifier outcomes, not
 # intents. Examples are DEV conversation ids only. Validate with `make ontology`.

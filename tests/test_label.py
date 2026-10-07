@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pytest
@@ -47,11 +48,13 @@ def test_parse_message_uses_default_and_bounds() -> None:
         label.parse_message("4", 3, default=1)
 
 
-def test_parse_guards() -> None:
-    assert label.parse_guards("", KEYS) == ()
-    assert label.parse_guards("w, f", KEYS) == ("fraud_or_takeover", "wants_human")
+def test_parse_guards_records_the_message_each_fires_at() -> None:
+    assert label.parse_guards("", KEYS, 5) == {}
+    assert label.parse_guards("w5, f", KEYS, 5) == {"fraud_or_takeover": 1, "wants_human": 5}
     with pytest.raises(ValueError, match="unknown guard"):
-        label.parse_guards("z", KEYS)
+        label.parse_guards("z", KEYS, 5)
+    with pytest.raises(ValueError, match="1 to 5"):
+        label.parse_guards("f9", KEYS, 5)
 
 
 def test_labelling_order_is_fixed_regardless_of_input_order() -> None:
@@ -74,3 +77,22 @@ def test_saved_labels_reload(tmp_path: Path) -> None:
 def test_switch_needs_both_fields() -> None:
     with pytest.raises(ValidationError, match="go together"):
         gold(1, switch_at=3)
+
+
+def test_parse_intent_blank_accepts_the_suggestion() -> None:
+    assert label.parse_intent("", CHOICES, optional=False, default="cancel_order") == "cancel_order"
+    assert label.parse_intent("3", CHOICES, optional=False, default="cancel_order") == (
+        "initiate_return"
+    )
+
+
+def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
+    path = tmp_path / "prelabels.jsonl"
+    rows = [
+        {"id": 1, "model": "a", "primary": "cancel_order"},
+        {"id": 1, "model": "b", "primary": "cancel_order"},
+        {"id": 2, "model": "a", "primary": "cancel_order"},
+        {"id": 2, "model": "b", "primary": "initiate_return"},
+    ]
+    path.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    assert label.load_suggestions(path) == {1: "cancel_order"}

@@ -5,7 +5,7 @@ from typing import Literal, Self
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 Role = Literal["customer", "staff"]
-Split = Literal["dev", "practice", "locked"]
+Split = Literal["dev", "practice", "locked", "synthetic"]  # synthetic: hand-written test cases.
 
 
 class Turn(BaseModel):
@@ -35,8 +35,8 @@ class GoldLabel(BaseModel):
     clear_at: int = Field(ge=1)  # Customer message where the intent becomes clear.
     switch_at: int | None = Field(default=None, ge=2)  # Customer message where they change request.
     switch_to: str | None = None
-    guards: tuple[str, ...] = ()
-    mode: Literal["blind", "assisted"]
+    guards: dict[str, int] = {}  # Guard id -> customer message where it should first fire.
+    mode: Literal["blind", "assisted", "synthetic"]
     ontology_version: str
 
     @model_validator(mode="after")

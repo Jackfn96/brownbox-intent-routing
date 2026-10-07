@@ -25,6 +25,7 @@ from brownbox import llm
 from brownbox.models import Conversation
 from brownbox.parse import load
 from brownbox.paths import RESULTS, ROOT
+from brownbox.prompts import format_conversation
 
 OUT = RESULTS / "discovery"
 GOAL_MODEL = "claude-opus-5-5"
@@ -99,17 +100,11 @@ more different requests. If mixed, name the most common one and say what else is
 mixed_with."""
 
 
-def format_transcript(conv: Conversation) -> str:
-    return "\n\n".join(
-        f"{'Customer' if t.role == 'customer' else t.speaker}: {t.text}" for t in conv.turns
-    )
-
-
 def summarise(conv: Conversation) -> Goal:
     req = llm.Request(
         model=GOAL_MODEL,
         system=GOAL_SYSTEM,
-        user=format_transcript(conv),
+        user=format_conversation(conv),
         max_tokens=2000,
         effort="low",
     )
