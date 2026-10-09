@@ -2,24 +2,14 @@ import json
 from pathlib import Path
 
 import pytest
+from conftest import MakeGold
 from pydantic import ValidationError
 
 from brownbox import label
-from brownbox.models import Conversation, GoldLabel, Turn
+from brownbox.models import Conversation, Turn
 
 CHOICES = ["order_status", "cancel_order", "initiate_return"]
 KEYS = {"f": "fraud_or_takeover", "w": "wants_human", "c": "complaint"}
-
-
-def gold(id: int, **overrides: object) -> GoldLabel:
-    fields: dict[str, object] = {
-        "id": id,
-        "primary": "cancel_order",
-        "clear_at": 1,
-        "mode": "blind",
-        "ontology_version": "1",
-    }
-    return GoldLabel.model_validate(fields | overrides)
 
 
 @pytest.mark.parametrize(
@@ -59,10 +49,10 @@ def test_parse_guards_records_the_message_each_fires_at() -> None:
         label.parse_guards("f9", KEYS, 5)
 
 
-def test_describe_shows_every_field() -> None:
+def test_describe_shows_every_field(make_gold: MakeGold) -> None:
     names = {"cancel_order": "Cancel order", "initiate_return": "Initiate return"}
     card = label.describe(
-        gold(1, switch_at=3, switch_to="initiate_return", guards={"wants_human": 4}), names
+        make_gold(id=1, switch_at=3, switch_to="initiate_return", guards={"wants_human": 4}), names
     )
     assert "Cancel order, clear from C1" in card
     assert "Second    none" in card
@@ -80,16 +70,18 @@ def test_labelling_order_is_fixed_regardless_of_input_order() -> None:
     assert label.labelling_order(convs) == label.labelling_order(list(reversed(convs)))
 
 
-def test_saved_labels_reload(tmp_path: Path) -> None:
+def test_saved_labels_reload(tmp_path: Path, make_gold: MakeGold) -> None:
     path = tmp_path / "gold" / "practice.jsonl"
-    label.save_label(path, gold(1))
-    label.save_label(path, gold(2, switch_at=3, switch_to="order_status"))
+    label.save_label(path, make_gold(id=1))
+    label.save_label(path, make_gold(id=2, switch_at=3, switch_to="order_status"))
     assert set(label.load_labels(path)) == {1, 2}
 
 
-def test_adjudication_keeps_the_original_and_the_latest_correction_wins(tmp_path: Path) -> None:
+def test_adjudication_keeps_the_original_and_the_latest_correction_wins(
+    tmp_path: Path, make_gold: MakeGold
+) -> None:
     path = tmp_path / "adjudicated.jsonl"
-    original = gold(1, guards={"complaint": 3})
+    original = make_gold(id=1, guards={"complaint": 3})
     label.adjudicate(path, original, {"guards": {}}, "dissatisfaction, nothing asked for")
     label.adjudicate(path, original, {"primary": "order_status"}, "second look")
     assert label.load_adjudicated(path)[1].primary == "order_status"
@@ -98,9 +90,9 @@ def test_adjudication_keeps_the_original_and_the_latest_correction_wins(tmp_path
         label.adjudicate(path, original, {"switch_at": 2}, "switch_at without switch_to")
 
 
-def test_switch_needs_both_fields() -> None:
+def test_switch_needs_both_fields(make_gold: MakeGold) -> None:
     with pytest.raises(ValidationError, match="go together"):
-        gold(1, switch_at=3)
+        make_gold(id=1, switch_at=3)
 
 
 def test_parse_intent_blank_accepts_the_suggestion() -> None:
@@ -121,6 +113,7 @@ def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
             "switch_at": None,
             "switch_to": None,
             "guards": {},
+            "ontology_version": "1",
         }
 
     path = tmp_path / "prelabels.jsonl"
@@ -133,10 +126,11 @@ def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
         row(3, "b", "cancel_order", secondary="order_status"),
     ]
     path.write_text("".join(json.dumps(r) + "\n" for r in rows))
-    suggestions = label.load_suggestions(path, ontology_version="1")
+    suggestions = label.load_suggestions(path)
     assert suggestions.primary == {1: "cancel_order", 3: "cancel_order"}
     assert list(suggestions.agreed) == [1]
     assert suggestions.agreed[1].mode == "silver"
+    assert suggestions.agreed[1].ontology_version == "1"  # The version the models saw.
 
 
 def test_assisted_batch_keeps_disagreements_and_audits_the_first_agreed() -> None:

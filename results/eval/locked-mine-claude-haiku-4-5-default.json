@@ -50,7 +50,28 @@
       "expected": 0,
       "fired": 0,
       "caught": 0,
-      "delays": []
+      "delays": [],
+      "recall": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 0,
+        "total": 56,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.06419614448811528
+      }
     },
     "wants_human": {
       "expected": 3,
@@ -59,19 +80,82 @@
       "delays": [
         0,
         0
-      ]
+      ],
+      "recall": {
+        "hits": 2,
+        "total": 3,
+        "value": 0.6666666666666666,
+        "low": 0.2076549551264879,
+        "high": 0.9385096847238394
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 2,
+        "total": 56,
+        "value": 0.03571428571428571,
+        "low": 0.009849218502577639,
+        "high": 0.12119005852210082
+      }
     },
     "complaint": {
       "expected": 5,
       "fired": 0,
       "caught": 0,
-      "delays": []
+      "delays": [],
+      "recall": {
+        "hits": 0,
+        "total": 5,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.43449149475208104
+      },
+      "precision": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 0,
+        "total": 56,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.06419614448811528
+      }
     },
     "unsupported_language": {
       "expected": 0,
       "fired": 0,
       "caught": 0,
-      "delays": []
+      "delays": [],
+      "recall": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 0,
+        "total": 56,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.06419614448811528
+      }
     }
   },
   "false_alarms": {
@@ -85,6 +169,494 @@
   "cost_usd": 2.1461746,
   "mean_latency_s": 1.1364670596355375,
   "label_quality": null,
+  "per_intent": {
+    "initiate_return": {
+      "support": 10,
+      "predicted": 8,
+      "recall": {
+        "hits": 8,
+        "total": 10,
+        "value": 0.8,
+        "low": 0.49015684672072335,
+        "high": 0.9433190520193067
+      },
+      "precision": {
+        "hits": 8,
+        "total": 8,
+        "value": 1.0,
+        "low": 0.6755843804891231,
+        "high": 1.0
+      },
+      "f1": 0.888888888888889
+    },
+    "order_not_arrived": {
+      "support": 5,
+      "predicted": 5,
+      "recall": {
+        "hits": 4,
+        "total": 5,
+        "value": 0.8,
+        "low": 0.3755282641185388,
+        "high": 0.9637768390302125
+      },
+      "precision": {
+        "hits": 4,
+        "total": 5,
+        "value": 0.8,
+        "low": 0.3755282641185388,
+        "high": 0.9637768390302125
+      },
+      "f1": 0.8000000000000002
+    },
+    "order_status": {
+      "support": 4,
+      "predicted": 5,
+      "recall": {
+        "hits": 4,
+        "total": 4,
+        "value": 1.0,
+        "low": 0.5100999795960008,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 4,
+        "total": 5,
+        "value": 0.8,
+        "low": 0.3755282641185388,
+        "high": 0.9637768390302125
+      },
+      "f1": 0.888888888888889
+    },
+    "refund_status": {
+      "support": 4,
+      "predicted": 3,
+      "recall": {
+        "hits": 3,
+        "total": 4,
+        "value": 0.75,
+        "low": 0.3006360524426366,
+        "high": 0.9544139373553637
+      },
+      "precision": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "f1": 0.8571428571428571
+    },
+    "faster_delivery": {
+      "support": 3,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 3,
+        "value": 0.3333333333333333,
+        "low": 0.0614903152761605,
+        "high": 0.7923450448735121
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 0.5
+    },
+    "pricing_question": {
+      "support": 3,
+      "predicted": 3,
+      "recall": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "shipping_availability": {
+      "support": 3,
+      "predicted": 4,
+      "recall": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 3,
+        "total": 4,
+        "value": 0.75,
+        "low": 0.3006360524426366,
+        "high": 0.9544139373553637
+      },
+      "f1": 0.8571428571428571
+    },
+    "warranty_claim": {
+      "support": 3,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 3,
+        "value": 0.6666666666666666,
+        "low": 0.2076549551264879,
+        "high": 0.9385096847238394
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 0.8
+    },
+    "warranty_info": {
+      "support": 3,
+      "predicted": 4,
+      "recall": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 3,
+        "total": 4,
+        "value": 0.75,
+        "low": 0.3006360524426366,
+        "high": 0.9544139373553637
+      },
+      "f1": 0.8571428571428571
+    },
+    "change_delivery_address": {
+      "support": 2,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "delivery_charges": {
+      "support": 2,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 2,
+        "value": 0.5,
+        "low": 0.09452865480086614,
+        "high": 0.9054713451991339
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 0.6666666666666666
+    },
+    "login_verification": {
+      "support": 2,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 2,
+        "value": 0.5,
+        "low": 0.09452865480086614,
+        "high": 0.9054713451991339
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 0.6666666666666666
+    },
+    "loyalty_points": {
+      "support": 2,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 2,
+        "value": 0.5,
+        "low": 0.09452865480086614,
+        "high": 0.9054713451991339
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 0.6666666666666666
+    },
+    "offers_and_discounts": {
+      "support": 2,
+      "predicted": 3,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 3,
+        "value": 0.6666666666666666,
+        "low": 0.2076549551264879,
+        "high": 0.9385096847238394
+      },
+      "f1": 0.8
+    },
+    "other": {
+      "support": 2,
+      "predicted": 0,
+      "recall": {
+        "hits": 0,
+        "total": 2,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.6576280471103807
+      },
+      "precision": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "f1": null
+    },
+    "signup_help": {
+      "support": 2,
+      "predicted": 3,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 3,
+        "value": 0.6666666666666666,
+        "low": 0.2076549551264879,
+        "high": 0.9385096847238394
+      },
+      "f1": 0.8
+    },
+    "cancel_order": {
+      "support": 1,
+      "predicted": 2,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 2,
+        "value": 0.5,
+        "low": 0.09452865480086614,
+        "high": 0.9054713451991339
+      },
+      "f1": 0.6666666666666666
+    },
+    "change_email": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "password_reset": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "return_policy": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "charge_dispute": {
+      "support": 0,
+      "predicted": 1,
+      "recall": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 0,
+        "total": 1,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.7934567085261071
+      },
+      "f1": null
+    },
+    "ordering_help": {
+      "support": 0,
+      "predicted": 3,
+      "recall": {
+        "hits": 0,
+        "total": 0,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 0,
+        "total": 3,
+        "value": 0.0,
+        "low": 0.0,
+        "high": 0.5615060804490177
+      },
+      "f1": null
+    }
+  },
+  "confusions": [
+    {
+      "expected": "other",
+      "got": "ordering_help",
+      "count": 2,
+      "same_agent": false
+    },
+    {
+      "expected": "initiate_return",
+      "got": "offers_and_discounts",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "refund_status",
+      "got": "charge_dispute",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "faster_delivery",
+      "got": "order_not_arrived",
+      "count": 1,
+      "same_agent": true
+    },
+    {
+      "expected": "delivery_charges",
+      "got": "ordering_help",
+      "count": 1,
+      "same_agent": true
+    },
+    {
+      "expected": "warranty_claim",
+      "got": "warranty_info",
+      "count": 1,
+      "same_agent": true
+    },
+    {
+      "expected": "login_verification",
+      "got": "signup_help",
+      "count": 1,
+      "same_agent": true
+    },
+    {
+      "expected": "order_not_arrived",
+      "got": "order_status",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "loyalty_points",
+      "got": "unclear",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "faster_delivery",
+      "got": "shipping_availability",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "initiate_return",
+      "got": "cancel_order",
+      "count": 1,
+      "same_agent": false
+    }
+  ],
   "by_conversation": [
     {
       "id": 18,

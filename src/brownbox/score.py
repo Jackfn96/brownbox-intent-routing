@@ -1,4 +1,4 @@
-"""Stage 7: metrics for the router against labelled conversations. No API calls.
+"""Metrics for the router against labelled conversations. No API calls.
 
 What the label expects at customer message k:
 - before `clear_at`: nothing is scored (the customer hasn't said what they want yet);
@@ -13,16 +13,22 @@ does, and it is not a switch (nothing was abandoned).
 Every rate has a 95% interval. Shares of conversations use the Wilson score interval;
 per-message rates use a bootstrap that resamples whole conversations, because messages within
 one conversation aren't independent.
+
+Per-intent precision and recall are measured at the message where the intent becomes clear, one
+prediction per conversation. Most intents have only a handful of labelled conversations, so read
+them as where to look, not as precise rates: the intervals say how little they pin down.
 """
 
 import math
 import random
+from collections import Counter
 
 from pydantic import BaseModel
 from sklearn.metrics import cohen_kappa_score
 
 from brownbox.classify import Step
 from brownbox.models import GoldLabel
+from brownbox.ontology import UNCLEAR
 
 DRAWS = 2000
 SEED = 0
@@ -33,7 +39,7 @@ class Rate(BaseModel):
     hits: int
     total: int
     value: float
-    low: float  # 95% bootstrap interval
+    low: float  # 95% interval
     high: float
 
 
@@ -59,6 +65,24 @@ class GuardCounts(BaseModel):
     fired: int  # Conversations where the router fired it.
     caught: int  # Both.
     delays: list[int]  # Fired message minus expected message, for each caught one.
+    recall: Rate  # Of the conversations that should fire it, the share where it did.
+    precision: Rate  # Of the conversations where it fired, the share that should have.
+    flag_rate: Rate  # Share of all conversations where it fired.
+
+
+class IntentStats(BaseModel):
+    support: int  # Conversations labelled with this intent.
+    predicted: int  # Conversations the router gave this intent at the clear message.
+    recall: Rate
+    precision: Rate
+    f1: float | None  # None while the intent has no examples or was never predicted.
+
+
+class Confusion(BaseModel):
+    expected: str
+    got: str
+    count: int
+    same_agent: bool  # The router still reached the right agent.
 
 
 def added_request(label: GoldLabel) -> bool:
@@ -107,7 +131,9 @@ def score_conversation(
         expected=label.primary,
         at_clear=at_clear,
         correct_at_clear=at_clear == label.primary,
-        agent_correct_at_clear=agent_of.get(at_clear) == agent_of.get(label.primary),
+        # "other" and "unclear" have no agent: each only matches itself.
+        agent_correct_at_clear=agent_of.get(at_clear, at_clear)
+        == agent_of.get(label.primary, label.primary),
         messages_scored=len(scored),
         messages_correct=len(right),
         final_correct=steps[-1].message in right,
@@ -165,14 +191,56 @@ def kappa(scores: list[ConversationScore]) -> float:
 def guard_counts(scores: list[ConversationScore], guards: list[str]) -> dict[str, GuardCounts]:
     counts = {}
     for g in guards:
-        caught = [s for s in scores if g in s.guards_expected and g in s.guards_fired]
+        expected = [s for s in scores if g in s.guards_expected]
+        fired = [s for s in scores if g in s.guards_fired]
+        caught = [s for s in expected if g in s.guards_fired]
         counts[g] = GuardCounts(
-            expected=sum(g in s.guards_expected for s in scores),
-            fired=sum(g in s.guards_fired for s in scores),
+            expected=len(expected),
+            fired=len(fired),
             caught=len(caught),
             delays=[s.guards_fired[g] - s.guards_expected[g] for s in caught],
+            recall=share([g in s.guards_fired for s in expected]),
+            precision=share([g in s.guards_expected for s in fired]),
+            flag_rate=share([g in s.guards_fired for s in scores]),
         )
     return counts
+
+
+def per_intent(scores: list[ConversationScore]) -> dict[str, IntentStats]:
+    """Precision, recall and F1 per intent at the clear message, for every intent that was
+    either labelled or predicted, most-labelled first. "Unclear" is an outcome, never a label,
+    so it has no row: answering it only lowers the true intent's recall."""
+    intents = ({s.expected for s in scores} | {s.at_clear for s in scores}) - {UNCLEAR}
+    stats = {}
+    for i in intents:
+        recall = share([s.at_clear == i for s in scores if s.expected == i])
+        precision = share([s.expected == i for s in scores if s.at_clear == i])
+        stats[i] = IntentStats(
+            support=recall.total,
+            predicted=precision.total,
+            recall=recall,
+            precision=precision,
+            f1=f1(recall, precision),
+        )
+    return dict(sorted(stats.items(), key=lambda kv: (-kv[1].support, kv[0])))
+
+
+def f1(recall: Rate, precision: Rate) -> float | None:
+    """Harmonic mean of the two; None unless both were measured."""
+    if not (recall.total and precision.total):
+        return None
+    total = recall.value + precision.value
+    return 2 * recall.value * precision.value / total if total else 0.0
+
+
+def confusions(scores: list[ConversationScore]) -> list[Confusion]:
+    """Which intent the router gave instead of the labelled one, most frequent first."""
+    pairs = Counter(
+        (s.expected, s.at_clear, s.agent_correct_at_clear) for s in scores if not s.correct_at_clear
+    )
+    return [
+        Confusion(expected=e, got=g, count=n, same_agent=a) for (e, g, a), n in pairs.most_common()
+    ]
 
 
 class LabelQuality(BaseModel):

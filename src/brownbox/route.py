@@ -2,7 +2,7 @@
 
 uv run route "I need some help with my account"   # one message
 uv run route                                       # type a conversation, one message per line
-uv run route --show-prompt "..."                   # also print exactly what the model saw
+uv run route --show-prompt "..."                   # also print the intent prompt and transcript
 """
 
 import argparse
@@ -46,7 +46,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Try the BrownBox router.")
     parser.add_argument("message", nargs="?", help="a single customer message")
     parser.add_argument("--model", default=ROUTER_MODEL)
-    parser.add_argument("--show-prompt", action="store_true", help="print what the model saw")
+    parser.add_argument("--show-prompt", action="store_true", help="print the intent prompt")
     args = parser.parse_args()
 
     ontology = load_ontology()

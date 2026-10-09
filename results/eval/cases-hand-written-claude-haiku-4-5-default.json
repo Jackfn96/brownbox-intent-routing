@@ -1,0 +1,1237 @@
+{
+  "split": "cases",
+  "model": "claude-haiku-4-5",
+  "effort": null,
+  "labels": "hand-written",
+  "conversations": 38,
+  "intent_at_clear": {
+    "hits": 34,
+    "total": 38,
+    "value": 0.8947368421052632,
+    "low": 0.7586916879980553,
+    "high": 0.9582981020673341
+  },
+  "agent_at_clear": {
+    "hits": 35,
+    "total": 38,
+    "value": 0.9210526315789473,
+    "low": 0.792003210797347,
+    "high": 0.972785898605735
+  },
+  "messages": {
+    "hits": 55,
+    "total": 61,
+    "value": 0.9016393442622951,
+    "low": 0.7833333333333333,
+    "high": 0.9841269841269841
+  },
+  "final_message": {
+    "hits": 35,
+    "total": 38,
+    "value": 0.9210526315789473,
+    "low": 0.792003210797347,
+    "high": 0.972785898605735
+  },
+  "kappa": 0.8859714928732183,
+  "unclear_at_clear": 2,
+  "other_at_clear": 3,
+  "false_switches": {
+    "hits": 0,
+    "total": 38,
+    "value": 0.0,
+    "low": 0.0,
+    "high": 0.09181293258383999
+  },
+  "switches": 4,
+  "switches_missed": 0,
+  "switch_delays": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "guards": {
+    "fraud_or_takeover": {
+      "expected": 13,
+      "fired": 13,
+      "caught": 13,
+      "delays": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall": {
+        "hits": 13,
+        "total": 13,
+        "value": 1.0,
+        "low": 0.7718981569447083,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 13,
+        "total": 13,
+        "value": 1.0,
+        "low": 0.7718981569447083,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 13,
+        "total": 38,
+        "value": 0.34210526315789475,
+        "low": 0.21212220026458956,
+        "high": 0.5010818837092545
+      }
+    },
+    "wants_human": {
+      "expected": 3,
+      "fired": 3,
+      "caught": 3,
+      "delays": [
+        0,
+        0,
+        0
+      ],
+      "recall": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 3,
+        "total": 38,
+        "value": 0.07894736842105263,
+        "low": 0.02721410139426493,
+        "high": 0.2079967892026529
+      }
+    },
+    "complaint": {
+      "expected": 2,
+      "fired": 2,
+      "caught": 2,
+      "delays": [
+        0,
+        0
+      ],
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 2,
+        "total": 38,
+        "value": 0.05263157894736842,
+        "low": 0.014553902448536798,
+        "high": 0.17285766881068843
+      }
+    },
+    "unsupported_language": {
+      "expected": 2,
+      "fired": 2,
+      "caught": 2,
+      "delays": [
+        0,
+        0
+      ],
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "flag_rate": {
+        "hits": 2,
+        "total": 38,
+        "value": 0.05263157894736842,
+        "low": 0.014553902448536798,
+        "high": 0.17285766881068843
+      }
+    }
+  },
+  "false_alarms": {
+    "hits": 0,
+    "total": 19,
+    "value": 0.0,
+    "low": 0.0,
+    "high": 0.16818436536845052
+  },
+  "calls": 315,
+  "cost_usd": 0.2114752,
+  "mean_latency_s": 0.8169337293848262,
+  "label_quality": null,
+  "per_intent": {
+    "initiate_return": {
+      "support": 6,
+      "predicted": 5,
+      "recall": {
+        "hits": 5,
+        "total": 6,
+        "value": 0.8333333333333334,
+        "low": 0.43649056343635395,
+        "high": 0.9699474141282697
+      },
+      "precision": {
+        "hits": 5,
+        "total": 5,
+        "value": 1.0,
+        "low": 0.5655085052479191,
+        "high": 1.0
+      },
+      "f1": 0.9090909090909091
+    },
+    "order_not_arrived": {
+      "support": 6,
+      "predicted": 4,
+      "recall": {
+        "hits": 4,
+        "total": 6,
+        "value": 0.6666666666666666,
+        "low": 0.29998832134152864,
+        "high": 0.9032306674407831
+      },
+      "precision": {
+        "hits": 4,
+        "total": 4,
+        "value": 1.0,
+        "low": 0.5100999795960008,
+        "high": 1.0
+      },
+      "f1": 0.8
+    },
+    "charge_dispute": {
+      "support": 4,
+      "predicted": 4,
+      "recall": {
+        "hits": 4,
+        "total": 4,
+        "value": 1.0,
+        "low": 0.5100999795960008,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 4,
+        "total": 4,
+        "value": 1.0,
+        "low": 0.5100999795960008,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "cancel_order": {
+      "support": 3,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 3,
+        "value": 0.6666666666666666,
+        "low": 0.2076549551264879,
+        "high": 0.9385096847238394
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 0.8
+    },
+    "other": {
+      "support": 3,
+      "predicted": 3,
+      "recall": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 3,
+        "total": 3,
+        "value": 1.0,
+        "low": 0.43849391955098227,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "change_delivery_address": {
+      "support": 2,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "login_verification": {
+      "support": 2,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "password_reset": {
+      "support": 2,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "refund_status": {
+      "support": 2,
+      "predicted": 2,
+      "recall": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 2,
+        "total": 2,
+        "value": 1.0,
+        "low": 0.34237195288961925,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "account_lockout": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "change_email": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "delivery_charges": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "invoice_request": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "order_status": {
+      "support": 1,
+      "predicted": 3,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 3,
+        "value": 0.3333333333333333,
+        "low": 0.0614903152761605,
+        "high": 0.7923450448735121
+      },
+      "f1": 0.5
+    },
+    "reactivate_account": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "return_policy": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "warranty_info": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    }
+  },
+  "confusions": [
+    {
+      "expected": "cancel_order",
+      "got": "order_status",
+      "count": 1,
+      "same_agent": true
+    },
+    {
+      "expected": "order_not_arrived",
+      "got": "order_status",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "order_not_arrived",
+      "got": "unclear",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "initiate_return",
+      "got": "unclear",
+      "count": 1,
+      "same_agent": false
+    }
+  ],
+  "by_conversation": [
+    {
+      "id": 9001,
+      "mode": "synthetic",
+      "expected": "cancel_order",
+      "at_clear": "order_status",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 0,
+      "final_correct": false,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 1
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 1
+      }
+    },
+    {
+      "id": 9002,
+      "mode": "synthetic",
+      "expected": "charge_dispute",
+      "at_clear": "charge_dispute",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 1
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 1
+      }
+    },
+    {
+      "id": 9003,
+      "mode": "synthetic",
+      "expected": "login_verification",
+      "at_clear": "login_verification",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 1
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 1
+      }
+    },
+    {
+      "id": 9004,
+      "mode": "synthetic",
+      "expected": "change_email",
+      "at_clear": "change_email",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 1
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 1
+      }
+    },
+    {
+      "id": 9005,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9006,
+      "mode": "synthetic",
+      "expected": "password_reset",
+      "at_clear": "password_reset",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9007,
+      "mode": "synthetic",
+      "expected": "login_verification",
+      "at_clear": "login_verification",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9008,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9009,
+      "mode": "synthetic",
+      "expected": "reactivate_account",
+      "at_clear": "reactivate_account",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9010,
+      "mode": "synthetic",
+      "expected": "charge_dispute",
+      "at_clear": "charge_dispute",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9011,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_status",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
+      "messages_scored": 3,
+      "messages_correct": 0,
+      "final_correct": false,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 3
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 3
+      }
+    },
+    {
+      "id": 9012,
+      "mode": "synthetic",
+      "expected": "change_delivery_address",
+      "at_clear": "change_delivery_address",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 2
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 2
+      }
+    },
+    {
+      "id": 9013,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9014,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9015,
+      "mode": "synthetic",
+      "expected": "password_reset",
+      "at_clear": "password_reset",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9016,
+      "mode": "synthetic",
+      "expected": "account_lockout",
+      "at_clear": "account_lockout",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9017,
+      "mode": "synthetic",
+      "expected": "charge_dispute",
+      "at_clear": "charge_dispute",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9018,
+      "mode": "synthetic",
+      "expected": "cancel_order",
+      "at_clear": "cancel_order",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9019,
+      "mode": "synthetic",
+      "expected": "other",
+      "at_clear": "other",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "wants_human": 1
+      },
+      "guards_fired": {
+        "wants_human": 1
+      }
+    },
+    {
+      "id": 9020,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "wants_human": 2
+      },
+      "guards_fired": {
+        "wants_human": 2
+      }
+    },
+    {
+      "id": 9021,
+      "mode": "synthetic",
+      "expected": "refund_status",
+      "at_clear": "refund_status",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9022,
+      "mode": "synthetic",
+      "expected": "other",
+      "at_clear": "other",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "complaint": 1
+      },
+      "guards_fired": {
+        "complaint": 1
+      }
+    },
+    {
+      "id": 9023,
+      "mode": "synthetic",
+      "expected": "charge_dispute",
+      "at_clear": "charge_dispute",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "complaint": 2
+      },
+      "guards_fired": {
+        "complaint": 2
+      }
+    },
+    {
+      "id": 9024,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9025,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "unclear",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
+      "messages_scored": 1,
+      "messages_correct": 0,
+      "final_correct": false,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "unsupported_language": 1
+      },
+      "guards_fired": {
+        "unsupported_language": 1
+      }
+    },
+    {
+      "id": 9026,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "unclear",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
+      "messages_scored": 2,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "unsupported_language": 2
+      },
+      "guards_fired": {
+        "unsupported_language": 2
+      }
+    },
+    {
+      "id": 9027,
+      "mode": "synthetic",
+      "expected": "order_status",
+      "at_clear": "order_status",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9028,
+      "mode": "synthetic",
+      "expected": "other",
+      "at_clear": "other",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "fraud_or_takeover": 1,
+        "wants_human": 1
+      },
+      "guards_fired": {
+        "fraud_or_takeover": 1,
+        "wants_human": 1
+      }
+    },
+    {
+      "id": 9101,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": 0,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9102,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9103,
+      "mode": "synthetic",
+      "expected": "invoice_request",
+      "at_clear": "invoice_request",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9104,
+      "mode": "synthetic",
+      "expected": "warranty_info",
+      "at_clear": "warranty_info",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 3,
+      "messages_correct": 3,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": 0,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9105,
+      "mode": "synthetic",
+      "expected": "cancel_order",
+      "at_clear": "cancel_order",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9106,
+      "mode": "synthetic",
+      "expected": "delivery_charges",
+      "at_clear": "delivery_charges",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9107,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9108,
+      "mode": "synthetic",
+      "expected": "change_delivery_address",
+      "at_clear": "change_delivery_address",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": 0,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9109,
+      "mode": "synthetic",
+      "expected": "return_policy",
+      "at_clear": "return_policy",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": 0,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9110,
+      "mode": "synthetic",
+      "expected": "refund_status",
+      "at_clear": "refund_status",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    }
+  ]
+}

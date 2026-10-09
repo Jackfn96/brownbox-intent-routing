@@ -18,13 +18,15 @@ from brownbox.paths import ROOT
 ONTOLOGY = ROOT / "ontology" / "ontology.yaml"
 READABLE = ROOT / "ontology" / "ONTOLOGY.md"
 
-# Outcomes the classifier can return that are not intents.
-RESERVED_IDS = {"other", "unclear"}
+# Outcomes the router can return that are not intents.
+OTHER = "other"  # Nothing fits.
+UNCLEAR = "unclear"  # Not enough said yet.
+RESERVED_IDS = {OTHER, UNCLEAR}
 
 Id = Annotated[str, Field(pattern=r"^[a-z][a-z0-9_]*$")]
 # Who runs the conversation: the AI, a person (emotional, relationship or legal risk), or
 # nobody automated at all (security). Risky *actions* inside an AI intent are listed in
-# signoff_actions: the AI prepares them and a person approves (decisions D13 and P6).
+# signoff_actions: the AI prepares them and a person approves.
 Participation = Literal["ai", "handoff", "never"]
 
 
@@ -57,7 +59,7 @@ class Intent(_Strict):
     signoff_actions: list[str] = []
     # What the fraud guard and the procedure's risk checks should watch for in this intent.
     fraud_signals: list[str] = []
-    agent: Id  # Several intents can share one agent (decision D1).
+    agent: Id  # Several intents can share one agent: agents are grouped by knowledge.
     # Agents this intent's procedure can pass the conversation to part-way, once it has found
     # out which procedure the customer needs (a planned hand-over, not a routing switch).
     hands_over_to: list[Id] = []

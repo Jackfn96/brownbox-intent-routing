@@ -1,400 +1,400 @@
-{"id": 352, "model": "claude-sonnet-5-5", "primary": "refund_status", "secondary": "return_policy", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 352, "model": "claude-opus-5-5", "primary": "refund_status", "secondary": "return_policy", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 388, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 388, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 728, "model": "claude-sonnet-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 728, "model": "claude-opus-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 437, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 4}}
-{"id": 437, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 4}}
-{"id": 237, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 237, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 356, "model": "claude-sonnet-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 356, "model": "claude-opus-5-5", "primary": "password_reset", "secondary": "account_lockout", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 192, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 192, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 898, "model": "claude-sonnet-5-5", "primary": "refund_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 898, "model": "claude-opus-5-5", "primary": "refund_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 627, "model": "claude-sonnet-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 627, "model": "claude-opus-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 662, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 662, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 416, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 416, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 506, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 506, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 121, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 4}}
-{"id": 121, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 4}}
-{"id": 327, "model": "claude-sonnet-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 327, "model": "claude-opus-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 459, "model": "claude-sonnet-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 459, "model": "claude-opus-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 517, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 517, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 430, "model": "claude-sonnet-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 430, "model": "claude-opus-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 280, "model": "claude-sonnet-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 280, "model": "claude-opus-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 920, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 920, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 174, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 174, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 588, "model": "claude-sonnet-5-5", "primary": "pricing_question", "secondary": "offers_and_discounts", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 588, "model": "claude-opus-5-5", "primary": "pricing_question", "secondary": "offers_and_discounts", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 29, "model": "claude-sonnet-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 29, "model": "claude-opus-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 173, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 8}}
-{"id": 173, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 8}}
-{"id": 800, "model": "claude-sonnet-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 800, "model": "claude-opus-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 300, "model": "claude-sonnet-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": 5, "switch_to": "cancel_order", "guards": {}}
-{"id": 300, "model": "claude-opus-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": 5, "switch_to": "cancel_order", "guards": {}}
-{"id": 921, "model": "claude-sonnet-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 921, "model": "claude-opus-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 981, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 981, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 850, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 850, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 492, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 492, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 851, "model": "claude-sonnet-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 851, "model": "claude-opus-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 344, "model": "claude-sonnet-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 344, "model": "claude-opus-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 910, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 910, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 403, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 403, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 331, "model": "claude-sonnet-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 331, "model": "claude-opus-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 949, "model": "claude-sonnet-5-5", "primary": "refund_status", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 949, "model": "claude-opus-5-5", "primary": "refund_status", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 421, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 421, "model": "claude-opus-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 199, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 1}}
-{"id": 199, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 1}}
-{"id": 512, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 512, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 631, "model": "claude-sonnet-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 631, "model": "claude-opus-5-5", "primary": "other", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 185, "model": "claude-sonnet-5-5", "primary": "charge_dispute", "secondary": "warranty_claim", "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 185, "model": "claude-opus-5-5", "primary": "charge_dispute", "secondary": "initiate_return", "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 301, "model": "claude-sonnet-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 301, "model": "claude-opus-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 411, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 411, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 119, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 119, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 20, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 20, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 474, "model": "claude-sonnet-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 474, "model": "claude-opus-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 650, "model": "claude-sonnet-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 650, "model": "claude-opus-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 533, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 533, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 919, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 919, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": "warranty_claim", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 150, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 150, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 10, "model": "claude-sonnet-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 10, "model": "claude-opus-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 200, "model": "claude-sonnet-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 200, "model": "claude-opus-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 901, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 901, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 880, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": 6, "switch_to": "initiate_return", "guards": {}}
-{"id": 880, "model": "claude-opus-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": 6, "switch_to": "initiate_return", "guards": {}}
-{"id": 969, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 969, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 839, "model": "claude-sonnet-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 839, "model": "claude-opus-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 9}}
-{"id": 715, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 715, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 562, "model": "claude-sonnet-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 562, "model": "claude-opus-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 79, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"fraud_or_takeover": 5}}
-{"id": 79, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 263, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 263, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 405, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 405, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 559, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 559, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 876, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": 5, "switch_to": "initiate_return", "guards": {}}
-{"id": 876, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 441, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 441, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 683, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 683, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 303, "model": "claude-sonnet-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 303, "model": "claude-opus-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 927, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 927, "model": "claude-opus-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 718, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 718, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 7}}
-{"id": 419, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 419, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 138, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 138, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 320, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 320, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 768, "model": "claude-sonnet-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 768, "model": "claude-opus-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 643, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 643, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 511, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 511, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 64, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 64, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 579, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 579, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 178, "model": "claude-sonnet-5-5", "primary": "close_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 178, "model": "claude-opus-5-5", "primary": "close_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 791, "model": "claude-sonnet-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 791, "model": "claude-opus-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 867, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": 3, "switch_to": "warranty_claim", "guards": {}}
-{"id": 867, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 453, "model": "claude-sonnet-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 453, "model": "claude-opus-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 288, "model": "claude-sonnet-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 7}}
-{"id": 288, "model": "claude-opus-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 7}}
-{"id": 875, "model": "claude-sonnet-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 875, "model": "claude-opus-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 214, "model": "claude-sonnet-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 214, "model": "claude-opus-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 202, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 202, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 61, "model": "claude-sonnet-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 61, "model": "claude-opus-5-5", "primary": "account_lockout", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 222, "model": "claude-sonnet-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 222, "model": "claude-opus-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 191, "model": "claude-sonnet-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 191, "model": "claude-opus-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 417, "model": "claude-sonnet-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 417, "model": "claude-opus-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 458, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 458, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 148, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": "warranty_claim", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 148, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": "warranty_claim", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 988, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 988, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 367, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 367, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 836, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 836, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 8}}
-{"id": 598, "model": "claude-sonnet-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 11, "complaint": 11}}
-{"id": 598, "model": "claude-opus-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": 3, "switch_to": "item_availability", "guards": {"complaint": 11, "wants_human": 11}}
-{"id": 795, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 795, "model": "claude-opus-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 427, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 427, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 819, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 819, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 313, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 313, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 66, "model": "claude-sonnet-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 66, "model": "claude-opus-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 290, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 290, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 294, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 294, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 4, "model": "claude-sonnet-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 4, "model": "claude-opus-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 17, "model": "claude-sonnet-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 17, "model": "claude-opus-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 638, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 638, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 457, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 457, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 376, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 376, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 917, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 7}}
-{"id": 917, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 7}}
-{"id": 473, "model": "claude-sonnet-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 473, "model": "claude-opus-5-5", "primary": "delivery_charges", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 157, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 157, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 92, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 92, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 945, "model": "claude-sonnet-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 945, "model": "claude-opus-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 374, "model": "claude-sonnet-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 374, "model": "claude-opus-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 960, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 960, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 6}}
-{"id": 304, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 304, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 399, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 399, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 336, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 336, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 965, "model": "claude-sonnet-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 965, "model": "claude-opus-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5, "complaint": 6}}
-{"id": 659, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 659, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 476, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 476, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 363, "model": "claude-sonnet-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": 3, "switch_to": "initiate_return", "guards": {}}
-{"id": 363, "model": "claude-opus-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": 3, "switch_to": "initiate_return", "guards": {}}
-{"id": 534, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 534, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 136, "model": "claude-sonnet-5-5", "primary": "change_delivery_address", "secondary": "faster_delivery", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 136, "model": "claude-opus-5-5", "primary": "change_delivery_address", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 5, "model": "claude-sonnet-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 5, "model": "claude-opus-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 590, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 590, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 382, "model": "claude-sonnet-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 382, "model": "claude-opus-5-5", "primary": "cancel_order", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 310, "model": "claude-sonnet-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 310, "model": "claude-opus-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 621, "model": "claude-sonnet-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 621, "model": "claude-opus-5-5", "primary": "reactivate_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 273, "model": "claude-sonnet-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 273, "model": "claude-opus-5-5", "primary": "change_delivery_address", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 739, "model": "claude-sonnet-5-5", "primary": "signup_help", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 739, "model": "claude-opus-5-5", "primary": "signup_help", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 515, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 515, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 406, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 406, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 540, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 540, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 28, "model": "claude-sonnet-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 28, "model": "claude-opus-5-5", "primary": "faster_delivery", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 767, "model": "claude-sonnet-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 767, "model": "claude-opus-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 318, "model": "claude-sonnet-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 318, "model": "claude-opus-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 962, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 962, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 31, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 31, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 84, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 84, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 88, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 88, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 630, "model": "claude-sonnet-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 630, "model": "claude-opus-5-5", "primary": "redeliver_order", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 13, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 13, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 802, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 802, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 211, "model": "claude-sonnet-5-5", "primary": "item_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 211, "model": "claude-opus-5-5", "primary": "item_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 837, "model": "claude-sonnet-5-5", "primary": "refund_status", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 837, "model": "claude-opus-5-5", "primary": "refund_status", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 939, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 939, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 838, "model": "claude-sonnet-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 838, "model": "claude-opus-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 975, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 975, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 463, "model": "claude-sonnet-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 463, "model": "claude-opus-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 744, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 744, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 50, "model": "claude-sonnet-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 50, "model": "claude-opus-5-5", "primary": "pricing_question", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 813, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 813, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 892, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 892, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 636, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "item_availability", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 636, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "item_availability", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 144, "model": "claude-sonnet-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 144, "model": "claude-opus-5-5", "primary": "offers_and_discounts", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 193, "model": "claude-sonnet-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 193, "model": "claude-opus-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 387, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "ordering_help", "clear_at": 2, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 387, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 518, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 518, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 147, "model": "claude-sonnet-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 147, "model": "claude-opus-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 4, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 961, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 961, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 3, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 799, "model": "claude-sonnet-5-5", "primary": "refund_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 799, "model": "claude-opus-5-5", "primary": "refund_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 811, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 811, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": "warranty_claim", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 556, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 556, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 617, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 617, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 240, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 240, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 250, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 250, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "installation_help", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 734, "model": "claude-sonnet-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 734, "model": "claude-opus-5-5", "primary": "shipping_availability", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 608, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 608, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 996, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 996, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 544, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "faster_delivery", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 544, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "faster_delivery", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 682, "model": "claude-sonnet-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 682, "model": "claude-opus-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 524, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 524, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 26, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 26, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 713, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 713, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 383, "model": "claude-sonnet-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 383, "model": "claude-opus-5-5", "primary": "password_reset", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 438, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 438, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 546, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 546, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 491, "model": "claude-sonnet-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 491, "model": "claude-opus-5-5", "primary": "login_verification", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 351, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 351, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 696, "model": "claude-sonnet-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 696, "model": "claude-opus-5-5", "primary": "loyalty_points", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 129, "model": "claude-sonnet-5-5", "primary": "close_account", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 129, "model": "claude-opus-5-5", "primary": "close_account", "secondary": "other", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 425, "model": "claude-sonnet-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 425, "model": "claude-opus-5-5", "primary": "installation_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 172, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "refund_status", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 172, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "refund_status", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 394, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 394, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 446, "model": "claude-sonnet-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 446, "model": "claude-opus-5-5", "primary": "ordering_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 233, "model": "claude-sonnet-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 233, "model": "claude-opus-5-5", "primary": "order_not_arrived", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"complaint": 8}}
-{"id": 212, "model": "claude-sonnet-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 212, "model": "claude-opus-5-5", "primary": "warranty_claim", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 180, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 180, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 479, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 479, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 924, "model": "claude-sonnet-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 924, "model": "claude-opus-5-5", "primary": "charge_dispute", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5, "complaint": 5}}
-{"id": 232, "model": "claude-sonnet-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 232, "model": "claude-opus-5-5", "primary": "invoice_request", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 816, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 816, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": "charge_dispute", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {"wants_human": 5}}
-{"id": 807, "model": "claude-sonnet-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 807, "model": "claude-opus-5-5", "primary": "signup_help", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 584, "model": "claude-sonnet-5-5", "primary": "return_policy", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 584, "model": "claude-opus-5-5", "primary": "return_policy", "secondary": "order_status", "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 626, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 626, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": 6, "switch_to": "warranty_claim", "guards": {}}
-{"id": 601, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 601, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 883, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 2, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 883, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 2, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 934, "model": "claude-sonnet-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 934, "model": "claude-opus-5-5", "primary": "change_email", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 429, "model": "claude-sonnet-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 429, "model": "claude-opus-5-5", "primary": "order_status", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 355, "model": "claude-sonnet-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 355, "model": "claude-opus-5-5", "primary": "initiate_return", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 510, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 510, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 846, "model": "claude-sonnet-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
-{"id": 846, "model": "claude-opus-5-5", "primary": "warranty_info", "secondary": null, "clear_at": 1, "switch_at": null, "switch_to": null, "guards": {}}
+{"primary":"refund_status","secondary":"return_policy","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":352,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":"return_policy","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":352,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":388,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":388,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":728,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":728,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"id":437,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"id":437,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":237,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":237,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":356,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":"account_lockout","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":356,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":192,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":192,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":898,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":898,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":627,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":627,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":662,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":662,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":416,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":416,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":506,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":506,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"id":121,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"id":121,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":327,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":327,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":459,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":459,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":517,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":517,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":430,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":430,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":280,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":280,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":920,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":920,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":174,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":174,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":"offers_and_discounts","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":588,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":"offers_and_discounts","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":588,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":29,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":29,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"id":173,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"id":173,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":800,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":800,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":5,"switch_to":"cancel_order","guards":{},"id":300,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":5,"switch_to":"cancel_order","guards":{},"id":300,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":921,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":921,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":981,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":981,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":850,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":850,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":492,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":492,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":851,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":851,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":344,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":344,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":910,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":910,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":403,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":403,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":331,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":331,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":949,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":949,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":421,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":421,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":1},"id":199,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":1},"id":199,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":512,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":512,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":631,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"other","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":631,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":"warranty_claim","clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":185,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":"initiate_return","clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":185,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":301,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":301,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":411,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":411,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":119,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":119,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":20,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":20,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":474,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":474,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":650,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":650,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":533,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":533,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":919,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":"warranty_claim","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":919,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":150,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":150,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":10,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":10,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":200,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":200,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":901,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":901,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":6,"switch_to":"initiate_return","guards":{},"id":880,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":6,"switch_to":"initiate_return","guards":{},"id":880,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":969,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":969,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":839,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":9},"id":839,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":715,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":715,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":562,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":562,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"fraud_or_takeover":5},"id":79,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":79,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":263,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":263,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":405,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":405,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":559,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":559,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":5,"switch_to":"initiate_return","guards":{},"id":876,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":876,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":441,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":441,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":683,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":683,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":303,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":303,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":927,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":927,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":718,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":7},"id":718,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":419,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":419,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":138,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":138,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":320,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":320,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":768,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":768,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":643,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":643,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":511,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":511,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":64,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":64,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":579,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":579,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"close_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":178,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"close_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":178,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":791,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":791,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":3,"switch_to":"warranty_claim","guards":{},"id":867,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":867,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":453,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":453,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":7},"id":288,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":7},"id":288,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":875,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":875,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":214,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":214,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":202,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":202,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":61,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":61,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":222,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":222,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":191,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":191,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":417,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":417,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":458,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":458,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":"warranty_claim","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":148,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":"warranty_claim","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":148,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":988,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":988,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":367,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":367,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":836,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"id":836,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":11,"complaint":11},"id":598,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":3,"switch_to":"item_availability","guards":{"complaint":11,"wants_human":11},"id":598,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":795,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":795,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":427,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":427,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":819,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":819,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":313,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":313,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":66,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":66,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":290,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":290,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":294,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":294,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":4,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":4,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":17,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":17,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":638,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":638,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":457,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":457,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":376,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":376,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":7},"id":917,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":7},"id":917,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":473,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":473,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":157,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":157,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":92,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":92,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":945,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":945,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":374,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":374,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":960,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":6},"id":960,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":304,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":304,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":399,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":399,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":336,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":336,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":965,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5,"complaint":6},"id":965,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":659,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":659,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":476,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":476,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":3,"switch_to":"initiate_return","guards":{},"id":363,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":3,"switch_to":"initiate_return","guards":{},"id":363,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":534,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":534,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":"faster_delivery","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":136,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":136,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":5,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":5,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":590,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":590,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":382,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":382,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":310,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":310,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":621,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"reactivate_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":621,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":273,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":273,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":739,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":739,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":515,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":515,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":406,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":406,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":540,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":540,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":28,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"faster_delivery","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":28,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":767,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":767,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":318,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":318,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":962,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":962,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":31,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":31,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":84,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":84,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":88,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":88,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":630,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"redeliver_order","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":630,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":13,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":13,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":802,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":802,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"item_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":211,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"item_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":211,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":837,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":837,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":939,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":939,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":838,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":838,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":975,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":975,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":463,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"id":463,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":744,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":744,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":50,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":50,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":813,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":813,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":892,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":892,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"item_availability","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":636,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"item_availability","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":636,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":144,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":144,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":193,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":193,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"ordering_help","clear_at":2,"switch_at":null,"switch_to":null,"guards":{},"id":387,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":387,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":518,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":518,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":147,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":4,"switch_at":null,"switch_to":null,"guards":{},"id":147,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":961,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":3,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":961,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":799,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":799,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":811,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":"warranty_claim","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":811,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":556,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":556,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":617,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":617,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":240,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":240,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":250,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"installation_help","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":250,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":734,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":734,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":608,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":608,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":996,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":996,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"faster_delivery","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":544,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"faster_delivery","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":544,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":682,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":682,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":524,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":524,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":26,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":26,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":713,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":713,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":383,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":383,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":438,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":438,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":546,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":546,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":491,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":491,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":351,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":351,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":696,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":696,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"close_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":129,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"close_account","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":129,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":425,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":425,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"refund_status","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":172,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"refund_status","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":172,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":394,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":394,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":446,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":446,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":233,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"id":233,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":212,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":212,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":180,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":180,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":479,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":479,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":924,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"charge_dispute","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5,"complaint":5},"id":924,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":232,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":232,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":816,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":"charge_dispute","clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"id":816,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":807,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":807,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":584,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"return_policy","secondary":"order_status","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":584,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":626,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":6,"switch_to":"warranty_claim","guards":{},"id":626,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":601,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":601,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":2,"switch_at":null,"switch_to":null,"guards":{},"id":883,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":2,"switch_at":null,"switch_to":null,"guards":{},"id":883,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":934,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":934,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":429,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":429,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":355,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":355,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":510,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":510,"model":"claude-opus-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":846,"model":"claude-sonnet-5-5","ontology_version":"1"}
+{"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"id":846,"model":"claude-opus-5-5","ontology_version":"1"}

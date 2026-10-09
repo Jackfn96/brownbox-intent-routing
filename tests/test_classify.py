@@ -1,11 +1,11 @@
 import pytest
+from conftest import MakeSteps
 from pydantic import BaseModel
 
 from brownbox import llm
 from brownbox.classify import (
     GuardCheck,
     RouterPrompts,
-    Step,
     decide,
     route_conversation,
     router_schema,
@@ -19,31 +19,27 @@ USAGE = llm.Usage(
 )
 
 
-def step(intent: str, guards: tuple[str, ...] = (), message: int = 1) -> Step:
-    return Step(message=message, intent=intent, guards=guards)
-
-
-def test_never_guard_wins_over_any_intent() -> None:
-    d = decide(ONTOLOGY, [step("initiate_return", ("fraud_or_takeover",))])
+def test_never_guard_wins_over_any_intent(make_steps: MakeSteps) -> None:
+    d = decide(ONTOLOGY, make_steps(("initiate_return", ("fraud_or_takeover",))))
     assert d.outcome == "specialist"
 
 
-def test_guards_are_sticky() -> None:
-    steps = [step("initiate_return", ("wants_human",), 1), step("initiate_return", (), 2)]
+def test_guards_are_sticky(make_steps: MakeSteps) -> None:
+    steps = make_steps(("initiate_return", ("wants_human",)), ("initiate_return", ()))
     assert decide(ONTOLOGY, steps).outcome == "human"
 
 
-def test_unclear_asks_and_other_hands_off() -> None:
-    assert decide(ONTOLOGY, [step("unclear")]).outcome == "clarify"
-    assert decide(ONTOLOGY, [step("other")]).outcome == "human"
+def test_unclear_asks_and_other_hands_off(make_steps: MakeSteps) -> None:
+    assert decide(ONTOLOGY, make_steps(("unclear", ()))).outcome == "clarify"
+    assert decide(ONTOLOGY, make_steps(("other", ()))).outcome == "human"
 
 
-def test_handoff_intent_goes_to_a_person() -> None:
-    assert decide(ONTOLOGY, [step("close_account")]).outcome == "human"
+def test_handoff_intent_goes_to_a_person(make_steps: MakeSteps) -> None:
+    assert decide(ONTOLOGY, make_steps(("close_account", ()))).outcome == "human"
 
 
-def test_ai_intent_goes_to_its_agent_with_signoff_actions() -> None:
-    d = decide(ONTOLOGY, [step("initiate_return")])
+def test_ai_intent_goes_to_its_agent_with_signoff_actions(make_steps: MakeSteps) -> None:
+    d = decide(ONTOLOGY, make_steps(("initiate_return", ())))
     assert (d.outcome, d.agent) == ("agent", "returns_agent")
     assert any("Waive" in a for a in d.signoff_actions)
 

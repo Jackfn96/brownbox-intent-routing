@@ -1,4 +1,4 @@
-"""Stage 5: hand-label practice conversations against the ontology, one at a time.
+"""Hand-label practice conversations against the ontology, one at a time.
 
     uv run python -m brownbox.label             # the 30 blind labels, in a fixed random order
     uv run python -m brownbox.label --assisted  # 55 of the other 170, with model suggestions
@@ -13,7 +13,6 @@ that label counts as blind. The locked 100 are labelled blind, after the router 
 """
 
 import argparse
-import json
 import random
 import shutil
 import time
@@ -21,8 +20,8 @@ from collections.abc import Callable, Container
 from dataclasses import dataclass
 from pathlib import Path
 
-from brownbox.models import Adjudication, Conversation, GoldLabel
-from brownbox.ontology import Ontology, load_ontology
+from brownbox.models import Adjudication, Conversation, GoldLabel, PreLabel, Proposal
+from brownbox.ontology import OTHER, Ontology, load_ontology
 from brownbox.parse import load
 from brownbox.paths import DATA
 
@@ -33,9 +32,7 @@ ADJUDICATED = GOLD_DIR / "adjudicated.jsonl"
 LOCKED_LABELS = GOLD_DIR / "locked.jsonl"
 SEED = 11
 BLIND_BATCH = 30
-PRACTICE_SIZE = 200
 AUDIT_SIZE = 30  # Hand-labelled sample of the conversations the models fully agree on.
-OTHER = "other"
 STAFF_PREVIEW = 140  # Staff turns are shortened: the customer's words are what matter.
 STEPS = 6
 
@@ -76,7 +73,7 @@ def adjudicate(
     path: Path, original: GoldLabel, changes: dict[str, object], reason: str
 ) -> GoldLabel:
     """Save a corrected copy of a label (fields in `changes` replaced), validated, with the
-    reason for the change."""
+    reason for the change. Run from a Python shell, one call per decision made on review."""
     label = GoldLabel.model_validate(original.model_dump() | changes)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a") as f:
@@ -90,22 +87,31 @@ class Suggestions:
     agreed: dict[int, GoldLabel]  # Conversation id -> the full label every model gave (silver).
 
 
-def load_suggestions(path: Path, ontology_version: str) -> Suggestions:
+def read_prelabels(path: Path) -> list[PreLabel]:
+    if not path.exists():
+        return []
+    return [PreLabel.model_validate_json(line) for line in path.read_text().splitlines()]
+
+
+def load_suggestions(path: Path) -> Suggestions:
     """What the pre-labelling models agree on, per conversation."""
-    primaries: dict[int, set[str]] = {}
-    answers: dict[int, set[str]] = {}
-    for line in path.read_text().splitlines():
-        record = json.loads(line)
-        primaries.setdefault(record["id"], set()).add(record["primary"])
-        answer = {k: v for k, v in record.items() if k != "model"}
-        answers.setdefault(record["id"], set()).add(json.dumps(answer, sort_keys=True))
-    silver = {"mode": "silver", "ontology_version": ontology_version}
+    by_id: dict[int, list[PreLabel]] = {}
+    for row in read_prelabels(path):
+        by_id.setdefault(row.id, []).append(row)
+    fields = set(Proposal.model_fields)
+
+    def silver(row: PreLabel) -> GoldLabel:
+        made = {"id": row.id, "mode": "silver", "ontology_version": row.ontology_version}
+        return GoldLabel.model_validate(row.model_dump(include=fields) | made)
+
     return Suggestions(
-        primary={i: next(iter(p)) for i, p in primaries.items() if len(p) == 1},
+        primary={
+            i: rows[0].primary for i, rows in by_id.items() if len({r.primary for r in rows}) == 1
+        },
         agreed={
-            i: GoldLabel.model_validate(json.loads(next(iter(a))) | silver)
-            for i, a in answers.items()
-            if len(a) == 1
+            i: silver(rows[0])
+            for i, rows in by_id.items()
+            if all(r.model_dump(include=fields) == rows[0].model_dump(include=fields) for r in rows)
         },
     )
 
@@ -327,9 +333,9 @@ def main() -> None:
         if args.assisted:
             if any(c.id not in load_labels(path) for c in order[:BLIND_BATCH]):
                 raise SystemExit("Finish the 30 blind labels first: run without --assisted.")
-            prelabels = load_suggestions(PRELABELS, ontology.version)
+            prelabels = load_suggestions(PRELABELS)
             suggestions = prelabels.primary
-            batch = assisted_batch(order[BLIND_BATCH:PRACTICE_SIZE], prelabels.agreed)
+            batch = assisted_batch(order[BLIND_BATCH:], prelabels.agreed)
         else:
             batch = order[:BLIND_BATCH]
     done = load_labels(path)

@@ -145,7 +145,8 @@ def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usag
             model=req.model,
             max_tokens=req.max_tokens,
             # Cache the system prompt, which is the same on every call. The user message
-            # changes each time, so caching it would pay the write cost for nothing.
+            # changes each time, so caching it would pay the write cost for nothing. Prompts
+            # under the model's minimum (4,096 tokens on Haiku 4.5) are sent uncached.
             system=[{"type": "text", "text": req.system, "cache_control": {"type": "ephemeral"}}],
             messages=[{"role": "user", "content": req.user}],
             output_format=schema,
@@ -155,6 +156,8 @@ def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usag
         )
     except ValidationError as e:
         raise InvalidOutput(str(e)) from e
+    except anthropic.APIError as e:  # After the SDK's own retries: timeouts, 5xx, rate limits.
+        raise LLMError(f"{req.model}: {e}") from e
     latency = time.perf_counter() - start
 
     if msg.stop_reason == "refusal":

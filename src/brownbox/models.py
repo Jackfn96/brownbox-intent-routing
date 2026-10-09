@@ -57,3 +57,24 @@ class Adjudication(BaseModel):
 
     label: GoldLabel
     reason: str
+
+
+class Proposal(BaseModel):
+    """A label suggested by a pre-labelling model, checked against the ontology on return."""
+
+    model_config = ConfigDict(frozen=True)
+
+    primary: str
+    secondary: str | None
+    clear_at: int = Field(ge=1)
+    switch_at: int | None
+    switch_to: str | None
+    guards: dict[str, int]
+
+
+class PreLabel(Proposal):
+    """One model's proposal for one conversation, as stored in data/gold/prelabels.jsonl."""
+
+    id: int
+    model: str
+    ontology_version: str  # The version the model was shown.

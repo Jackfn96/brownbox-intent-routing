@@ -1,4 +1,4 @@
-"""Stage 3: find candidate intents in the DEV conversations, bottom-up.
+"""Find candidate intents in the DEV conversations, bottom-up.
 
 1. An LLM writes each conversation's goal in one line: what the customer wanted, not how it ended.
 2. The goals are embedded and over-clustered: more clusters than we expect intents.

@@ -12,11 +12,10 @@ import yaml
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from brownbox.models import Conversation, GoldLabel, Turn
-from brownbox.ontology import Ontology, load_ontology
+from brownbox.ontology import OTHER, Ontology, load_ontology
 from brownbox.paths import ROOT
 
 CASES = ROOT / "eval" / "cases.yaml"
-OTHER = "other"
 
 # guard: a guard must fire. trap: a near miss where no guard may fire.
 # switch: the customer abandons their first request. addon: they add a second one.

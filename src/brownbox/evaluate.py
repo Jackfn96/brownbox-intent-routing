@@ -1,20 +1,23 @@
-"""Stage 7: score the router.
+"""Score the router.
 
     uv run python -m brownbox.evaluate cases               # the hand-written cases
     uv run python -m brownbox.evaluate practice            # practice, my labels only
     uv run python -m brownbox.evaluate practice --silver   # plus the silver labels
     uv run python -m brownbox.evaluate practice --model claude-sonnet-5-5 --effort low
     uv run python -m brownbox.evaluate locked              # the final score, router frozen
+    uv run python -m brownbox.evaluate guards              # guard precision/recall, all sets
 
 Cases check what each was designed to test: does each guard fire, and how many messages late;
 do traps stay silent; does the router follow a real switch and hold steady through follow-ups.
 Practice and locked measure how often the router is right, with intervals, and what it costs;
 practice also measures how far to trust the labels (see score.py). The locked set is scored only
-with the router frozen, never to tune it. Results are saved to results/eval/.
+with the router frozen, never to tune it. Results are saved to results/eval/; `guards` pools the
+saved results, because each set alone has only a few conversations where a guard should fire.
 """
 
 import argparse
 from collections import Counter
+from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel
@@ -22,9 +25,8 @@ from pydantic import BaseModel
 from brownbox import llm
 from brownbox.cases import Case, load_cases
 from brownbox.classify import (
-    OTHER,
     ROUTER_MODEL,
-    UNCLEAR,
+    Routing,
     Step,
     route_conversation,
     router_prompts,
@@ -39,23 +41,28 @@ from brownbox.label import (
     load_suggestions,
 )
 from brownbox.models import Conversation, GoldLabel
-from brownbox.ontology import load_ontology
+from brownbox.ontology import OTHER, UNCLEAR, Ontology, load_ontology
 from brownbox.parse import load
 from brownbox.paths import RESULTS
 from brownbox.score import (
+    Confusion,
     ConversationScore,
     GuardCounts,
+    IntentStats,
     LabelQuality,
     Rate,
+    confusions,
     guard_counts,
     kappa,
     label_quality,
+    per_intent,
     rate,
     score_conversation,
     share,
 )
 
 EVAL_DIR = RESULTS / "eval"
+EvalSet = Literal["cases", "practice", "locked"]
 
 
 class CaseResult(BaseModel):
@@ -98,33 +105,11 @@ def score_case(case: Case, steps: list[Step]) -> CaseResult:
     )
 
 
-def run_cases(model: str, effort: llm.Effort | None) -> None:
-    ontology = load_ontology()
-    cases = load_cases(ontology)
-    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
-    runs = llm.run_all(
-        lambda c: route_conversation(c.conversation(), prompts, model, effort).steps,
-        cases,
-        "cases",
-    )
-    results = [score_case(c, s) for c, s in zip(cases, runs, strict=True)]
-
-    print(f"\nRouter {model} on {len(results)} hand-written cases\n")
-    by_kind = Counter(r.kind for r in results)
-    passed = Counter(r.kind for r in results if r.passed)
-    for kind in sorted(by_kind):
-        print(f"  {kind:7} {passed[kind]}/{by_kind[kind]} passed")
-    print(f"  {'total':7} {sum(passed.values())}/{len(results)}\n")
-    for r in results:
-        if not r.passed:
-            print(f"  #{r.id} {r.kind}: {r.detail}")
-
-
 class Report(BaseModel):
-    split: Literal["practice", "locked"]
+    split: EvalSet
     model: str
-    effort: str | None
-    labels: str  # Which labels were scored against: "mine" or "mine+silver".
+    effort: llm.Effort | None
+    labels: str  # Which labels: "hand-written" (cases), "mine" or "mine+silver".
     conversations: int
     intent_at_clear: Rate
     agent_at_clear: Rate
@@ -143,24 +128,32 @@ class Report(BaseModel):
     cost_usd: float
     mean_latency_s: float
     label_quality: LabelQuality | None  # Practice only: there are no model labels for locked.
+    per_intent: dict[str, IntentStats]  # At the clear message; few examples per intent.
+    confusions: list[Confusion]
     by_conversation: list[ConversationScore]
 
 
-def score_router(
-    split: Literal["practice", "locked"],
+def route_all(
+    convs: list[Conversation], ontology: Ontology, model: str, effort: llm.Effort | None
+) -> list[Routing]:
+    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
+    print(f"routing {len(convs)} conversations with {model}...", flush=True)
+    return llm.run_all(
+        lambda c: route_conversation(c, prompts, model, effort), convs, "conversations"
+    )
+
+
+def build_report(
+    split: EvalSet,
     convs: list[Conversation],
     labels: dict[int, GoldLabel],
     label_set: str,
     quality: LabelQuality | None,
+    routings: list[Routing],
+    ontology: Ontology,
     model: str,
     effort: llm.Effort | None,
 ) -> Report:
-    ontology = load_ontology()
-    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
-    print(f"routing {len(convs)} {split} conversations with {model}...", flush=True)
-    routings = llm.run_all(
-        lambda c: route_conversation(c, prompts, model, effort), convs, "conversations"
-    )
     agent_of = {i.id: i.agent for i in ontology.intents}
     scores = [
         score_conversation(labels[c.id], r.steps, agent_of)
@@ -193,32 +186,91 @@ def score_router(
         cost_usd=sum(llm.cost(u, model) for u in usage),
         mean_latency_s=sum(u.latency_s for u in usage) / len(usage),
         label_quality=quality,
+        per_intent=per_intent(scores),
+        confusions=confusions(scores),
         by_conversation=scores,
+    )
+
+
+def run_cases(model: str, effort: llm.Effort | None) -> Report:
+    ontology = load_ontology()
+    cases = load_cases(ontology)
+    convs = [c.conversation() for c in cases]
+    routings = route_all(convs, ontology, model, effort)
+    results = [score_case(c, r.steps) for c, r in zip(cases, routings, strict=True)]
+
+    print(f"\nRouter {model} on {len(results)} hand-written cases\n")
+    by_kind = Counter(r.kind for r in results)
+    passed = Counter(r.kind for r in results if r.passed)
+    for kind in sorted(by_kind):
+        print(f"  {kind:7} {passed[kind]}/{by_kind[kind]} passed")
+    print(f"  {'total':7} {sum(passed.values())}/{len(results)}\n")
+    for r in results:
+        if not r.passed:
+            print(f"  #{r.id} {r.kind}: {r.detail}")
+
+    labels = {c.id: c.label(ontology.version) for c in cases}
+    return build_report(
+        "cases", convs, labels, "hand-written", None, routings, ontology, model, effort
     )
 
 
 def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Report:
     original = load_labels(PRACTICE_LABELS)
     mine = original | load_adjudicated(ADJUDICATED)  # Score against corrected labels.
-    silver = load_suggestions(PRELABELS, load_ontology().version).agreed
+    silver = load_suggestions(PRELABELS).agreed
     labels: dict[int, GoldLabel] = (silver | mine) if with_silver else mine
     by_id = {c.id: c for c in load("practice")}
     quality = label_quality(original, silver)  # Labels as first made.
     label_set = "mine+silver" if with_silver else "mine"
     convs = [by_id[i] for i in sorted(labels)]
-    return score_router("practice", convs, labels, label_set, quality, model, effort)
+    ontology = load_ontology()
+    routings = route_all(convs, ontology, model, effort)
+    return build_report(
+        "practice", convs, labels, label_set, quality, routings, ontology, model, effort
+    )
 
 
 def run_locked(model: str, effort: llm.Effort | None) -> Report:
     """The final score: my blind labels on the locked set, whatever has been labelled so far."""
     labels = load_labels(LOCKED_LABELS)
+    if not labels:
+        raise SystemExit("no locked labels yet: run `make label-locked` first")
     by_id = {c.id: c for c in load("locked", unlock=True)}
     convs = [by_id[i] for i in sorted(labels)]
-    return score_router("locked", convs, labels, "mine", None, model, effort)
+    ontology = load_ontology()
+    routings = route_all(convs, ontology, model, effort)
+    return build_report("locked", convs, labels, "mine", None, routings, ontology, model, effort)
 
 
 def percent(r: Rate) -> str:
+    if not r.total:
+        return "   –"
     return f"{r.value:4.0%} ({r.hits}/{r.total})  95% CI {r.low:.0%}–{r.high:.0%}"
+
+
+def guard_table(guards: dict[str, GuardCounts]) -> list[str]:
+    lines = ["  Guard                   recall                        precision"]
+    for g, c in guards.items():
+        if c.expected or c.fired:
+            lines.append(f"    {g:22}{percent(c.recall):30}{percent(c.precision)}")
+            lines.append(f"    {'':22}flag rate {c.flag_rate.value:.0%}; messages late: {c.delays}")
+    return lines
+
+
+def intent_table(stats: dict[str, IntentStats]) -> list[str]:
+    lines = [
+        "  Per intent at the clear message. Few examples each: read as where to look.",
+        f"    {'intent':26}{'n':>3}{'pred':>5}  {'recall':>8}  {'precision':>9}  {'F1':>4}",
+    ]
+    for i, s in stats.items():
+        recall = f"{s.recall.value:.0%}" if s.recall.total else "–"
+        precision = f"{s.precision.value:.0%}" if s.precision.total else "–"
+        f1 = f"{s.f1:.2f}" if s.f1 is not None else "–"
+        lines.append(
+            f"    {i:26}{s.support:>3}{s.predicted:>5}  {recall:>8}  {precision:>9}  {f1:>4}"
+        )
+    return lines
 
 
 def print_report(report: Report) -> None:
@@ -236,12 +288,8 @@ def print_report(report: Report) -> None:
         f"  Real switches                       {report.switches}, missed "
         f"{report.switches_missed}, messages to follow: {report.switch_delays}",
         f"  False alarms (guard, none expected) {percent(report.false_alarms)}",
-        "  Guards: expected / fired / caught / delay in messages",
-    ]
-    lines += [
-        f"    {g:22} {c.expected} / {c.fired} / {c.caught} / {c.delays}"
-        for g, c in report.guards.items()
-        if c.expected or c.fired
+        "",
+        *guard_table(report.guards),
     ]
     if q := report.label_quality:
         lines += [
@@ -254,37 +302,70 @@ def print_report(report: Report) -> None:
         f"\n  Cost ${report.cost_usd:.2f} for {report.calls} calls "
         f"(${report.cost_usd / report.conversations:.4f} per conversation), "
         f"mean latency {report.mean_latency_s:.1f}s per call",
-        "\n  Wrong when it became clear:",
+        "",
+        *intent_table(report.per_intent),
+        "\n  Confusions at the clear message (labelled → router):",
     ]
     lines += [
-        f"    #{s.id} ({s.mode}) expected {s.expected}, got {s.at_clear}"
-        + (" (same agent)" if s.agent_correct_at_clear else "")
-        for s in report.by_conversation
-        if not s.correct_at_clear
+        f"    {c.count} × {c.expected} → {c.got}" + (" (same agent)" if c.same_agent else "")
+        for c in report.confusions
     ]
     print("\n".join(lines))
 
 
+def report_path(split: EvalSet, labels: str, model: str, effort: llm.Effort | None) -> Path:
+    return EVAL_DIR / f"{split}-{labels}-{model}-{effort or 'default'}.json"
+
+
+def save(report: Report) -> Path:
+    path = report_path(report.split, report.labels, report.model, report.effort)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(report.model_dump_json(indent=2))
+    return path
+
+
+def run_guards(model: str, effort: llm.Effort | None) -> None:
+    """Guard precision and recall from the saved reports, per set and pooled."""
+    sets: list[tuple[EvalSet, str]] = [
+        ("cases", "hand-written"),
+        ("practice", "mine"),
+        ("locked", "mine"),
+    ]
+    reports = []
+    for split, labels in sets:
+        path = report_path(split, labels, model, effort)
+        if not path.exists():
+            raise SystemExit(f"no saved {split} results for {model}: run `evaluate {split}` first")
+        reports.append(Report.model_validate_json(path.read_text()))
+    guards = [g.id for g in load_ontology().guards]
+    for r in reports:
+        print(f"\n{r.split} ({r.conversations} conversations)")
+        print("\n".join(guard_table(r.guards)))
+    pooled = [s for r in reports for s in r.by_conversation]
+    print(f"\nAll sets pooled ({len(pooled)} conversations)")
+    print("\n".join(guard_table(guard_counts(pooled, guards))))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("set", choices=["cases", "practice", "locked"])
+    parser.add_argument("set", choices=["cases", "practice", "locked", "guards"])
     parser.add_argument("--model", default=ROUTER_MODEL)
     parser.add_argument("--effort", choices=["low", "medium", "high"])
     parser.add_argument("--silver", action="store_true", help="also score the silver labels")
     args = parser.parse_args()
 
-    if args.set == "cases":
-        run_cases(args.model, args.effort)
+    if args.set == "guards":
+        run_guards(args.model, args.effort)
         return
-    if args.set == "locked":
-        report = run_locked(args.model, args.effort)
+    if args.set == "cases":
+        path = save(run_cases(args.model, args.effort))
     else:
-        report = run_practice(args.model, args.effort, args.silver)
-    EVAL_DIR.mkdir(parents=True, exist_ok=True)
-    name = f"{report.split}-{report.labels}-{report.model}-{report.effort or 'default'}.json"
-    path = EVAL_DIR / name
-    path.write_text(report.model_dump_json(indent=2))
-    print_report(report)
+        if args.set == "locked":
+            report = run_locked(args.model, args.effort)
+        else:
+            report = run_practice(args.model, args.effort, args.silver)
+        path = save(report)
+        print_report(report)
     print(f"\nSaved {path.relative_to(RESULTS.parent)}")
 
 

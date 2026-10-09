@@ -1,4 +1,4 @@
-"""Stage 6: the router. Reads a conversation one customer message at a time.
+"""The router. Reads a conversation one customer message at a time.
 
 After each customer message, one model call gives the intent (or "unclear" / "other") and
 whether the message changes the request; a separate yes/no call per guard checks the message
@@ -14,13 +14,11 @@ from pydantic import BaseModel, Field, create_model
 
 from brownbox import llm
 from brownbox.models import Conversation
-from brownbox.ontology import Guard, Ontology
+from brownbox.ontology import OTHER, UNCLEAR, Guard, Ontology
 from brownbox.parse import cut_after_customer_message
 from brownbox.prompts import format_conversation, render_ontology
 
 ROUTER_MODEL = "claude-haiku-4-5"
-OTHER = "other"
-UNCLEAR = "unclear"
 
 ROUTER_INSTRUCTIONS = """You route customer support conversations for BrownBox, an online \
 retailer. You see the conversation so far, up to the customer's latest message.
@@ -65,6 +63,14 @@ class Routing:
     usage: list[llm.Usage]
 
 
+# The shape of the router's answer; router_schema narrows `intent` to the ontology's ids.
+class RouterAnswer(BaseModel):
+    intent: str
+    changes_request: bool = Field(
+        description="Does the latest message change what the customer wants handled?"
+    )
+
+
 class GuardCheck(BaseModel):
     quote: str = Field(description="The customer's words that trigger the check, or empty")
     fires: bool
@@ -75,7 +81,7 @@ class RouterPrompts:
     """Everything the router sends: the intent prompt and its schema, and one prompt per guard."""
 
     system: str
-    schema: type[BaseModel]
+    schema: type[RouterAnswer]
     guards: dict[str, str]  # Guard id -> that guard's system prompt.
 
 
@@ -90,16 +96,9 @@ class Decision:
     signoff_actions: tuple[str, ...] = ()
 
 
-def router_schema(ontology: Ontology) -> type[BaseModel]:
+def router_schema(ontology: Ontology) -> type[RouterAnswer]:
     intents = [*(i.id for i in ontology.intents), OTHER, UNCLEAR]
-    return create_model(
-        "RouterOutput",
-        intent=(str, llm.one_of(intents)),
-        changes_request=(
-            bool,
-            Field(description="Does the latest message change what the customer wants handled?"),
-        ),
-    )
+    return create_model("RouterOutput", __base__=RouterAnswer, intent=(str, llm.one_of(intents)))
 
 
 def guard_system(guard: Guard) -> str:
@@ -123,10 +122,8 @@ def route_conversation(
     prompts: RouterPrompts,
     model: str = ROUTER_MODEL,
     effort: llm.Effort | None = None,
-    run: int = 0,
-    upto: int | None = None,
 ) -> Routing:
-    """Classify after each customer message (up to `upto`), carrying the current intent.
+    """Classify after each customer message, carrying the current intent.
 
     Once there is a real intent, it only changes when the model says the latest message
     changes the request: the model judges the message, code decides whether to switch.
@@ -137,7 +134,7 @@ def route_conversation(
     usage: list[llm.Usage] = []
     current = UNCLEAR  # Nothing said yet.
     fired: set[str] = set()
-    for k in range(1, min(n, upto or n) + 1):
+    for k in range(1, n + 1):
         prefix = Conversation(
             id=conv.id, split=conv.split, turns=tuple(cut_after_customer_message(conv.turns, k))
         )
@@ -145,20 +142,19 @@ def route_conversation(
         settled = current not in (UNCLEAR, OTHER)
         user = transcript + (f"\n\nCurrent intent so far: {current}" if settled else "")
         reply = llm.structured(
-            llm.Request(model, prompts.system, user, max_tokens=512, effort=effort, run=run),
+            llm.Request(model, prompts.system, user, max_tokens=512, effort=effort),
             prompts.schema,
         )
         usage.append(reply.usage)
-        raw = reply.output.model_dump(mode="json")
-        if not settled or raw["changes_request"]:
-            current = raw["intent"]
+        if not settled or reply.output.changes_request:
+            current = reply.output.intent
 
         new_guards = []
         for guard, system in prompts.guards.items():
             if guard in fired:
                 continue
             check = llm.structured(
-                llm.Request(model, system, transcript, max_tokens=256, effort=effort, run=run),
+                llm.Request(model, system, transcript, max_tokens=256, effort=effort),
                 GuardCheck,
             )
             usage.append(check.usage)

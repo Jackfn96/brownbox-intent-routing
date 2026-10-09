@@ -1,4 +1,4 @@
-"""Stage 5: two models suggest labels for the 170 assisted practice conversations.
+"""Two models suggest labels for the 170 assisted practice conversations.
 
 Where the two models agree, the labelling tool shows their suggestion for you to confirm.
 Where they disagree, you label from scratch. The first 30 (your blind batch) are only
@@ -9,23 +9,20 @@ router we evaluate (Haiku, message by message), to limit circularity.
 """
 
 import argparse
-import json
-from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field, create_model
+from pydantic import BaseModel, Field, create_model
 
 from brownbox import llm
 from brownbox.label import (
     BLIND_BATCH,
-    OTHER,
     PRACTICE_LABELS,
-    PRACTICE_SIZE,
     PRELABELS,
     labelling_order,
     load_labels,
+    read_prelabels,
 )
-from brownbox.models import Conversation
-from brownbox.ontology import Ontology, load_ontology
+from brownbox.models import Conversation, PreLabel, Proposal
+from brownbox.ontology import OTHER, Ontology, load_ontology
 from brownbox.parse import load
 from brownbox.prompts import format_conversation, render_ontology
 
@@ -52,31 +49,31 @@ class GuardHit(BaseModel):
     message: int
 
 
-class Proposal(BaseModel):
-    """A suggested label, checked against the ontology after the model returns it."""
-
-    model_config = ConfigDict(frozen=True)
-
+# The shape of a model's answer. proposal_schema narrows it to the ontology's ids; the API's
+# fixed-choice fields use "none" and 0 where a Proposal has None.
+class Answer(BaseModel):
     primary: str
-    secondary: str | None
-    clear_at: int = Field(ge=1)
-    switch_at: int | None
-    switch_to: str | None
-    guards: dict[str, int]
+    secondary: str
+    clear_at: int
+    switch_at: int
+    switch_to: str
+    guards: list[GuardHit]
 
 
-def proposal_schema(ontology: Ontology) -> type[BaseModel]:
+def proposal_schema(ontology: Ontology) -> type[Answer]:
     """The output format sent to the API. Ids are listed as allowed values, so the model can
     only answer with real intents and guards."""
     intents = [*(i.id for i in ontology.intents), OTHER]
     one_of = llm.one_of
     hit = create_model(
         "GuardHitOut",
+        __base__=GuardHit,
         guard=(str, one_of([g.id for g in ontology.guards])),
         message=(int, Field(description="Customer message number where it first applies")),
     )
     return create_model(
         "LabelProposal",
+        __base__=Answer,
         primary=(str, one_of(intents)),
         secondary=(str, one_of([*intents, NONE], "A second, separate request, or none")),
         clear_at=(int, Field(description="Customer message where the primary becomes clear")),
@@ -86,20 +83,19 @@ def proposal_schema(ontology: Ontology) -> type[BaseModel]:
     )
 
 
-def to_proposal(raw: dict[str, Any]) -> Proposal:
+def to_proposal(answer: Answer) -> Proposal:
     """Turn the API's fixed-choice answer back into a Proposal ("none" and 0 become None)."""
-    hits = [GuardHit.model_validate(h) for h in raw["guards"]]
     return Proposal(
-        primary=raw["primary"],
-        secondary=None if raw["secondary"] == NONE else raw["secondary"],
-        clear_at=raw["clear_at"],
-        switch_at=raw["switch_at"] or None,
-        switch_to=None if raw["switch_to"] == NONE else raw["switch_to"],
-        guards={h.guard: h.message for h in hits},
+        primary=answer.primary,
+        secondary=None if answer.secondary == NONE else answer.secondary,
+        clear_at=answer.clear_at,
+        switch_at=answer.switch_at or None,
+        switch_to=None if answer.switch_to == NONE else answer.switch_to,
+        guards={h.guard: h.message for h in answer.guards},
     )
 
 
-def suggest(conv: Conversation, model: str, system: str, schema: type[BaseModel]) -> Proposal:
+def suggest(conv: Conversation, model: str, system: str, schema: type[Answer]) -> Proposal:
     req = llm.Request(
         model=model,
         system=system,
@@ -107,7 +103,7 @@ def suggest(conv: Conversation, model: str, system: str, schema: type[BaseModel]
         max_tokens=4000,
         effort="low",
     )
-    return to_proposal(llm.structured(req, schema).output.model_dump(mode="json"))
+    return to_proposal(llm.structured(req, schema).output)
 
 
 def main() -> None:
@@ -127,7 +123,7 @@ def main() -> None:
         if missing:
             raise SystemExit(f"label the blind batch first: {len(missing)} still to do")
     else:
-        batch = order[BLIND_BATCH:PRACTICE_SIZE]
+        batch = order[BLIND_BATCH:]
 
     examples = {c.id: c for c in load("dev")}
     system = INSTRUCTIONS + "\n\n" + render_ontology(ontology, examples)
@@ -136,18 +132,18 @@ def main() -> None:
     print(f"pre-labelling {len(batch)} conversations with {', '.join(MODELS)}...", flush=True)
     proposals = llm.run_all(lambda job: suggest(job[0], job[1], system, schema), jobs, "labels")
 
+    done = {(r.id, r.model) for r in read_prelabels(PRELABELS)}
     PRELABELS.parent.mkdir(parents=True, exist_ok=True)
-    existing = PRELABELS.read_text() if PRELABELS.exists() else ""
-    done = {(r["id"], r["model"]) for r in map(json.loads, existing.splitlines())}
     with PRELABELS.open("a") as f:
         for (conv, model), p in zip(jobs, proposals, strict=True):
             if (conv.id, model) not in done:
-                f.write(json.dumps({"id": conv.id, "model": model, **p.model_dump()}) + "\n")
+                row = {"id": conv.id, "model": model, "ontology_version": ontology.version}
+                f.write(PreLabel.model_validate(p.model_dump() | row).model_dump_json() + "\n")
 
     by_id: dict[int, list[Proposal]] = {}
     for (conv, _), p in zip(jobs, proposals, strict=True):
         by_id.setdefault(conv.id, []).append(p)
-    agree = sum(a.primary == b.primary for a, b in by_id.values())
+    agree = sum(len({p.primary for p in ps}) == 1 for ps in by_id.values())
     print(f"models agree on the primary intent for {agree} of {len(by_id)} conversations")
 
 
