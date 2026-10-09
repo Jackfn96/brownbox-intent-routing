@@ -108,3 +108,19 @@ def test_cache_key_changes_with_prompt_and_schema() -> None:
     base = llm.cache_key(REQ, Answer)
     assert llm.cache_key(dataclasses.replace(REQ, system="Other."), Answer) != base
     assert llm.cache_key(REQ, Other) != base
+
+
+def test_run_all_keeps_input_order() -> None:
+    assert llm.run_all(lambda x: x * 2, list(range(120)), "test") == [x * 2 for x in range(120)]
+
+
+def test_cost_prices_each_kind_of_token() -> None:
+    usage = llm.Usage(
+        input_tokens=1_000_000,
+        output_tokens=1_000_000,
+        cache_read_tokens=1_000_000,
+        cache_write_tokens=1_000_000,
+        latency_s=1.0,
+    )
+    # Haiku 4.5: $1 input + $5 output + $0.10 cache read + $1.25 cache write.
+    assert llm.cost(usage, "claude-haiku-4-5") == pytest.approx(7.35)

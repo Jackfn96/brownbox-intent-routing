@@ -12,10 +12,9 @@ import argparse
 import json
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field, JsonValue, create_model
+from pydantic import BaseModel, ConfigDict, Field, create_model
 
 from brownbox import llm
-from brownbox.discover import run_all
 from brownbox.label import (
     BLIND_BATCH,
     OTHER,
@@ -70,11 +69,7 @@ def proposal_schema(ontology: Ontology) -> type[BaseModel]:
     """The output format sent to the API. Ids are listed as allowed values, so the model can
     only answer with real intents and guards."""
     intents = [*(i.id for i in ontology.intents), OTHER]
-
-    def one_of(values: list[str], description: str = "") -> Any:
-        choices: list[JsonValue] = [*values]
-        return Field(description=description, json_schema_extra={"enum": choices})
-
+    one_of = llm.one_of
     hit = create_model(
         "GuardHitOut",
         guard=(str, one_of([g.id for g in ontology.guards])),
@@ -139,7 +134,7 @@ def main() -> None:
     schema = proposal_schema(ontology)
     jobs = [(conv, model) for conv in batch for model in MODELS]
     print(f"pre-labelling {len(batch)} conversations with {', '.join(MODELS)}...", flush=True)
-    proposals = run_all(lambda job: suggest(job[0], job[1], system, schema), jobs, "labels")
+    proposals = llm.run_all(lambda job: suggest(job[0], job[1], system, schema), jobs, "labels")
 
     PRELABELS.parent.mkdir(parents=True, exist_ok=True)
     existing = PRELABELS.read_text() if PRELABELS.exists() else ""

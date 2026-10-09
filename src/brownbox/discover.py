@@ -10,8 +10,6 @@ Only DEV conversations are used. Output: results/discovery/.
 import json
 import random
 from collections import Counter
-from collections.abc import Callable
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Literal
 
 import numpy as np
@@ -35,7 +33,6 @@ N_CLUSTERS = 35  # Deliberately more than we expect intents: merging is easier t
 K_SWEEP = range(15, 60, 5)
 EXAMPLES_PER_NAME = 20
 EXAMPLES_IN_REPORT = 6
-WORKERS = 8
 SEED = 42
 
 
@@ -142,22 +139,10 @@ def number_by_size(labels: NDArray[np.int64]) -> NDArray[np.int64]:
     return np.array([new_id[int(old)] for old in labels], dtype=np.int64)
 
 
-def run_all[I, O](fn: Callable[[I], O], items: list[I], label: str) -> list[O]:
-    """Run fn over items in parallel, keep their order, and print progress as it goes."""
-    done: dict[int, O] = {}
-    with ThreadPoolExecutor(WORKERS) as pool:
-        futures = {pool.submit(fn, item): i for i, item in enumerate(items)}
-        for future in as_completed(futures):
-            done[futures[future]] = future.result()
-            if len(done) % 50 == 0 or len(done) == len(items):
-                print(f"  {label}: {len(done)}/{len(items)}", flush=True)
-    return [done[i] for i in range(len(items))]
-
-
 def main() -> None:
     convs = load("dev")
     print(f"summarising {len(convs)} DEV conversations with {GOAL_MODEL}...", flush=True)
-    goals = run_all(summarise, convs, "goals")
+    goals = llm.run_all(summarise, convs, "goals")
 
     vectors = embed([g.goal for g in goals])
     sweep = {
@@ -167,7 +152,7 @@ def main() -> None:
     members = [np.flatnonzero(labels == c).tolist() for c in range(1, N_CLUSTERS + 1)]
 
     print(f"naming {N_CLUSTERS} clusters with {NAME_MODEL}...", flush=True)
-    names = run_all(name_cluster, [[goals[i].goal for i in m] for m in members], "names")
+    names = llm.run_all(name_cluster, [[goals[i].goal for i in m] for m in members], "names")
     clusters = [
         Cluster(
             cluster=c,

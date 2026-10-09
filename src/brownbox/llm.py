@@ -8,13 +8,15 @@ import dataclasses
 import hashlib
 import json
 import time
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from functools import cache
-from typing import Literal
+from typing import Any, Literal
 
 import anthropic
 from dotenv import load_dotenv
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, Field, JsonValue, ValidationError
 
 from brownbox.paths import CACHE
 
@@ -24,6 +26,7 @@ MAX_ATTEMPTS = 3
 # hung connection block a worker for half an hour.
 TIMEOUT_S = 120.0
 SDK_RETRIES = 3
+WORKERS = 8  # Parallel calls in run_all.
 
 # Models that accept Anthropic's server-side refusal fallback in its "default" form.
 FALLBACK_MODELS = {"claude-opus-5-5", "claude-sonnet-5-5"}
@@ -58,6 +61,35 @@ class Usage(BaseModel):
     latency_s: float
 
 
+class Price(BaseModel):
+    """US dollars per million tokens."""
+
+    input: float
+    output: float
+    cache_read: float
+
+
+# Opus 5.5 and Sonnet 5.5 from Anthropic's model docs; Haiku 4.5 from the pricing page.
+PRICES = {
+    "claude-haiku-4-5": Price(input=1.0, output=5.0, cache_read=0.10),
+    "claude-sonnet-5-5": Price(input=2.0, output=10.0, cache_read=0.20),
+    "claude-opus-5-5": Price(input=4.0, output=20.0, cache_read=0.20),
+}
+CACHE_WRITE_MULTIPLIER = 1.25  # 5-minute cache writes cost 1.25x the input price.
+
+
+def cost(usage: Usage, model: str) -> float:
+    """What a call cost in US dollars."""
+    p = PRICES[model]
+    dollars_per_mtok = (
+        usage.input_tokens * p.input
+        + usage.cache_write_tokens * p.input * CACHE_WRITE_MULTIPLIER
+        + usage.cache_read_tokens * p.cache_read
+        + usage.output_tokens * p.output
+    )
+    return dollars_per_mtok / 1_000_000
+
+
 @dataclass(frozen=True)
 class Reply[T: BaseModel]:
     output: T
@@ -85,6 +117,13 @@ def structured[T: BaseModel](req: Request, schema: type[T]) -> Reply[T]:
         path.write_text(json.dumps(record))
         return Reply(output, usage, from_cache=False)
     raise LLMError(f"{req.model}: no valid output after {MAX_ATTEMPTS} attempts: {errors}")
+
+
+def one_of(values: list[str], description: str = "") -> Any:
+    """A string field whose allowed values are listed in the output schema, so the model can
+    only answer with one of them. For choices built at runtime, e.g. ontology ids."""
+    choices: list[JsonValue] = [*values]
+    return Field(description=description, json_schema_extra={"enum": choices})
 
 
 def cache_key(req: Request, schema: type[BaseModel]) -> str:
@@ -129,3 +168,15 @@ def _call_provider[T: BaseModel](req: Request, schema: type[T]) -> tuple[T, Usag
         cache_write_tokens=msg.usage.cache_creation_input_tokens or 0,
         latency_s=latency,
     )
+
+
+def run_all[I, O](fn: Callable[[I], O], items: list[I], label: str) -> list[O]:
+    """Run fn over items in parallel, keep their order, and print progress as it goes."""
+    done: dict[int, O] = {}
+    with ThreadPoolExecutor(WORKERS) as pool:
+        futures = {pool.submit(fn, item): i for i, item in enumerate(items)}
+        for future in as_completed(futures):
+            done[futures[future]] = future.result()
+            if len(done) % 50 == 0 or len(done) == len(items):
+                print(f"  {label}: {len(done)}/{len(items)}", flush=True)
+    return [done[i] for i in range(len(items))]
