@@ -50,11 +50,24 @@ def test_parse_message_uses_default_and_bounds() -> None:
 
 def test_parse_guards_records_the_message_each_fires_at() -> None:
     assert label.parse_guards("", KEYS, 5) == {}
-    assert label.parse_guards("w5, f", KEYS, 5) == {"fraud_or_takeover": 1, "wants_human": 5}
+    assert label.parse_guards("w5, f1", KEYS, 5) == {"fraud_or_takeover": 1, "wants_human": 5}
     with pytest.raises(ValueError, match="unknown guard"):
-        label.parse_guards("z", KEYS, 5)
+        label.parse_guards("z1", KEYS, 5)
+    with pytest.raises(ValueError, match="1 to 5"):
+        label.parse_guards("w", KEYS, 5)
     with pytest.raises(ValueError, match="1 to 5"):
         label.parse_guards("f9", KEYS, 5)
+
+
+def test_describe_shows_every_field() -> None:
+    names = {"cancel_order": "Cancel order", "initiate_return": "Initiate return"}
+    card = label.describe(
+        gold(1, switch_at=3, switch_to="initiate_return", guards={"wants_human": 4}), names
+    )
+    assert "Cancel order, clear from C1" in card
+    assert "Second    none" in card
+    assert "at C3 to Initiate return" in card
+    assert "wants_human from C4" in card
 
 
 def test_labelling_order_is_fixed_regardless_of_input_order() -> None:
@@ -74,6 +87,17 @@ def test_saved_labels_reload(tmp_path: Path) -> None:
     assert set(label.load_labels(path)) == {1, 2}
 
 
+def test_adjudication_keeps_the_original_and_the_latest_correction_wins(tmp_path: Path) -> None:
+    path = tmp_path / "adjudicated.jsonl"
+    original = gold(1, guards={"complaint": 3})
+    label.adjudicate(path, original, {"guards": {}}, "dissatisfaction, nothing asked for")
+    label.adjudicate(path, original, {"primary": "order_status"}, "second look")
+    assert label.load_adjudicated(path)[1].primary == "order_status"
+    assert original.guards == {"complaint": 3}
+    with pytest.raises(ValidationError):
+        label.adjudicate(path, original, {"switch_at": 2}, "switch_at without switch_to")
+
+
 def test_switch_needs_both_fields() -> None:
     with pytest.raises(ValidationError, match="go together"):
         gold(1, switch_at=3)
@@ -87,12 +111,35 @@ def test_parse_intent_blank_accepts_the_suggestion() -> None:
 
 
 def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
+    def row(id: int, model: str, primary: str, secondary: str | None = None) -> dict[str, object]:
+        return {
+            "id": id,
+            "model": model,
+            "primary": primary,
+            "secondary": secondary,
+            "clear_at": 1,
+            "switch_at": None,
+            "switch_to": None,
+            "guards": {},
+        }
+
     path = tmp_path / "prelabels.jsonl"
     rows = [
-        {"id": 1, "model": "a", "primary": "cancel_order"},
-        {"id": 1, "model": "b", "primary": "cancel_order"},
-        {"id": 2, "model": "a", "primary": "cancel_order"},
-        {"id": 2, "model": "b", "primary": "initiate_return"},
+        row(1, "a", "cancel_order"),
+        row(1, "b", "cancel_order"),
+        row(2, "a", "cancel_order"),
+        row(2, "b", "initiate_return"),
+        row(3, "a", "cancel_order"),
+        row(3, "b", "cancel_order", secondary="order_status"),
     ]
     path.write_text("".join(json.dumps(r) + "\n" for r in rows))
-    assert label.load_suggestions(path) == {1: "cancel_order"}
+    suggestions = label.load_suggestions(path, ontology_version="1")
+    assert suggestions.primary == {1: "cancel_order", 3: "cancel_order"}
+    assert list(suggestions.agreed) == [1]
+    assert suggestions.agreed[1].mode == "silver"
+
+
+def test_assisted_batch_keeps_disagreements_and_audits_the_first_agreed() -> None:
+    convs = [Conversation(id=i, split="practice", turns=()) for i in range(1, 7)]
+    batch = label.assisted_batch(convs, agreed=frozenset({1, 3, 4, 6}), audit_size=2)
+    assert [c.id for c in batch] == [1, 2, 3, 5]

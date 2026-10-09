@@ -36,7 +36,10 @@ class GoldLabel(BaseModel):
     switch_at: int | None = Field(default=None, ge=2)  # Customer message where they change request.
     switch_to: str | None = None
     guards: dict[str, int] = {}  # Guard id -> customer message where it should first fire.
-    mode: Literal["blind", "assisted", "synthetic"]
+    note: str | None = None  # Why this one is an edge case, for review after labelling.
+    # blind: labelled with no model suggestion; assisted: with one; synthetic: a hand-written
+    # case; silver: not hand-labelled, both pre-labelling models gave this exact label.
+    mode: Literal["blind", "assisted", "synthetic", "silver"]
     ontology_version: str
 
     @model_validator(mode="after")
@@ -44,3 +47,13 @@ class GoldLabel(BaseModel):
         if (self.switch_at is None) != (self.switch_to is None):
             raise ValueError("switch_at and switch_to go together")
         return self
+
+
+class Adjudication(BaseModel):
+    """A label corrected after review. The original stays as it was, because the blind and
+    audit checks measure the labels as first made."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    label: GoldLabel
+    reason: str

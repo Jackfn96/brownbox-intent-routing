@@ -1,0 +1,85 @@
+{"id":26,"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":713,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":383,"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":438,"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":546,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":491,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":351,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":696,"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":129,"primary":"close_account","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":425,"primary":"installation_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"Edge case","mode":"blind","ontology_version":"1"}
+{"id":172,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":394,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":446,"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":233,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"Edge case, arguably a complaint","mode":"blind","ontology_version":"1"}
+{"id":212,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":180,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":479,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":924,"primary":"charge_dispute","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":"complaint","mode":"blind","ontology_version":"1"}
+{"id":232,"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"customer is frustrated","mode":"blind","ontology_version":"1"}
+{"id":816,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":807,"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":584,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":626,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":6,"switch_to":"warranty_claim","guards":{},"note":"goes from returns to warranty claim","mode":"blind","ontology_version":"1"}
+{"id":601,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":883,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":934,"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":429,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":355,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":510,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":846,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":352,"primary":"refund_status","secondary":"initiate_return","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":388,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":728,"primary":"delivery_charges","secondary":"faster_delivery","clear_at":3,"switch_at":3,"switch_to":"faster_delivery","guards":{},"note":"switches back to 7 on c5","mode":"assisted","ontology_version":"1"}
+{"id":437,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":237,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":356,"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":192,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":898,"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":627,"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":662,"primary":"return_policy","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"weird case and is somewhat incoherent when being asked to ship it back but ois out of stock?","mode":"assisted","ontology_version":"1"}
+{"id":416,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":506,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":121,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":4},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":327,"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":459,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":517,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":430,"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":280,"primary":"account_lockout","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"could be 19 needs clarification perhaps","mode":"assisted","ontology_version":"1"}
+{"id":920,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":174,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":588,"primary":"pricing_question","secondary":"offers_and_discounts","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":29,"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":173,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":800,"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":300,"primary":"shipping_availability","secondary":"initiate_return","clear_at":1,"switch_at":5,"switch_to":"initiate_return","guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":921,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":981,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":850,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":492,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"could be 16, needs clarity over warranty cards and that relating to wanting to claim","mode":"assisted","ontology_version":"1"}
+{"id":851,"primary":"invoice_request","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":344,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":910,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"maybe 17 shoukdrenarenamed to warranty claims because here she isnt claiming a repair shes claiming a replacement","mode":"assisted","ontology_version":"1"}
+{"id":631,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"ontology mamay need adjusting so that 8 covers this case","mode":"blind","ontology_version":"1"}
+{"id":185,"primary":"charge_dispute","secondary":"warranty_claim","clear_at":3,"switch_at":null,"switch_to":null,"guards":{},"note":"starts with dispute fee, ththen goes to product not working as expected. needs warranty?","mode":"assisted","ontology_version":"1"}
+{"id":919,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":839,"primary":"reactivate_account","secondary":"password_reset","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"requires password reset in order to reactivate account so could be both intents here?","mode":"assisted","ontology_version":"1"}
+{"id":79,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":876,"primary":"return_policy","secondary":"initiate_return","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"goes from wanting to understand return policy to in c5 wanting to enact a return, should these intents be merged?","mode":"blind","ontology_version":"1"}
+{"id":718,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":7},"note":"maybe needs adjusted ontology so we can deal with product defects that then route to warranty or refund etc based on why","mode":"assisted","ontology_version":"1"}
+{"id":867,"primary":"initiate_return","secondary":"warranty_claim","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"debatele - perhaps we need aan intent to deal with product defects then options from there","mode":"blind","ontology_version":"1"}
+{"id":988,"primary":"return_policy","secondary":"other","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"product info goes in other","mode":"assisted","ontology_version":"1"}
+{"id":836,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":598,"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":11},"note":"c12","mode":"assisted","ontology_version":"1"}
+{"id":960,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":6},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":965,"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":"c9","mode":"assisted","ontology_version":"1"}
+{"id":136,"primary":"change_delivery_address","secondary":"redeliver_order","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"goes from 3 to 5 asking for new delivery date","mode":"assisted","ontology_version":"1"}
+{"id":310,"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":28,"primary":"shipping_availability","secondary":"faster_delivery","clear_at":1,"switch_at":3,"switch_to":"faster_delivery","guards":{},"note":null,"mode":"blind","ontology_version":"1"}
+{"id":630,"primary":"order_status","secondary":"redeliver_order","clear_at":1,"switch_at":5,"switch_to":"redeliver_order","guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":387,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"arguably anothranother intent to ask about shipping","mode":"assisted","ontology_version":"1"}
+{"id":147,"primary":"ordering_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":961,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":811,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"assisted","ontology_version":"1"}
+{"id":556,"primary":"initiate_return","secondary":"faster_delivery","clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"dual intent wants a faster return","mode":"blind","ontology_version":"1"}
+{"id":250,"primary":"other","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"arguably a category for porproduct queries","mode":"blind","ontology_version":"1"}
