@@ -4,15 +4,18 @@
     uv run python -m brownbox.evaluate practice            # practice, my labels only
     uv run python -m brownbox.evaluate practice --silver   # plus the silver labels
     uv run python -m brownbox.evaluate practice --model claude-sonnet-5-5 --effort low
+    uv run python -m brownbox.evaluate locked              # the final score, router frozen
 
 Cases check what each was designed to test: does each guard fire, and how many messages late;
 do traps stay silent; does the router follow a real switch and hold steady through follow-ups.
-Practice measures how often the router is right, with intervals, what it costs, and how far to
-trust the labels (see score.py). Practice results are saved to results/eval/.
+Practice and locked measure how often the router is right, with intervals, and what it costs;
+practice also measures how far to trust the labels (see score.py). The locked set is scored only
+with the router frozen, never to tune it. Results are saved to results/eval/.
 """
 
 import argparse
 from collections import Counter
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -28,13 +31,14 @@ from brownbox.classify import (
 )
 from brownbox.label import (
     ADJUDICATED,
+    LOCKED_LABELS,
     PRACTICE_LABELS,
     PRELABELS,
     load_adjudicated,
     load_labels,
     load_suggestions,
 )
-from brownbox.models import GoldLabel
+from brownbox.models import Conversation, GoldLabel
 from brownbox.ontology import load_ontology
 from brownbox.parse import load
 from brownbox.paths import RESULTS
@@ -116,7 +120,8 @@ def run_cases(model: str, effort: llm.Effort | None) -> None:
             print(f"  #{r.id} {r.kind}: {r.detail}")
 
 
-class PracticeReport(BaseModel):
+class Report(BaseModel):
+    split: Literal["practice", "locked"]
     model: str
     effort: str | None
     labels: str  # Which labels were scored against: "mine" or "mine+silver".
@@ -137,21 +142,22 @@ class PracticeReport(BaseModel):
     calls: int
     cost_usd: float
     mean_latency_s: float
-    label_quality: LabelQuality
+    label_quality: LabelQuality | None  # Practice only: there are no model labels for locked.
     by_conversation: list[ConversationScore]
 
 
-def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> PracticeReport:
+def score_router(
+    split: Literal["practice", "locked"],
+    convs: list[Conversation],
+    labels: dict[int, GoldLabel],
+    label_set: str,
+    quality: LabelQuality | None,
+    model: str,
+    effort: llm.Effort | None,
+) -> Report:
     ontology = load_ontology()
-    original = load_labels(PRACTICE_LABELS)
-    mine = original | load_adjudicated(ADJUDICATED)  # Score against corrected labels.
-    silver = load_suggestions(PRELABELS, ontology.version).agreed
-    labels: dict[int, GoldLabel] = (silver | mine) if with_silver else mine
-    by_id = {c.id: c for c in load("practice")}
-    convs = [by_id[i] for i in sorted(labels)]
-
     prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
-    print(f"routing {len(convs)} practice conversations with {model}...", flush=True)
+    print(f"routing {len(convs)} {split} conversations with {model}...", flush=True)
     routings = llm.run_all(
         lambda c: route_conversation(c, prompts, model, effort), convs, "conversations"
     )
@@ -164,10 +170,11 @@ def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Pr
     switched = [s for s in scores if s.switch_delay is not None or s.switch_missed]
     quiet = [s for s in scores if not s.guards_expected]
 
-    return PracticeReport(
+    return Report(
+        split=split,
         model=model,
         effort=effort,
-        labels="mine+silver" if with_silver else "mine",
+        labels=label_set,
         conversations=len(scores),
         intent_at_clear=share([s.correct_at_clear for s in scores]),
         agent_at_clear=share([s.agent_correct_at_clear for s in scores]),
@@ -185,20 +192,39 @@ def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Pr
         calls=len(usage),
         cost_usd=sum(llm.cost(u, model) for u in usage),
         mean_latency_s=sum(u.latency_s for u in usage) / len(usage),
-        label_quality=label_quality(original, silver),  # Labels as first made.
+        label_quality=quality,
         by_conversation=scores,
     )
+
+
+def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Report:
+    original = load_labels(PRACTICE_LABELS)
+    mine = original | load_adjudicated(ADJUDICATED)  # Score against corrected labels.
+    silver = load_suggestions(PRELABELS, load_ontology().version).agreed
+    labels: dict[int, GoldLabel] = (silver | mine) if with_silver else mine
+    by_id = {c.id: c for c in load("practice")}
+    quality = label_quality(original, silver)  # Labels as first made.
+    label_set = "mine+silver" if with_silver else "mine"
+    convs = [by_id[i] for i in sorted(labels)]
+    return score_router("practice", convs, labels, label_set, quality, model, effort)
+
+
+def run_locked(model: str, effort: llm.Effort | None) -> Report:
+    """The final score: my blind labels on the locked set, whatever has been labelled so far."""
+    labels = load_labels(LOCKED_LABELS)
+    by_id = {c.id: c for c in load("locked", unlock=True)}
+    convs = [by_id[i] for i in sorted(labels)]
+    return score_router("locked", convs, labels, "mine", None, model, effort)
 
 
 def percent(r: Rate) -> str:
     return f"{r.value:4.0%} ({r.hits}/{r.total})  95% CI {r.low:.0%}–{r.high:.0%}"
 
 
-def print_practice(report: PracticeReport) -> None:
-    q = report.label_quality
+def print_report(report: Report) -> None:
     lines = [
         f"\nRouter {report.model} (effort {report.effort or 'default'}) on "
-        f"{report.conversations} practice conversations, labels: {report.labels}\n",
+        f"{report.conversations} {report.split} conversations, labels: {report.labels}\n",
         f"  Intent right when it becomes clear  {percent(report.intent_at_clear)}",
         f"  Agent right when it becomes clear   {percent(report.agent_at_clear)}",
         f"  Every scored customer message       {percent(report.messages)}",
@@ -217,11 +243,14 @@ def print_practice(report: PracticeReport) -> None:
         for g, c in report.guards.items()
         if c.expected or c.fired
     ]
+    if q := report.label_quality:
+        lines += [
+            "\n  Labels (mine vs the pre-labelling models, where both models fully agree)",
+            f"    Blind, intent                     {percent(q.blind_primary)}",
+            f"    Audit, intent                     {percent(q.audit_primary)}",
+            f"    Audit, every field                {percent(q.audit_full)}",
+        ]
     lines += [
-        "\n  Labels (mine vs the pre-labelling models, where both models fully agree)",
-        f"    Blind, intent                     {percent(q.blind_primary)}",
-        f"    Audit, intent                     {percent(q.audit_primary)}",
-        f"    Audit, every field                {percent(q.audit_full)}",
         f"\n  Cost ${report.cost_usd:.2f} for {report.calls} calls "
         f"(${report.cost_usd / report.conversations:.4f} per conversation), "
         f"mean latency {report.mean_latency_s:.1f}s per call",
@@ -238,7 +267,7 @@ def print_practice(report: PracticeReport) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("set", choices=["cases", "practice"])
+    parser.add_argument("set", choices=["cases", "practice", "locked"])
     parser.add_argument("--model", default=ROUTER_MODEL)
     parser.add_argument("--effort", choices=["low", "medium", "high"])
     parser.add_argument("--silver", action="store_true", help="also score the silver labels")
@@ -247,11 +276,15 @@ def main() -> None:
     if args.set == "cases":
         run_cases(args.model, args.effort)
         return
-    report = run_practice(args.model, args.effort, args.silver)
+    if args.set == "locked":
+        report = run_locked(args.model, args.effort)
+    else:
+        report = run_practice(args.model, args.effort, args.silver)
     EVAL_DIR.mkdir(parents=True, exist_ok=True)
-    path = EVAL_DIR / f"practice-{report.labels}-{report.model}-{report.effort or 'default'}.json"
+    name = f"{report.split}-{report.labels}-{report.model}-{report.effort or 'default'}.json"
+    path = EVAL_DIR / name
     path.write_text(report.model_dump_json(indent=2))
-    print_practice(report)
+    print_report(report)
     print(f"\nSaved {path.relative_to(RESULTS.parent)}")
 
 

@@ -1,0 +1,56 @@
+{"id":775,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":680,"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":508,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"could be 1could be 16","mode":"blind","ontology_version":"2"}
+{"id":577,"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":536,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":5},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":498,"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":504,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":826,"primary":"initiate_return","secondary":null,"clear_at":2,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":634,"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"discontent from the user","mode":"blind","ontology_version":"2"}
+{"id":527,"primary":"login_verification","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":861,"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":377,"primary":"change_email","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":526,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":283,"primary":"order_not_arrived","secondary":"cancel_order","clear_at":1,"switch_at":4,"switch_to":"cancel_order","guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":291,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":6},"note":"complaint could be c7 too","mode":"blind","ontology_version":"2"}
+{"id":360,"primary":"return_policy","secondary":"initiate_return","clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":"goes from asking about return policy to requesting  a return, should we erge 8 and 9?","mode":"blind","ontology_version":"2"}
+{"id":201,"primary":"signup_help","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":56,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":613,"primary":"order_not_arrived","secondary":"faster_delivery","clear_at":1,"switch_at":6,"switch_to":"faster_delivery","guards":{},"note":"goes from order not arrived to asking for faster deloverydelivery","mode":"blind","ontology_version":"2"}
+{"id":76,"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":681,"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":230,"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":408,"primary":"order_not_arrived","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"could arguably be intent 1","mode":"blind","ontology_version":"2"}
+{"id":503,"primary":"pricing_question","secondary":"offers_and_discounts","clear_at":1,"switch_at":2,"switch_to":"offers_and_discounts","guards":{},"note":"goes from listed prices to asking about discounts","mode":"blind","ontology_version":"2"}
+{"id":809,"primary":"other","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"tricky this could be either 7, 0 or 26 they're asking about delivery pricprocess","mode":"blind","ontology_version":"2"}
+{"id":18,"primary":"cancel_order","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":496,"primary":"delivery_charges","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"again maybe intent 7 needs remrenaming because here they want to understand deliveryy process","mode":"blind","ontology_version":"2"}
+{"id":877,"primary":"other","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"again they are asking about delivery process maybe intent 7 needs changing","mode":"blind","ontology_version":"2"}
+{"id":242,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":825,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":184,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":774,"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":357,"primary":"change_delivery_address","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":149,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":719,"primary":"loyalty_points","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":478,"primary":"order_not_arrived","secondary":"faster_delivery","clear_at":1,"switch_at":3,"switch_to":"faster_delivery","guards":{"complaint":7},"note":"demands a refund on c7","mode":"blind","ontology_version":"2"}
+{"id":477,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"asks about the warranty card","mode":"blind","ontology_version":"2"}
+{"id":646,"primary":"warranty_info","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":842,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":549,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":5},"note":"arguably complaint on c5 but up for debate","mode":"blind","ontology_version":"2"}
+{"id":616,"primary":"pricing_question","secondary":"offers_and_discounts","clear_at":1,"switch_at":5,"switch_to":"offers_and_discounts","guards":{},"note":"after being told they can't help they ask for a discount","mode":"blind","ontology_version":"2"}
+{"id":38,"primary":"initiate_return","secondary":"offers_and_discounts","clear_at":1,"switch_at":8,"switch_to":"offers_and_discounts","guards":{},"note":"goes from exhanges to asking about discounted prices","mode":"blind","ontology_version":"2"}
+{"id":362,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"do queries on courier charges fall in 8 or is this s with switch?","mode":"blind","ontology_version":"2"}
+{"id":922,"primary":"password_reset","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":895,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"also asks about when can expect a delivery","mode":"blind","ontology_version":"2"}
+{"id":609,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":338,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"could start frofrom c4","mode":"blind","ontology_version":"2"}
+{"id":177,"primary":"warranty_claim","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":769,"primary":"order_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":"does delivery question belong in order status?","mode":"blind","ontology_version":"2"}
+{"id":188,"primary":"refund_status","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":493,"primary":"pricing_question","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":762,"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":361,"primary":"faster_delivery","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"wants_human":5},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":265,"primary":"initiate_return","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}
+{"id":189,"primary":"offers_and_discounts","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{"complaint":8},"note":"maybe a complaint","mode":"blind","ontology_version":"2"}
+{"id":624,"primary":"shipping_availability","secondary":null,"clear_at":1,"switch_at":null,"switch_to":null,"guards":{},"note":null,"mode":"blind","ontology_version":"2"}

@@ -1,4 +1,4 @@
-.PHONY: all format lint type-check test parse reading-sample discover ontology label label-assisted prelabel cases eval-cases eval label-locked
+.PHONY: all format lint type-check test parse reading-sample discover ontology label label-assisted prelabel cases eval-cases eval label-locked eval-locked
 
 # Run after every change: format, lint, type-check, tests.
 all: format lint type-check test
@@ -47,3 +47,6 @@ eval-cases:
 
 eval:
 	uv run python -m brownbox.evaluate practice
+
+eval-locked:
+	uv run python -m brownbox.evaluate locked
