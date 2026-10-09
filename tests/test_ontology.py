@@ -58,6 +58,14 @@ def test_valid_ontology_loads() -> None:
         (ontology(intent("unclear")), "reserved id: unclear"),
         (ontology(intent("cancel_order", domain="billing")), "unknown domain billing"),
         (ontology(intent("cancel_order", boundaries={"refund": "x"})), "unknown intent refund"),
+        (
+            ontology(intent("cancel_order", hands_over_to=["warranty_agent"])),
+            "hand-over to unknown agent warranty_agent",
+        ),
+        (
+            ontology(intent("cancel_order", hands_over_to=["orders_agent"])),
+            "hand-over to unknown agent orders_agent",  # Its own agent: not a hand-over.
+        ),
         (ontology(intent("cancel_order", boundaries={"cancel_order": "x"})), "unknown intent"),
         (ontology(intent("cancel_order", participation="sometimes")), "participation"),
         # Sign-off is per action now (signoff_actions), not an intent-level participation.

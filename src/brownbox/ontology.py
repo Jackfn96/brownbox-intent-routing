@@ -58,6 +58,9 @@ class Intent(_Strict):
     # What the fraud guard and the procedure's risk checks should watch for in this intent.
     fraud_signals: list[str] = []
     agent: Id  # Several intents can share one agent (decision D1).
+    # Agents this intent's procedure can pass the conversation to part-way, once it has found
+    # out which procedure the customer needs (a planned hand-over, not a routing switch).
+    hands_over_to: list[Id] = []
 
 
 class Guard(_Strict):
@@ -90,12 +93,16 @@ class Ontology(_Strict):
 
         domains = {d.id for d in self.domains}
         intents = {i.id for i in self.intents}
+        agents = {i.agent for i in self.intents}
         for intent in self.intents:
             if intent.domain not in domains:
                 problems.append(f"{intent.id}: unknown domain {intent.domain}")
             for other in intent.boundaries:
                 if other == intent.id or other not in intents:
                     problems.append(f"{intent.id}: boundary with unknown intent {other}")
+            for agent in intent.hands_over_to:
+                if agent == intent.agent or agent not in agents:
+                    problems.append(f"{intent.id}: hand-over to unknown agent {agent}")
         if problems:
             raise ValueError("; ".join(problems))
         return self
@@ -150,6 +157,9 @@ def render_markdown(ontology: Ontology) -> str:
                 lines.append(f"- **Needs sign-off:** {'; '.join(i.signoff_actions)}")
             if i.fraud_signals:
                 lines.append(f"- **Fraud signals:** {'; '.join(i.fraud_signals)}")
+            if i.hands_over_to:
+                agents = ", ".join(f"`{a}`" for a in i.hands_over_to)
+                lines.append(f"- **Can hand over to:** {agents}")
             lines.append(f"- **Examples:** {', '.join(f'#{e}' for e in i.examples)}")
 
     lines += [

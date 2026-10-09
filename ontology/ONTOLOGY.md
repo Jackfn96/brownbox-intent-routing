@@ -1,4 +1,4 @@
-# BrownBox intent ontology, v1
+# BrownBox intent ontology, v2
 
 Generated from `ontology.yaml` by `make ontology`. Edit the YAML, not this file.
 
@@ -6,10 +6,10 @@ Generated from `ontology.yaml` by `make ontology`. Edit the YAML, not this file.
 |---|---|
 | Orders | Check order status, Cancel an order, Change delivery or pickup address |
 | Delivery | Order not arrived, Arrange a redelivery, Get faster delivery, Understand delivery charges |
-| Returns and refunds | Return, exchange or replace an item, Return policy and process, Chase a refund |
+| Returns and refunds | Return, replace or report a faulty item, Return policy and process, Chase a refund |
 | Payments, pricing and offers | Dispute a charge or fee, Get an invoice, Question about listed prices, Offers, exchange deals and discounts, Loyalty points |
 | Product support and warranty | Warranty information, Claim a repair under warranty, Installation and setup help |
-| Account and login | Verification code and login help, Unlock a locked account, Reset or change password, Change account email, Reactivate an account, Close an account, Sign-up and account requirements |
+| Account and login | Can't log in or verify, Unlock a locked account, Reset or change password, Change account email, Reactivate an account, Close an account, Sign-up and account requirements |
 | Shopping help before buying | How to order, pay and collect, Out-of-stock items, Shipping to an unavailable location |
 
 ## Orders
@@ -20,9 +20,10 @@ The customer wants to confirm an order went through or see what stage it is at.
 
 inform · identity check · AI handles it · agent `orders_agent`
 
-- **Includes:** Confirming an order was placed or approved; What an order status shown on the website means
-- **Excludes:** The order is late, overdue or hasn't arrived (order_not_arrived)
+- **Includes:** Confirming an order was placed or approved; What an order status shown on the website means; Emails or notifications about an order that the customer doesn't understand
+- **Excludes:** The order is late, overdue or hasn't arrived (order_not_arrived); Being asked to ship an item back (return_policy)
 - **vs `order_not_arrived`:** If the customer says it is late, overdue or missing, it's order_not_arrived.
+- **vs `return_policy`:** An email asking them to ship an item back is return_policy.
 - **Examples:** #60, #302, #952
 
 ### Cancel an order (`cancel_order`)
@@ -106,20 +107,21 @@ inform · no identity check · AI handles it · agent `knowledge_agent`
 
 ## Returns and refunds
 
-### Return, exchange or replace an item (`initiate_return`)
+### Return, replace or report a faulty item (`initiate_return`)
 
-The customer has an item that isn't right and wants it refunded, exchanged, replaced or completed. The procedure checks eligibility (return window, condition, category) before booking anything.
+The customer has an item that isn't right and wants it refunded, exchanged, replaced or completed, or reports a fault without saying what they want. For a fault, the procedure troubleshoots first; if that fails, it offers a return or replacement within the return window, and hands over to the warranty agent for a repair or outside the window. It checks eligibility (return window, condition, category) before booking anything.
 
 act · identity check · AI handles it · agent `returns_agent`
 
-- **Includes:** Defective, damaged, wrong, ill-fitting or unwanted items; Items delivered in a tampered or opened package; Missing parts or accessories (the procedure can send the part instead of a full return); Items paid for by cash on delivery
-- **Excludes:** Repairs under warranty after the return window (warranty_claim); Questions about the return policy with no return started (return_policy)
-- **vs `warranty_claim`:** Within the return window and wanting a return or exchange, it's initiate_return; a repair or a claim after the window is warranty_claim.
+- **Includes:** Defective, damaged, wrong, ill-fitting or unwanted items; A fault reported without naming a remedy ("it's not working"); Items delivered in a tampered or opened package; Missing parts or accessories (the procedure can send the part instead of a full return); Items paid for by cash on delivery; Cancelling or changing a return already started
+- **Excludes:** Asking for a repair, or invoking the warranty (warranty_claim); Questions about the return policy with no return started (return_policy)
+- **vs `warranty_claim`:** A fault with no remedy named, or a return or replacement, is initiate_return; asking for a repair or invoking the warranty is warranty_claim.
 - **vs `return_policy`:** Asking how returns work is return_policy; asking to start one is initiate_return.
 - **vs `refund_status`:** Once the item is back and the customer is chasing the money, it's refund_status.
 - **vs `cancel_order`:** Before delivery it's a cancellation.
 - **Needs sign-off:** Refund to a payment method other than the original one (e.g. bank details for a cash-on-delivery order); Refund or replace outside the return policy (past the window, non-returnable item); Waive a return fee
 - **Fraud signals:** Asks for the refund to go to a different person or account; Refuses to provide photos of damage when asked; Repeated damaged or wrong-item claims on the account (backend check)
+- **Can hand over to:** `warranty_agent`
 - **Examples:** #239, #204, #227, #330
 
 ### Return policy and process (`return_policy`)
@@ -211,23 +213,23 @@ inform · identity check · AI handles it · agent `billing_agent`
 
 The customer wants to know what a warranty covers, when it starts, which terms apply, or how to register or extend it.
 
-inform · no identity check · AI handles it · agent `knowledge_agent`
+inform · no identity check · AI handles it · agent `warranty_agent`
 
-- **Includes:** Conflicting warranty terms between the website, card and brand; Registering an item or buying an extended warranty
+- **Includes:** Conflicting warranty terms between the website, card and brand; Registering an item or buying an extended warranty; Whether cover still applies without the warranty card
 - **Excludes:** Getting a faulty item repaired or replaced (warranty_claim)
-- **vs `warranty_claim`:** Asking about cover is warranty_info; using it for a fault is warranty_claim.
+- **vs `warranty_claim`:** Asking about cover, even without the card, is warranty_info; using it for a fault is warranty_claim.
 - **Examples:** #19, #299, #114, #247
 
 ### Claim a repair under warranty (`warranty_claim`)
 
-An item is faulty and the customer wants it repaired or replaced under warranty.
+The customer asks for a faulty item to be repaired or replaced under warranty, or invokes the warranty for a fault.
 
 act · identity check · AI handles it · agent `warranty_agent`
 
-- **Includes:** Missing warranty cards; A service centre that refused the repair
-- **Excludes:** Returning an item within the return window (initiate_return)
-- **vs `initiate_return`:** Within the return window, a return or exchange is initiate_return.
-- **vs `warranty_info`:** Questions about cover alone are warranty_info.
+- **Includes:** A missing warranty card when making a claim; A service centre that refused the repair
+- **Excludes:** A fault reported without naming a remedy (initiate_return, which troubleshoots first); A return or replacement within the return window (initiate_return)
+- **vs `initiate_return`:** Asking for a repair or invoking the warranty is warranty_claim; a fault with no remedy named, or a return, is initiate_return.
+- **vs `warranty_info`:** Questions about cover alone, even with a lost card, are warranty_info.
 - **Needs sign-off:** Replace or repair outside the warranty terms
 - **Examples:** #11, #449, #776
 
@@ -242,18 +244,18 @@ inform · no identity check · AI handles it · agent `knowledge_agent`
 
 ## Account and login
 
-### Verification code and login help (`login_verification`)
+### Can't log in or verify (`login_verification`)
 
-The customer can't log in or complete a purchase because of mobile or email verification, or a code that doesn't arrive.
+The customer can't log in or complete a mobile or email verification, including when they don't know why. The procedure checks the account's state and branches. A locked account follows the unlock steps, a forgotten password gets a reset link to the registered email, and a code problem gets the code resent.
 
-act · no identity check · AI handles it · agent `account_agent`
+act · identity check · AI handles it · agent `account_agent`
 
-- **Includes:** Codes that never arrive; Logging in with a mobile number
-- **Excludes:** The account is locked after too many attempts (account_lockout); Signing up for a new account (signup_help)
-- **vs `account_lockout`:** A locked account is account_lockout.
-- **vs `password_reset`:** A forgotten password is password_reset.
+- **Includes:** Can't log in and doesn't know why; Codes that never arrive; Logging in with a mobile number; Questions about why they're being asked to verify their mobile or email
+- **Excludes:** Signing up for a new account (signup_help)
+- **vs `account_lockout`:** If the customer says the account is locked after too many attempts, it's account_lockout; if they can't say why they can't log in, it's login_verification.
+- **vs `password_reset`:** If the customer says they forgot their password or want to change it, it's password_reset.
 - **vs `signup_help`:** Creating a new account is signup_help.
-- **Needs sign-off:** Change the phone number or email that codes are sent to
+- **Needs sign-off:** Change the phone number or email that codes are sent to; Unlock the account
 - **Fraud signals:** Asks for a code to be sent to a new number or address; Asks the agent to read out or bypass a one-time code
 - **Examples:** #220, #229, #131, #690
 
@@ -264,7 +266,7 @@ The account is locked after too many failed verification attempts and the custom
 act · identity check · AI handles it · agent `account_agent`
 
 - **Includes:** Accounts blocked by too many verification code attempts
-- **vs `login_verification`:** If the account isn't locked, it's login_verification.
+- **vs `login_verification`:** If the customer can't log in but doesn't say the account is locked, it's login_verification, which checks.
 - **Needs sign-off:** Unlock the account
 - **Fraud signals:** The customer says they didn't try to log in; The email or phone changed recently (backend check)
 - **Examples:** #3, #321, #944
@@ -371,14 +373,14 @@ Someone other than the customer may have used, or be trying to use, their accoun
 The customer asks to speak to a person, supervisor or manager.
 
 - **Fires on:** I want to speak to your supervisor; Can I talk to a real person?
-- **Not on:** The agent decides to escalate on its own; Can you check with your team?
+- **Not on:** The agent decides to escalate on its own; Can you check with your team?; "I need to talk to someone about my return", as a way of opening the conversation; Agreeing to a transfer the agent suggested
 
 ### Complaint (`complaint`): Hand off to a person
 
-The customer makes a complaint about the service or staff, or threatens to escalate outside BrownBox.
+The customer wants a complaint acted on. That means a formal complaint, compensation, a complaint about how staff or a courier behaved, or a threat to escalate outside BrownBox.
 
-- **Fires on:** I want to make a formal complaint; The courier was rude to me; I'll be reporting this
-- **Not on:** Frustration while still pursuing their request ("this is so annoying")
+- **Fires on:** I want to make a formal complaint; The courier was rude to me; I want compensation for this; I'll be reporting this
+- **Not on:** Frustration while still pursuing their request ("this is so annoying", "that's ridiculous"); Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
 
 ### Unsupported language (`unsupported_language`): Hand off to a person
 
@@ -395,7 +397,7 @@ The customer writes in a language BrownBox support doesn't cover.
 | `billing_agent` | `charge_dispute`, `invoice_request`, `offers_and_discounts`, `loyalty_points` |
 | `delivery_agent` | `order_not_arrived`, `redeliver_order`, `faster_delivery` |
 | `human_support` | `close_account` |
-| `knowledge_agent` | `delivery_charges`, `pricing_question`, `warranty_info`, `installation_help`, `ordering_help`, `item_availability`, `shipping_availability` |
+| `knowledge_agent` | `delivery_charges`, `pricing_question`, `installation_help`, `ordering_help`, `item_availability`, `shipping_availability` |
 | `orders_agent` | `order_status`, `cancel_order`, `change_delivery_address` |
 | `returns_agent` | `initiate_return`, `return_policy`, `refund_status` |
-| `warranty_agent` | `warranty_claim` |
+| `warranty_agent` | `warranty_info`, `warranty_claim` |
