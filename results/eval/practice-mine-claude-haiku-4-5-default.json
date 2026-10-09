@@ -11,41 +11,42 @@
     "high": 0.9515355184515875
   },
   "agent_at_clear": {
-    "hits": 78,
+    "hits": 80,
     "total": 85,
-    "value": 0.9176470588235294,
-    "low": 0.839638370084281,
-    "high": 0.9595367911014697
+    "value": 0.9411764705882353,
+    "low": 0.8695838996357215,
+    "high": 0.9746152142928886
   },
   "messages": {
-    "hits": 608,
+    "hits": 622,
     "total": 690,
-    "value": 0.881159420289855,
-    "low": 0.8310055865921788,
-    "high": 0.9253048780487805
+    "value": 0.9014492753623189,
+    "low": 0.8438880706921944,
+    "high": 0.9502840909090909
   },
   "final_message": {
-    "hits": 75,
+    "hits": 76,
     "total": 85,
-    "value": 0.8823529411764706,
-    "low": 0.7968121063083018,
-    "high": 0.9348271257631602
+    "value": 0.8941176470588236,
+    "low": 0.810862973602443,
+    "high": 0.9432882348404489
   },
-  "kappa": 0.8974513648016891,
-  "unclear_at_clear": 2,
-  "other_at_clear": 1,
+  "kappa": 0.8962148962148963,
+  "unclear_at_clear": 4,
+  "other_at_clear": 0,
   "false_switches": {
-    "hits": 24,
+    "hits": 8,
     "total": 85,
-    "value": 0.2823529411764706,
-    "low": 0.19768719505480054,
-    "high": 0.38584124207375187
+    "value": 0.09411764705882353,
+    "low": 0.04846448154841264,
+    "high": 0.17487233363726618
   },
-  "switches": 2,
+  "switches": 3,
   "switches_missed": 0,
   "switch_delays": [
     0,
-    0
+    0,
+    4
   ],
   "guards": {
     "fraud_or_takeover": {
@@ -56,21 +57,20 @@
     },
     "wants_human": {
       "expected": 7,
-      "fired": 7,
-      "caught": 7,
+      "fired": 6,
+      "caught": 6,
       "delays": [
         0,
         0,
         0,
         0,
         0,
-        1,
         0
       ]
     },
     "complaint": {
       "expected": 0,
-      "fired": 11,
+      "fired": 0,
       "caught": 0,
       "delays": []
     },
@@ -82,15 +82,15 @@
     }
   },
   "false_alarms": {
-    "hits": 7,
+    "hits": 0,
     "total": 78,
-    "value": 0.08974358974358974,
-    "low": 0.044152447186411065,
-    "high": 0.1738491559103026
+    "value": 0.0,
+    "low": 0.0,
+    "high": 0.04693945377411976
   },
-  "calls": 693,
-  "cost_usd": 1.0591519,
-  "mean_latency_s": 1.062178054173184,
+  "calls": 3442,
+  "cost_usd": 3.3303509,
+  "mean_latency_s": 0.8033799578012335,
   "label_quality": {
     "blind_primary": {
       "hits": 25,
@@ -145,9 +145,7 @@
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 4
-      }
+      "guards_fired": {}
     },
     {
       "id": 29,
@@ -163,9 +161,7 @@
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 5
-      }
+      "guards_fired": {}
     },
     {
       "id": 79,
@@ -187,11 +183,11 @@
       "id": 121,
       "mode": "assisted",
       "expected": "initiate_return",
-      "at_clear": "return_policy",
-      "correct_at_clear": false,
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 7,
-      "messages_correct": 6,
+      "messages_correct": 7,
       "final_correct": true,
       "false_switches": 0,
       "switch_delay": null,
@@ -200,8 +196,7 @@
         "wants_human": 4
       },
       "guards_fired": {
-        "wants_human": 4,
-        "complaint": 6
+        "wants_human": 4
       }
     },
     {
@@ -244,9 +239,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 7,
-      "messages_correct": 6,
+      "messages_correct": 7,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -282,9 +277,7 @@
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 8
-      }
+      "guards_fired": {}
     },
     {
       "id": 174,
@@ -326,9 +319,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 14,
-      "messages_correct": 13,
+      "messages_correct": 14,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -353,12 +346,12 @@
     {
       "id": 212,
       "mode": "blind",
-      "expected": "warranty_claim",
+      "expected": "warranty_info",
       "at_clear": "warranty_info",
-      "correct_at_clear": false,
-      "agent_correct_at_clear": false,
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
       "messages_scored": 9,
-      "messages_correct": 8,
+      "messages_correct": 9,
       "final_correct": true,
       "false_switches": 0,
       "switch_delay": null,
@@ -390,15 +383,13 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 10,
-      "messages_correct": 4,
-      "final_correct": false,
-      "false_switches": 1,
+      "messages_correct": 10,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 8
-      }
+      "guards_fired": {}
     },
     {
       "id": 237,
@@ -408,9 +399,9 @@
       "correct_at_clear": false,
       "agent_correct_at_clear": false,
       "messages_scored": 9,
-      "messages_correct": 5,
+      "messages_correct": 6,
       "final_correct": true,
-      "false_switches": 2,
+      "false_switches": 1,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -420,13 +411,13 @@
       "id": 250,
       "mode": "blind",
       "expected": "other",
-      "at_clear": "other",
-      "correct_at_clear": true,
+      "at_clear": "unclear",
+      "correct_at_clear": false,
       "agent_correct_at_clear": true,
       "messages_scored": 7,
-      "messages_correct": 5,
-      "final_correct": true,
-      "false_switches": 1,
+      "messages_correct": 0,
+      "final_correct": false,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -456,9 +447,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 9,
-      "messages_correct": 7,
+      "messages_correct": 9,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": 0,
       "switch_missed": false,
       "guards_expected": {},
@@ -468,11 +459,11 @@
       "id": 310,
       "mode": "assisted",
       "expected": "loyalty_points",
-      "at_clear": "loyalty_points",
-      "correct_at_clear": true,
-      "agent_correct_at_clear": true,
+      "at_clear": "unclear",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
       "messages_scored": 10,
-      "messages_correct": 10,
+      "messages_correct": 9,
       "final_correct": true,
       "false_switches": 0,
       "switch_delay": null,
@@ -520,9 +511,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 10,
-      "messages_correct": 7,
+      "messages_correct": 10,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -596,12 +587,12 @@
       "id": 387,
       "mode": "assisted",
       "expected": "initiate_return",
-      "at_clear": "initiate_return",
-      "correct_at_clear": true,
+      "at_clear": "return_policy",
+      "correct_at_clear": false,
       "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 4,
-      "final_correct": true,
+      "messages_correct": 3,
+      "final_correct": false,
       "false_switches": 1,
       "switch_delay": null,
       "switch_missed": false,
@@ -712,16 +703,15 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 9,
-      "messages_correct": 2,
-      "final_correct": false,
-      "false_switches": 1,
+      "messages_correct": 9,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {
         "wants_human": 4
       },
       "guards_fired": {
-        "complaint": 3,
         "wants_human": 4
       }
     },
@@ -809,13 +799,13 @@
       "id": 492,
       "mode": "assisted",
       "expected": "warranty_claim",
-      "at_clear": "warranty_claim",
-      "correct_at_clear": true,
+      "at_clear": "warranty_info",
+      "correct_at_clear": false,
       "agent_correct_at_clear": true,
       "messages_scored": 10,
-      "messages_correct": 9,
-      "final_correct": true,
-      "false_switches": 1,
+      "messages_correct": 0,
+      "final_correct": false,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -909,9 +899,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 7,
-      "messages_correct": 2,
+      "messages_correct": 3,
       "final_correct": false,
-      "false_switches": 2,
+      "false_switches": 1,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -941,17 +931,16 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 13,
-      "messages_correct": 5,
-      "final_correct": false,
-      "false_switches": 1,
+      "messages_correct": 13,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {
         "wants_human": 11
       },
       "guards_fired": {
-        "wants_human": 11,
-        "complaint": 12
+        "wants_human": 11
       }
     },
     {
@@ -994,8 +983,8 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 7,
-      "final_correct": true,
+      "messages_correct": 2,
+      "final_correct": false,
       "false_switches": 1,
       "switch_delay": null,
       "switch_missed": false,
@@ -1010,7 +999,7 @@
       "correct_at_clear": false,
       "agent_correct_at_clear": false,
       "messages_scored": 9,
-      "messages_correct": 6,
+      "messages_correct": 8,
       "final_correct": true,
       "false_switches": 0,
       "switch_delay": null,
@@ -1022,13 +1011,13 @@
       "id": 631,
       "mode": "blind",
       "expected": "initiate_return",
-      "at_clear": "cancel_order",
-      "correct_at_clear": false,
-      "agent_correct_at_clear": false,
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 4,
-      "final_correct": false,
-      "false_switches": 2,
+      "messages_correct": 8,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -1086,12 +1075,12 @@
       "id": 718,
       "mode": "assisted",
       "expected": "warranty_claim",
-      "at_clear": "warranty_claim",
-      "correct_at_clear": true,
-      "agent_correct_at_clear": true,
+      "at_clear": "initiate_return",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
       "messages_scored": 9,
-      "messages_correct": 9,
-      "final_correct": true,
+      "messages_correct": 0,
+      "final_correct": false,
       "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
@@ -1106,9 +1095,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 6,
+      "messages_correct": 5,
       "final_correct": true,
-      "false_switches": 2,
+      "false_switches": 1,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -1196,9 +1185,7 @@
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 8
-      }
+      "guards_fired": {}
     },
     {
       "id": 839,
@@ -1214,9 +1201,7 @@
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 9
-      }
+      "guards_fired": {}
     },
     {
       "id": 846,
@@ -1242,9 +1227,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 7,
+      "messages_correct": 8,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -1270,14 +1255,14 @@
       "id": 867,
       "mode": "blind",
       "expected": "initiate_return",
-      "at_clear": "warranty_claim",
-      "correct_at_clear": false,
-      "agent_correct_at_clear": false,
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
       "messages_scored": 10,
-      "messages_correct": 10,
+      "messages_correct": 6,
       "final_correct": true,
       "false_switches": 0,
-      "switch_delay": null,
+      "switch_delay": 4,
       "switch_missed": false,
       "guards_expected": {},
       "guards_fired": {}
@@ -1354,9 +1339,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 7,
+      "messages_correct": 8,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -1386,9 +1371,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 9,
-      "messages_correct": 8,
+      "messages_correct": 9,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
@@ -1434,19 +1419,17 @@
       "id": 960,
       "mode": "assisted",
       "expected": "initiate_return",
-      "at_clear": "warranty_claim",
-      "correct_at_clear": false,
-      "agent_correct_at_clear": false,
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
       "messages_scored": 8,
-      "messages_correct": 2,
-      "final_correct": false,
-      "false_switches": 1,
+      "messages_correct": 8,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},
-      "guards_fired": {
-        "complaint": 6
-      }
+      "guards_fired": {}
     },
     {
       "id": 961,
@@ -1458,15 +1441,13 @@
       "messages_scored": 9,
       "messages_correct": 7,
       "final_correct": true,
-      "false_switches": 1,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {
         "wants_human": 5
       },
-      "guards_fired": {
-        "wants_human": 6
-      }
+      "guards_fired": {}
     },
     {
       "id": 965,
@@ -1485,7 +1466,6 @@
         "wants_human": 5
       },
       "guards_fired": {
-        "complaint": 3,
         "wants_human": 5
       }
     },
@@ -1513,9 +1493,9 @@
       "correct_at_clear": true,
       "agent_correct_at_clear": true,
       "messages_scored": 6,
-      "messages_correct": 4,
-      "final_correct": false,
-      "false_switches": 1,
+      "messages_correct": 6,
+      "final_correct": true,
+      "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
       "guards_expected": {},

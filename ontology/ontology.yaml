@@ -187,8 +187,9 @@ intents:
       - Why an order didn't qualify for free delivery
     excludes:
       - Wanting a delivery charge refunded (charge_dispute)
+      - A charge on their own order they don't recognise (charge_dispute)
     boundaries:
-      charge_dispute: Asking why a fee applies is delivery_charges; asking for it back is charge_dispute.
+      charge_dispute: How delivery is priced is delivery_charges; a charge on their own order that they don't recognise or want back is charge_dispute, whose procedure looks it up.
     examples: [110, 208, 710]
     kind: inform
     requires_verification: false
@@ -274,6 +275,7 @@ intents:
     definition: The customer thinks they were charged too much, or charged a fee they shouldn't pay, and wants it explained and refunded or waived.
     includes:
       - Overcharges and unexpected charges on an order
+      - A charge on their order they don't recognise (the procedure looks up what it was for)
       - Return fees, courier costs or unwanted add-on charges they want back
     excludes:
       - Different prices on the website with no order affected (pricing_question)
@@ -593,11 +595,14 @@ guards:
       - Asks the agent to read out, resend to a new number, or skip a one-time code
       - It's my husband's account, he asked me to sort it out
       - Send the refund to this other account instead
+      - Send the reset link or code to this other email or number instead
     not_on:
       - My parcel was stolen from my doorstep (order_not_arrived)
       - The package arrived opened or tampered with (initiate_return)
       - I forgot my password (password_reset)
       - My account is locked after too many attempts (account_lockout)
+      - A family member ordered on the account by mistake ("my son placed an order by mistake")
+      - A charge on my order I don't recognise, asking what it is for (charge_dispute)
     participation: never
 
   - id: wants_human
@@ -622,7 +627,7 @@ guards:
       - I want compensation for this
       - I'll be reporting this
     not_on:
-      - Frustration while still pursuing their request ("this is so annoying", "that's ridiculous")
+      - Frustration while still pursuing their request ("this is so annoying", "that's ridiculous", "this is unacceptable")
       - Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
     participation: handoff
 

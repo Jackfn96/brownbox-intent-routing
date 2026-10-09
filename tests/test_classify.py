@@ -1,7 +1,22 @@
-from brownbox.classify import Step, decide, router_schema
+import pytest
+from pydantic import BaseModel
+
+from brownbox import llm
+from brownbox.classify import (
+    GuardCheck,
+    RouterPrompts,
+    Step,
+    decide,
+    route_conversation,
+    router_schema,
+)
+from brownbox.models import Conversation, Turn
 from brownbox.ontology import load_ontology
 
 ONTOLOGY = load_ontology()
+USAGE = llm.Usage(
+    input_tokens=0, output_tokens=0, cache_read_tokens=0, cache_write_tokens=0, latency_s=0.0
+)
 
 
 def step(intent: str, guards: tuple[str, ...] = (), message: int = 1) -> Step:
@@ -31,6 +46,51 @@ def test_ai_intent_goes_to_its_agent_with_signoff_actions() -> None:
     d = decide(ONTOLOGY, [step("initiate_return")])
     assert (d.outcome, d.agent) == ("agent", "returns_agent")
     assert any("Waive" in a for a in d.signoff_actions)
+
+
+def test_router_switches_only_on_a_changed_request_and_checks_each_guard_until_it_fires(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    prompts = RouterPrompts(
+        system="router",
+        schema=router_schema(ONTOLOGY),
+        guards={"wants_human": "w", "complaint": "c"},
+    )
+    intents = iter(
+        [
+            ("unclear", False),
+            ("initiate_return", False),  # First real intent: taken although "no change".
+            ("refund_status", False),  # A follow-up: the model's topic guess is ignored.
+            ("cancel_order", True),  # A real change.
+        ]
+    )
+    checked: list[tuple[str, str]] = []  # (guard prompt, customer's latest message)
+
+    def fake(req: llm.Request, out: type[BaseModel]) -> llm.Reply[BaseModel]:
+        if req.system == "router":
+            intent, changes = next(intents)
+            output: BaseModel = prompts.schema.model_validate(
+                {"intent": intent, "changes_request": changes}
+            )
+        else:
+            latest = req.user.splitlines()[-1]
+            checked.append((req.system, latest))
+            output = GuardCheck(quote="", fires=req.system == "w" and "m1" in latest)
+        return llm.Reply(output, USAGE, from_cache=True)
+
+    monkeypatch.setattr(llm, "structured", fake)
+    turns = tuple(Turn(role="customer", speaker="Customer", text=f"m{k}") for k in range(4))
+    steps = route_conversation(Conversation(id=1, split="synthetic", turns=turns), prompts).steps
+
+    assert [s.intent for s in steps] == [
+        "unclear",
+        "initiate_return",
+        "initiate_return",
+        "cancel_order",
+    ]
+    assert [s.guards for s in steps] == [(), ("wants_human",), (), ()]
+    # wants_human fired at the second message, so it is not checked again; complaint always is.
+    assert [g for g, _ in checked] == ["w", "c", "w", "c", "c", "c"]
 
 
 def test_router_schema_offers_unclear_and_other() -> None:

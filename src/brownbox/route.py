@@ -13,8 +13,7 @@ from brownbox.classify import (
     Step,
     decide,
     route_conversation,
-    router_schema,
-    router_system,
+    router_prompts,
 )
 from brownbox.models import Conversation, Turn
 from brownbox.ontology import Ontology, load_ontology
@@ -29,11 +28,13 @@ OUTCOME_TEXT = {
 }
 
 
-def describe(step: Step, decision: Decision, ontology: Ontology) -> str:
+def describe(steps: list[Step], decision: Decision, ontology: Ontology) -> str:
     names = {i.id: i.name for i in ontology.intents}
+    latest = steps[-1]
+    fired = sorted({g for s in steps for g in s.guards})  # Guards are sticky.
     lines = [
-        f"C{step.message}  intent: {names.get(step.intent, step.intent)}",
-        f"    guards: {', '.join(step.guards) or 'none'}",
+        f"C{latest.message}  intent: {names.get(latest.intent, latest.intent)}",
+        f"    guards so far: {', '.join(fired) or 'none'}",
         f"    → {OUTCOME_TEXT[decision.outcome]}: {decision.reason}"
         + (f" (agent {decision.agent})" if decision.agent else ""),
     ]
@@ -49,8 +50,7 @@ def main() -> None:
     args = parser.parse_args()
 
     ontology = load_ontology()
-    system = router_system(ontology, {c.id: c for c in load("dev")})
-    schema = router_schema(ontology)
+    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
     turns: list[Turn] = []
     pending = [args.message] if args.message else None
     if pending is None:
@@ -62,10 +62,10 @@ def main() -> None:
             break
         turns.append(Turn(role="customer", speaker="Customer", text=text))
         conv = Conversation(id=0, split="synthetic", turns=tuple(turns))
-        steps = route_conversation(conv, system, schema, model=args.model).steps
-        print(describe(steps[-1], decide(ontology, steps), ontology))
+        steps = route_conversation(conv, prompts, model=args.model).steps
+        print(describe(steps, decide(ontology, steps), ontology))
         if args.show_prompt:
-            print(f"\n--- system prompt ---\n{system}\n\n--- conversation ---")
+            print(f"\n--- system prompt ---\n{prompts.system}\n\n--- conversation ---")
             print(format_conversation(conv, numbered=True))
 
 

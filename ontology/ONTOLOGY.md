@@ -101,8 +101,8 @@ The customer wants to know what delivery costs or why an order didn't get free d
 inform · no identity check · AI handles it · agent `knowledge_agent`
 
 - **Includes:** Shipping prices and speeds for an item; Why an order didn't qualify for free delivery
-- **Excludes:** Wanting a delivery charge refunded (charge_dispute)
-- **vs `charge_dispute`:** Asking why a fee applies is delivery_charges; asking for it back is charge_dispute.
+- **Excludes:** Wanting a delivery charge refunded (charge_dispute); A charge on their own order they don't recognise (charge_dispute)
+- **vs `charge_dispute`:** How delivery is priced is delivery_charges; a charge on their own order that they don't recognise or want back is charge_dispute, whose procedure looks it up.
 - **Examples:** #110, #208, #710
 
 ## Returns and refunds
@@ -156,7 +156,7 @@ The customer thinks they were charged too much, or charged a fee they shouldn't 
 
 act · identity check · AI handles it · agent `billing_agent`
 
-- **Includes:** Overcharges and unexpected charges on an order; Return fees, courier costs or unwanted add-on charges they want back
+- **Includes:** Overcharges and unexpected charges on an order; A charge on their order they don't recognise (the procedure looks up what it was for); Return fees, courier costs or unwanted add-on charges they want back
 - **Excludes:** Different prices on the website with no order affected (pricing_question); Charges the customer says they never made (fraud guard)
 - **vs `pricing_question`:** If they were charged more on an order, it's charge_dispute; just asking about listed prices is pricing_question.
 - **vs `delivery_charges`:** Asking why a delivery fee applies is delivery_charges.
@@ -365,8 +365,8 @@ Checked on every customer message; a guard overrides any intent.
 
 Someone other than the customer may have used, or be trying to use, their account, card or identity. Checked on every message; backend risk checks live in each intent's procedure.
 
-- **Fires on:** I never placed this order; There are charges on my card I didn't make; Someone changed my password or email; My account was hacked, or I got a code I didn't ask for; Asks the agent to read out, resend to a new number, or skip a one-time code; It's my husband's account, he asked me to sort it out; Send the refund to this other account instead
-- **Not on:** My parcel was stolen from my doorstep (order_not_arrived); The package arrived opened or tampered with (initiate_return); I forgot my password (password_reset); My account is locked after too many attempts (account_lockout)
+- **Fires on:** I never placed this order; There are charges on my card I didn't make; Someone changed my password or email; My account was hacked, or I got a code I didn't ask for; Asks the agent to read out, resend to a new number, or skip a one-time code; It's my husband's account, he asked me to sort it out; Send the refund to this other account instead; Send the reset link or code to this other email or number instead
+- **Not on:** My parcel was stolen from my doorstep (order_not_arrived); The package arrived opened or tampered with (initiate_return); I forgot my password (password_reset); My account is locked after too many attempts (account_lockout); A family member ordered on the account by mistake ("my son placed an order by mistake"); A charge on my order I don't recognise, asking what it is for (charge_dispute)
 
 ### Asks for a human (`wants_human`): Hand off to a person
 
@@ -380,7 +380,7 @@ The customer asks to speak to a person, supervisor or manager.
 The customer wants a complaint acted on. That means a formal complaint, compensation, a complaint about how staff or a courier behaved, or a threat to escalate outside BrownBox.
 
 - **Fires on:** I want to make a formal complaint; The courier was rude to me; I want compensation for this; I'll be reporting this
-- **Not on:** Frustration while still pursuing their request ("this is so annoying", "that's ridiculous"); Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
+- **Not on:** Frustration while still pursuing their request ("this is so annoying", "that's ridiculous", "this is unacceptable"); Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
 
 ### Unsupported language (`unsupported_language`): Hand off to a person
 

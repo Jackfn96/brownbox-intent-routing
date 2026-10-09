@@ -24,8 +24,7 @@ from brownbox.classify import (
     UNCLEAR,
     Step,
     route_conversation,
-    router_schema,
-    router_system,
+    router_prompts,
 )
 from brownbox.label import (
     ADJUDICATED,
@@ -98,10 +97,9 @@ def score_case(case: Case, steps: list[Step]) -> CaseResult:
 def run_cases(model: str, effort: llm.Effort | None) -> None:
     ontology = load_ontology()
     cases = load_cases(ontology)
-    system = router_system(ontology, {c.id: c for c in load("dev")})
-    schema = router_schema(ontology)
+    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
     runs = llm.run_all(
-        lambda c: route_conversation(c.conversation(), system, schema, model, effort).steps,
+        lambda c: route_conversation(c.conversation(), prompts, model, effort).steps,
         cases,
         "cases",
     )
@@ -152,11 +150,10 @@ def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Pr
     by_id = {c.id: c for c in load("practice")}
     convs = [by_id[i] for i in sorted(labels)]
 
-    system = router_system(ontology, {c.id: c for c in load("dev")})
-    schema = router_schema(ontology)
+    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
     print(f"routing {len(convs)} practice conversations with {model}...", flush=True)
     routings = llm.run_all(
-        lambda c: route_conversation(c, system, schema, model, effort), convs, "conversations"
+        lambda c: route_conversation(c, prompts, model, effort), convs, "conversations"
     )
     agent_of = {i.id: i.agent for i in ontology.intents}
     scores = [
