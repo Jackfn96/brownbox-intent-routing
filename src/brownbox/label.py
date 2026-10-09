@@ -2,13 +2,14 @@
 
     uv run python -m brownbox.label             # the 30 blind labels, in a fixed random order
     uv run python -m brownbox.label --assisted  # 55 of the other 170, with model suggestions
+    uv run python -m brownbox.label --locked    # the locked 100, blind, for the final score
 
 Each label is saved as soon as you confirm it, so you can stop (q) and resume any time.
 Blind means no model suggestion is shown: these 30 measure how much suggestions sway you later.
 Assisted covers every conversation the two models disagree on (25), plus a random 30 of those
 they fully agree on; the audit measures how far to trust the remaining agreed ones unlabelled.
 The intent both models gave is pre-selected; where they disagree on it, nothing is shown and
-that label counts as blind.
+that label counts as blind. The locked 100 are labelled blind, after the router is frozen.
 """
 
 import argparse
@@ -29,6 +30,7 @@ GOLD_DIR = DATA / "gold"
 PRACTICE_LABELS = GOLD_DIR / "practice.jsonl"
 PRELABELS = GOLD_DIR / "prelabels.jsonl"
 ADJUDICATED = GOLD_DIR / "adjudicated.jsonl"
+LOCKED_LABELS = GOLD_DIR / "locked.jsonl"
 SEED = 11
 BLIND_BATCH = 30
 PRACTICE_SIZE = 200
@@ -309,21 +311,28 @@ def label_one(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--assisted", action="store_true", help="55 with model suggestions")
+    batches = parser.add_mutually_exclusive_group()
+    batches.add_argument("--assisted", action="store_true", help="55 with model suggestions")
+    batches.add_argument("--locked", action="store_true", help="the locked 100, blind")
     args = parser.parse_args()
 
     ontology = load_ontology()
-    order = labelling_order(load("practice"))
-    done = load_labels(PRACTICE_LABELS)
     suggestions: dict[int, str] = {}
-    if args.assisted:
-        if any(c.id not in done for c in order[:BLIND_BATCH]):
-            raise SystemExit("Finish the 30 blind labels first: run without --assisted.")
-        prelabels = load_suggestions(PRELABELS, ontology.version)
-        suggestions = prelabels.primary
-        batch = assisted_batch(order[BLIND_BATCH:PRACTICE_SIZE], prelabels.agreed)
+    if args.locked:
+        path = LOCKED_LABELS
+        batch = labelling_order(load("locked", unlock=True))
     else:
-        batch = order[:BLIND_BATCH]
+        path = PRACTICE_LABELS
+        order = labelling_order(load("practice"))
+        if args.assisted:
+            if any(c.id not in load_labels(path) for c in order[:BLIND_BATCH]):
+                raise SystemExit("Finish the 30 blind labels first: run without --assisted.")
+            prelabels = load_suggestions(PRELABELS, ontology.version)
+            suggestions = prelabels.primary
+            batch = assisted_batch(order[BLIND_BATCH:PRACTICE_SIZE], prelabels.agreed)
+        else:
+            batch = order[:BLIND_BATCH]
+    done = load_labels(path)
     todo = [c for c in batch if c.id not in done]
     print(f"{len(batch) - len(todo)} of {len(batch)} already labelled. q quits; work is saved.")
     start = time.monotonic()
@@ -335,11 +344,11 @@ def main() -> None:
                 left = each * (len(todo) - labelled)
                 position += f" · {each / 60:.1f} min each · about {left / 3600:.1f} h left"
             label = label_one(conv, ontology, position, suggestions.get(conv.id))
-            save_label(PRACTICE_LABELS, label)
+            save_label(path, label)
     except (Quit, EOFError, KeyboardInterrupt):
         print("\nStopped. Run again to carry on where you left off.")
         return
-    print(f"\nAll {len(batch)} labelled: {PRACTICE_LABELS.name}")
+    print(f"\nAll {len(batch)} labelled: {path.name}")
 
 
 if __name__ == "__main__":
