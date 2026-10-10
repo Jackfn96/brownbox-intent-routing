@@ -32,11 +32,11 @@
 # "other" (nothing fits) and "unclear" (not enough said yet) are classifier outcomes, not
 # intents. Examples are DEV conversation ids only. Validate with `make ontology`.
 
-# v2 (2026-10-09), from labelling the practice set: faults with no remedy named go to the return
+# v2, from labelling the practice set: faults with no remedy named go to the return
 # intent, which troubleshoots and can hand over to the warranty agent; "can't log in, don't know
 # why" goes to login_verification, which checks the account's state; tighter complaint and
 # wants_human guards; cancelling a return, lost warranty cards and unexplained emails placed.
-# v3 (2026-10-10), from the locked-set errors and live testing: the wants_human guard is
+# v3, from the locked-set errors and live testing: the wants_human guard is
 # recall-first (v2's near misses made it miss plain requests for a person); delivery-process
 # questions belong to ordering_help; angry demands for the remedy already asked for are not
 # complaints. v3 was checked on practice and the hand-written cases, not on the locked set,

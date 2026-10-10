@@ -1,6 +1,6 @@
 # Reading notes: 25 DEV conversations (my own view, before any LLM output)
 
-Read from `notes/reading-sample.md` (conversations 1–25). Written 2026-10-05, before discovery.
+Read from `notes/reading-sample.md` (conversations 1–25). Written before discovery.
 
 Bear in mind sometimes the agent starts conversation and sometimes the customer.
 

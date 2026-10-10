@@ -22,7 +22,7 @@ Also check:
 - **Guards**: fraud or takeover (never), wants a human, complaint, unsupported language (all hand-off). Add or remove any?
 - **Intents you'd add or rename**, compared with your reading notes.
 
-## Decisions (2026-10-06)
+## Decisions
 
 | # | Decision | Applied as |
 |---|---|---|
