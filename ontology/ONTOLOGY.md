@@ -1,4 +1,4 @@
-# BrownBox intent ontology, v2
+# BrownBox intent ontology, v3
 
 Generated from `ontology.yaml` by `make ontology`. Edit the YAML, not this file.
 
@@ -101,7 +101,7 @@ The customer wants to know what delivery costs or why an order didn't get free d
 inform · no identity check · AI handles it · agent `knowledge_agent`
 
 - **Includes:** Shipping prices and speeds for an item; Why an order didn't qualify for free delivery
-- **Excludes:** Wanting a delivery charge refunded (charge_dispute); A charge on their own order they don't recognise (charge_dispute)
+- **Excludes:** Wanting a delivery charge refunded (charge_dispute); A charge on their own order they don't recognise (charge_dispute); How delivery works or what the delivery process will be like (ordering_help)
 - **vs `charge_dispute`:** How delivery is priced is delivery_charges; a charge on their own order that they don't recognise or want back is charge_dispute, whose procedure looks it up.
 - **Examples:** #110, #208, #710
 
@@ -335,7 +335,8 @@ The customer wants help placing an order, paying for it, or understanding how it
 
 inform · no identity check · AI handles it · agent `knowledge_agent`
 
-- **Includes:** Payment options, including cash on delivery and why it isn't offered; Scheduled or in-store pickup; Combining orders from different sellers into one delivery
+- **Includes:** Payment options, including cash on delivery and why it isn't offered; Scheduled or in-store pickup; Combining orders from different sellers into one delivery; What the delivery process will be like for an order, and how it reaches them
+- **vs `delivery_charges`:** What delivery costs is delivery_charges; how delivery works is ordering_help.
 - **Examples:** #267, #105, #499, #781
 
 ### Out-of-stock items (`item_availability`)
@@ -370,17 +371,17 @@ Someone other than the customer may have used, or be trying to use, their accoun
 
 ### Asks for a human (`wants_human`): Hand off to a person
 
-The customer asks to speak to a person, supervisor or manager.
+The customer asks to speak to a person, supervisor or manager, or for one to get involved. When unsure, it fires, because handing someone to a person costs little and ignoring the request costs a lot.
 
-- **Fires on:** I want to speak to your supervisor; Can I talk to a real person?
-- **Not on:** The agent decides to escalate on its own; Can you check with your team?; "I need to talk to someone about my return", as a way of opening the conversation; Agreeing to a transfer the agent suggested
+- **Fires on:** I want to speak to your supervisor; Can I talk to a real person?; I'd like to speak to someone who can help me with this; Can you check with your supervisor or someone who can help me?; Yes, please put me through to someone
+- **Not on:** The agent decides to escalate on its own; Asking the agent to look something up with colleagues ("can you check with your team how long it takes?"); "I need to talk to someone about a return I made", as the opening line of a request
 
 ### Complaint (`complaint`): Hand off to a person
 
 The customer wants a complaint acted on. That means a formal complaint, compensation, a complaint about how staff or a courier behaved, or a threat to escalate outside BrownBox.
 
 - **Fires on:** I want to make a formal complaint; The courier was rude to me; I want compensation for this; I'll be reporting this
-- **Not on:** Frustration while still pursuing their request ("this is so annoying", "that's ridiculous", "this is unacceptable"); Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
+- **Not on:** Frustration while still pursuing their request ("this is so annoying", "that's ridiculous", "this is unacceptable"); Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better"); An angry demand for the remedy they're already asking for ("this is unacceptable, I demand a refund")
 
 ### Unsupported language (`unsupported_language`): Hand off to a person
 

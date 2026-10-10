@@ -36,7 +36,12 @@
 # intent, which troubleshoots and can hand over to the warranty agent; "can't log in, don't know
 # why" goes to login_verification, which checks the account's state; tighter complaint and
 # wants_human guards; cancelling a return, lost warranty cards and unexplained emails placed.
-version: "2"
+# v3 (2026-10-10), from the locked-set errors and live testing: the wants_human guard is
+# recall-first (v2's near misses made it miss plain requests for a person); delivery-process
+# questions belong to ordering_help; angry demands for the remedy already asked for are not
+# complaints. v3 was checked on practice and the hand-written cases, not on the locked set,
+# which had already been used to find these problems.
+version: "3"
 
 domains:
   - {id: orders, name: "Orders"}
@@ -188,6 +193,7 @@ intents:
     excludes:
       - Wanting a delivery charge refunded (charge_dispute)
       - A charge on their own order they don't recognise (charge_dispute)
+      - How delivery works or what the delivery process will be like (ordering_help)
     boundaries:
       charge_dispute: How delivery is priced is delivery_charges; a charge on their own order that they don't recognise or want back is charge_dispute, whose procedure looks it up.
     examples: [110, 208, 710]
@@ -551,6 +557,9 @@ intents:
       - Payment options, including cash on delivery and why it isn't offered
       - Scheduled or in-store pickup
       - Combining orders from different sellers into one delivery
+      - What the delivery process will be like for an order, and how it reaches them
+    boundaries:
+      delivery_charges: What delivery costs is delivery_charges; how delivery works is ordering_help.
     examples: [267, 105, 499, 781]
     kind: inform
     requires_verification: false
@@ -607,15 +616,17 @@ guards:
 
   - id: wants_human
     name: Asks for a human
-    definition: The customer asks to speak to a person, supervisor or manager.
+    definition: The customer asks to speak to a person, supervisor or manager, or for one to get involved. When unsure, it fires, because handing someone to a person costs little and ignoring the request costs a lot.
     fires_on:
       - I want to speak to your supervisor
       - Can I talk to a real person?
+      - I'd like to speak to someone who can help me with this
+      - Can you check with your supervisor or someone who can help me?
+      - Yes, please put me through to someone
     not_on:
       - The agent decides to escalate on its own
-      - Can you check with your team?
-      - '"I need to talk to someone about my return", as a way of opening the conversation'
-      - Agreeing to a transfer the agent suggested
+      - Asking the agent to look something up with colleagues ("can you check with your team how long it takes?")
+      - '"I need to talk to someone about a return I made", as the opening line of a request'
     participation: handoff
 
   - id: complaint
@@ -629,6 +640,7 @@ guards:
     not_on:
       - Frustration while still pursuing their request ("this is so annoying", "that's ridiculous", "this is unacceptable")
       - Dissatisfaction with nothing asked for ("I'm not happy with the service", "I expected better")
+      - An angry demand for the remedy they're already asking for ("this is unacceptable, I demand a refund")
     participation: handoff
 
   - id: unsupported_language

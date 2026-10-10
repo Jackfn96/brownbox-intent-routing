@@ -250,6 +250,60 @@
   primary: other
   guards: {fraud_or_takeover: 1, wants_human: 1}
 
+# --- v3 regression cases: failures found on the locked set and in live testing --------------
+- id: 9029
+  kind: guard
+  note: Plain request for someone who can help (missed by v2's near misses).
+  turns:
+    - [customer, "My refund still hasn't arrived and it's been three weeks."]
+    - [agent, "I'm sorry about that. Let me look into it."]
+    - [customer, "I'd like to speak to someone who can help me with this."]
+  primary: refund_status
+  guards: {wants_human: 2}
+
+- id: 9030
+  kind: guard
+  note: Asks for a supervisor to get involved (locked #961 pattern).
+  turns:
+    - [customer, "My parcel was meant to arrive last week and it still hasn't come."]
+    - [agent, "I can see it's delayed at the depot."]
+    - [customer, "Can you check with your supervisor or someone who can help me?"]
+  primary: order_not_arrived
+  guards: {wants_human: 2}
+
+- id: 9031
+  kind: guard
+  note: Accepts the agent's offer of a person (locked #361 pattern).
+  turns:
+    - [customer, "I've been charged twice for the same order."]
+    - [agent, "I can't reverse that myself. Would you like me to put you through to someone who can?"]
+    - [customer, "Yes, please. I'd like to speak to someone who can help me with this."]
+  primary: charge_dispute
+  guards: {wants_human: 2}
+
+- id: 9032
+  kind: trap
+  note: '"Talk to someone about" as an opener is a request, not an ask for a person.'
+  turns:
+    - [customer, "Hi, I need to talk to someone about a return I made. The refund hasn't come through yet."]
+  primary: refund_status
+
+- id: 9033
+  kind: trap
+  note: An angry demand for the refund already asked for is not a complaint.
+  turns:
+    - [customer, "My kettle stopped working after two days. I want a refund."]
+    - [agent, "I'm sorry. We can offer a repair under warranty."]
+    - [customer, "This is unacceptable. I demand a full refund!"]
+  primary: initiate_return
+
+- id: 9034
+  kind: trap
+  note: Delivery-process question belongs to ordering help (locked #496, #809).
+  turns:
+    - [customer, "I placed an order for a speaker. What will the delivery process be like?"]
+  primary: ordering_help
+
 # --- Changes of request -------------------------------------------------------------------
 - id: 9101
   kind: switch

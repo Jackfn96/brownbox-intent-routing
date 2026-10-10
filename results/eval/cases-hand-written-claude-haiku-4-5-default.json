@@ -3,44 +3,44 @@
   "model": "claude-haiku-4-5",
   "effort": null,
   "labels": "hand-written",
-  "conversations": 38,
+  "conversations": 44,
   "intent_at_clear": {
-    "hits": 34,
-    "total": 38,
-    "value": 0.8947368421052632,
-    "low": 0.7586916879980553,
-    "high": 0.9582981020673341
+    "hits": 39,
+    "total": 44,
+    "value": 0.8863636363636364,
+    "low": 0.7602056485186641,
+    "high": 0.950472924104325
   },
   "agent_at_clear": {
-    "hits": 35,
-    "total": 38,
-    "value": 0.9210526315789473,
-    "low": 0.792003210797347,
-    "high": 0.972785898605735
+    "hits": 40,
+    "total": 44,
+    "value": 0.9090909090909091,
+    "low": 0.7884048060208251,
+    "high": 0.9640783885211635
   },
   "messages": {
-    "hits": 55,
-    "total": 61,
-    "value": 0.9016393442622951,
-    "low": 0.7833333333333333,
-    "high": 0.9841269841269841
+    "hits": 64,
+    "total": 71,
+    "value": 0.9014084507042254,
+    "low": 0.7971014492753623,
+    "high": 0.9850746268656716
   },
   "final_message": {
-    "hits": 35,
-    "total": 38,
-    "value": 0.9210526315789473,
-    "low": 0.792003210797347,
-    "high": 0.972785898605735
+    "hits": 39,
+    "total": 44,
+    "value": 0.8863636363636364,
+    "low": 0.7602056485186641,
+    "high": 0.950472924104325
   },
-  "kappa": 0.8859714928732183,
+  "kappa": 0.8758465011286681,
   "unclear_at_clear": 2,
-  "other_at_clear": 3,
+  "other_at_clear": 1,
   "false_switches": {
     "hits": 0,
-    "total": 38,
+    "total": 44,
     "value": 0.0,
-    "low": 0.0,
-    "high": 0.09181293258383999
+    "low": 6.938893903907228e-18,
+    "high": 0.08029831778201396
   },
   "switches": 4,
   "switches_missed": 0,
@@ -86,41 +86,44 @@
       },
       "flag_rate": {
         "hits": 13,
-        "total": 38,
-        "value": 0.34210526315789475,
-        "low": 0.21212220026458956,
-        "high": 0.5010818837092545
+        "total": 44,
+        "value": 0.29545454545454547,
+        "low": 0.18155360887243294,
+        "high": 0.4422047938565727
       }
     },
     "wants_human": {
-      "expected": 3,
-      "fired": 3,
-      "caught": 3,
+      "expected": 6,
+      "fired": 6,
+      "caught": 6,
       "delays": [
+        0,
+        0,
+        0,
         0,
         0,
         0
       ],
       "recall": {
-        "hits": 3,
-        "total": 3,
+        "hits": 6,
+        "total": 6,
         "value": 1.0,
-        "low": 0.43849391955098227,
-        "high": 1.0
+        "low": 0.6096569663469354,
+        "high": 0.9999999999999999
       },
       "precision": {
-        "hits": 3,
-        "total": 3,
+        "hits": 6,
+        "total": 6,
         "value": 1.0,
-        "low": 0.43849391955098227,
-        "high": 1.0
+        "low": 0.6096569663469354,
+        "high": 0.9999999999999999
       },
       "flag_rate": {
-        "hits": 3,
-        "total": 38,
-        "value": 0.07894736842105263,
-        "low": 0.02721410139426493,
-        "high": 0.2079967892026529
+        "hits": 6,
+        "total": 44,
+        "value": 0.13636363636363635,
+        "low": 0.0640286740786005,
+        "high": 0.2670973752174096
       }
     },
     "complaint": {
@@ -147,10 +150,10 @@
       },
       "flag_rate": {
         "hits": 2,
-        "total": 38,
-        "value": 0.05263157894736842,
-        "low": 0.014553902448536798,
-        "high": 0.17285766881068843
+        "total": 44,
+        "value": 0.045454545454545456,
+        "low": 0.012554846366981079,
+        "high": 0.15135271525303162
       }
     },
     "unsupported_language": {
@@ -177,34 +180,72 @@
       },
       "flag_rate": {
         "hits": 2,
-        "total": 38,
-        "value": 0.05263157894736842,
-        "low": 0.014553902448536798,
-        "high": 0.17285766881068843
+        "total": 44,
+        "value": 0.045454545454545456,
+        "low": 0.012554846366981079,
+        "high": 0.15135271525303162
       }
     }
   },
   "false_alarms": {
     "hits": 0,
-    "total": 19,
+    "total": 22,
     "value": 0.0,
-    "low": 0.0,
-    "high": 0.16818436536845052
+    "low": 1.3877787807814457e-17,
+    "high": 0.14865952572596125
   },
-  "calls": 315,
-  "cost_usd": 0.2114752,
-  "mean_latency_s": 0.8169337293848262,
+  "calls": 365,
+  "cost_usd": 0.34070849999999997,
+  "mean_latency_s": 0.820216807517644,
   "label_quality": null,
   "per_intent": {
     "initiate_return": {
-      "support": 6,
-      "predicted": 5,
+      "support": 7,
+      "predicted": 7,
       "recall": {
+        "hits": 7,
+        "total": 7,
+        "value": 1.0,
+        "low": 0.6456611570247934,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 7,
+        "total": 7,
+        "value": 1.0,
+        "low": 0.6456611570247934,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
+    "order_not_arrived": {
+      "support": 7,
+      "predicted": 6,
+      "recall": {
+        "hits": 5,
+        "total": 7,
+        "value": 0.7142857142857143,
+        "low": 0.35892909014821267,
+        "high": 0.9177828342909844
+      },
+      "precision": {
         "hits": 5,
         "total": 6,
         "value": 0.8333333333333334,
         "low": 0.43649056343635395,
         "high": 0.9699474141282697
+      },
+      "f1": 0.7692307692307692
+    },
+    "charge_dispute": {
+      "support": 5,
+      "predicted": 5,
+      "recall": {
+        "hits": 5,
+        "total": 5,
+        "value": 1.0,
+        "low": 0.5655085052479191,
+        "high": 1.0
       },
       "precision": {
         "hits": 5,
@@ -213,28 +254,9 @@
         "low": 0.5655085052479191,
         "high": 1.0
       },
-      "f1": 0.9090909090909091
+      "f1": 1.0
     },
-    "order_not_arrived": {
-      "support": 6,
-      "predicted": 4,
-      "recall": {
-        "hits": 4,
-        "total": 6,
-        "value": 0.6666666666666666,
-        "low": 0.29998832134152864,
-        "high": 0.9032306674407831
-      },
-      "precision": {
-        "hits": 4,
-        "total": 4,
-        "value": 1.0,
-        "low": 0.5100999795960008,
-        "high": 1.0
-      },
-      "f1": 0.8
-    },
-    "charge_dispute": {
+    "refund_status": {
       "support": 4,
       "predicted": 4,
       "recall": {
@@ -274,22 +296,22 @@
     },
     "other": {
       "support": 3,
-      "predicted": 3,
+      "predicted": 1,
       "recall": {
-        "hits": 3,
+        "hits": 1,
         "total": 3,
-        "value": 1.0,
-        "low": 0.43849391955098227,
-        "high": 1.0
+        "value": 0.3333333333333333,
+        "low": 0.0614903152761605,
+        "high": 0.7923450448735121
       },
       "precision": {
-        "hits": 3,
-        "total": 3,
+        "hits": 1,
+        "total": 1,
         "value": 1.0,
-        "low": 0.43849391955098227,
+        "low": 0.20654329147389294,
         "high": 1.0
       },
-      "f1": 1.0
+      "f1": 0.5
     },
     "change_delivery_address": {
       "support": 2,
@@ -330,25 +352,6 @@
       "f1": 1.0
     },
     "password_reset": {
-      "support": 2,
-      "predicted": 2,
-      "recall": {
-        "hits": 2,
-        "total": 2,
-        "value": 1.0,
-        "low": 0.34237195288961925,
-        "high": 1.0
-      },
-      "precision": {
-        "hits": 2,
-        "total": 2,
-        "value": 1.0,
-        "low": 0.34237195288961925,
-        "high": 1.0
-      },
-      "f1": 1.0
-    },
-    "refund_status": {
       "support": 2,
       "predicted": 2,
       "recall": {
@@ -462,6 +465,25 @@
       },
       "f1": 0.5
     },
+    "ordering_help": {
+      "support": 1,
+      "predicted": 1,
+      "recall": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "precision": {
+        "hits": 1,
+        "total": 1,
+        "value": 1.0,
+        "low": 0.20654329147389294,
+        "high": 1.0
+      },
+      "f1": 1.0
+    },
     "reactivate_account": {
       "support": 1,
       "predicted": 1,
@@ -534,13 +556,19 @@
       "same_agent": false
     },
     {
-      "expected": "order_not_arrived",
+      "expected": "other",
       "got": "unclear",
       "count": 1,
       "same_agent": false
     },
     {
-      "expected": "initiate_return",
+      "expected": "other",
+      "got": "order_not_arrived",
+      "count": 1,
+      "same_agent": false
+    },
+    {
+      "expected": "order_not_arrived",
       "got": "unclear",
       "count": 1,
       "same_agent": false
@@ -887,12 +915,12 @@
       "id": 9019,
       "mode": "synthetic",
       "expected": "other",
-      "at_clear": "other",
-      "correct_at_clear": true,
-      "agent_correct_at_clear": true,
+      "at_clear": "unclear",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
       "messages_scored": 1,
-      "messages_correct": 1,
-      "final_correct": true,
+      "messages_correct": 0,
+      "final_correct": false,
       "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
@@ -943,12 +971,12 @@
       "id": 9022,
       "mode": "synthetic",
       "expected": "other",
-      "at_clear": "other",
-      "correct_at_clear": true,
-      "agent_correct_at_clear": true,
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": false,
+      "agent_correct_at_clear": false,
       "messages_scored": 1,
-      "messages_correct": 1,
-      "final_correct": true,
+      "messages_correct": 0,
+      "final_correct": false,
       "false_switches": 0,
       "switch_delay": null,
       "switch_missed": false,
@@ -1019,11 +1047,11 @@
       "id": 9026,
       "mode": "synthetic",
       "expected": "initiate_return",
-      "at_clear": "unclear",
-      "correct_at_clear": false,
-      "agent_correct_at_clear": false,
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
       "messages_scored": 2,
-      "messages_correct": 1,
+      "messages_correct": 2,
       "final_correct": true,
       "false_switches": 0,
       "switch_delay": null,
@@ -1072,6 +1100,114 @@
         "fraud_or_takeover": 1,
         "wants_human": 1
       }
+    },
+    {
+      "id": 9029,
+      "mode": "synthetic",
+      "expected": "refund_status",
+      "at_clear": "refund_status",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "wants_human": 2
+      },
+      "guards_fired": {
+        "wants_human": 2
+      }
+    },
+    {
+      "id": 9030,
+      "mode": "synthetic",
+      "expected": "order_not_arrived",
+      "at_clear": "order_not_arrived",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "wants_human": 2
+      },
+      "guards_fired": {
+        "wants_human": 2
+      }
+    },
+    {
+      "id": 9031,
+      "mode": "synthetic",
+      "expected": "charge_dispute",
+      "at_clear": "charge_dispute",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {
+        "wants_human": 2
+      },
+      "guards_fired": {
+        "wants_human": 2
+      }
+    },
+    {
+      "id": 9032,
+      "mode": "synthetic",
+      "expected": "refund_status",
+      "at_clear": "refund_status",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9033,
+      "mode": "synthetic",
+      "expected": "initiate_return",
+      "at_clear": "initiate_return",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 2,
+      "messages_correct": 2,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
+    },
+    {
+      "id": 9034,
+      "mode": "synthetic",
+      "expected": "ordering_help",
+      "at_clear": "ordering_help",
+      "correct_at_clear": true,
+      "agent_correct_at_clear": true,
+      "messages_scored": 1,
+      "messages_correct": 1,
+      "final_correct": true,
+      "false_switches": 0,
+      "switch_delay": null,
+      "switch_missed": false,
+      "guards_expected": {},
+      "guards_fired": {}
     },
     {
       "id": 9101,
