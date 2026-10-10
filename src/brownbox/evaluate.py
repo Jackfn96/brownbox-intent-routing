@@ -232,13 +232,23 @@ def run_practice(model: str, effort: llm.Effort | None, with_silver: bool) -> Re
 
 
 def run_locked(model: str, effort: llm.Effort | None) -> Report:
-    """The final score: my blind labels on the locked set, whatever has been labelled so far."""
+    """The final score: my blind labels on the locked set, whatever has been labelled so far.
+
+    It only scores the ontology version the labels were made with. The locked set scores one
+    frozen version once; a later version was shaped by its errors, so it can't be tested on it.
+    """
     labels = load_labels(LOCKED_LABELS)
     if not labels:
         raise SystemExit("no locked labels yet: run `make label-locked` first")
+    ontology = load_ontology()
+    labelled = {label.ontology_version for label in labels.values()}
+    if labelled != {ontology.version}:
+        raise SystemExit(
+            f"the locked set was labelled against ontology v{', v'.join(sorted(labelled))}; "
+            f"scoring v{ontology.version} on it would use the test set twice"
+        )
     by_id = {c.id: c for c in load("locked", unlock=True)}
     convs = [by_id[i] for i in sorted(labels)]
-    ontology = load_ontology()
     routings = route_all(convs, ontology, model, effort)
     return build_report("locked", convs, labels, "mine", None, routings, ontology, model, effort)
 

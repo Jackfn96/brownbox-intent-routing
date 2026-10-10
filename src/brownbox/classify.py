@@ -7,6 +7,7 @@ guards win, then hand-off intents, then "ask to clarify", then the intent's agen
 never decides whether the AI may take part.
 """
 
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from typing import Literal
 
@@ -127,41 +128,51 @@ def route_conversation(
 
     Once there is a real intent, it only changes when the model says the latest message
     changes the request: the model judges the message, code decides whether to switch.
-    Guards are sticky, so a guard that has fired is not checked again.
+    Guards are sticky, so a guard that has fired is not checked again. The intent check and
+    the guard checks don't depend on each other, so each message's calls run in parallel.
     """
     n = sum(t.role == "customer" for t in conv.turns)
     steps: list[Step] = []
     usage: list[llm.Usage] = []
     current = UNCLEAR  # Nothing said yet.
     fired: set[str] = set()
-    for k in range(1, n + 1):
-        prefix = Conversation(
-            id=conv.id, split=conv.split, turns=tuple(cut_after_customer_message(conv.turns, k))
-        )
-        transcript = format_conversation(prefix, numbered=True)
-        settled = current not in (UNCLEAR, OTHER)
-        user = transcript + (f"\n\nCurrent intent so far: {current}" if settled else "")
-        reply = llm.structured(
-            llm.Request(model, prompts.system, user, max_tokens=512, effort=effort),
-            prompts.schema,
-        )
-        usage.append(reply.usage)
-        if not settled or reply.output.changes_request:
-            current = reply.output.intent
-
-        new_guards = []
-        for guard, system in prompts.guards.items():
-            if guard in fired:
-                continue
-            check = llm.structured(
-                llm.Request(model, system, transcript, max_tokens=256, effort=effort),
-                GuardCheck,
+    with ThreadPoolExecutor(max_workers=1 + len(prompts.guards)) as pool:
+        for k in range(1, n + 1):
+            prefix = Conversation(
+                id=conv.id,
+                split=conv.split,
+                turns=tuple(cut_after_customer_message(conv.turns, k)),
             )
-            usage.append(check.usage)
-            if check.output.fires:
-                new_guards.append(guard)
-        fired.update(new_guards)
-        steps.append(Step(message=k, intent=current, guards=tuple(sorted(new_guards))))
+            transcript = format_conversation(prefix, numbered=True)
+            settled = current not in (UNCLEAR, OTHER)
+            user = transcript + (f"\n\nCurrent intent so far: {current}" if settled else "")
+            intent_call = pool.submit(
+                llm.structured,
+                llm.Request(model, prompts.system, user, max_tokens=512, effort=effort),
+                prompts.schema,
+            )
+            guard_calls = {
+                guard: pool.submit(
+                    llm.structured,
+                    llm.Request(model, system, transcript, max_tokens=256, effort=effort),
+                    GuardCheck,
+                )
+                for guard, system in prompts.guards.items()
+                if guard not in fired
+            }
+
+            reply = intent_call.result()
+            usage.append(reply.usage)
+            if not settled or reply.output.changes_request:
+                current = reply.output.intent
+            new_guards = []
+            for guard, call in guard_calls.items():
+                check = call.result()
+                usage.append(check.usage)
+                if check.output.fires:
+                    new_guards.append(guard)
+            fired.update(new_guards)
+            steps.append(Step(message=k, intent=current, guards=tuple(sorted(new_guards))))
     return Routing(steps, usage)
 
 

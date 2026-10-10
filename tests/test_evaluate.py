@@ -74,3 +74,13 @@ def test_pooled_guards_need_every_saved_report(
     monkeypatch.setattr(evaluate, "EVAL_DIR", tmp_path)
     with pytest.raises(SystemExit, match="no saved cases results"):
         evaluate.run_guards("claude-haiku-4-5", None)
+
+
+def test_locked_set_refuses_a_different_ontology_version(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, make_gold: MakeGold
+) -> None:
+    path = tmp_path / "locked.jsonl"
+    path.write_text(make_gold(id=1, ontology_version="0").model_dump_json() + "\n")
+    monkeypatch.setattr(evaluate, "LOCKED_LABELS", path)
+    with pytest.raises(SystemExit, match="use the test set twice"):
+        evaluate.run_locked("claude-haiku-4-5", None)

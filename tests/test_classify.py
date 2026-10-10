@@ -86,7 +86,12 @@ def test_router_switches_only_on_a_changed_request_and_checks_each_guard_until_i
     ]
     assert [s.guards for s in steps] == [(), ("wants_human",), (), ()]
     # wants_human fired at the second message, so it is not checked again; complaint always is.
-    assert [g for g, _ in checked] == ["w", "c", "w", "c", "c", "c"]
+    # The checks run in parallel, so compare which messages each guard saw, not the order.
+    seen = {g: sorted(m for s, m in checked if s == g) for g in ("w", "c")}
+    assert seen == {
+        "w": ["Customer (C1): m0", "Customer (C2): m1"],
+        "c": ["Customer (C1): m0", "Customer (C2): m1", "Customer (C3): m2", "Customer (C4): m3"],
+    }
 
 
 def test_router_schema_offers_unclear_and_other() -> None:

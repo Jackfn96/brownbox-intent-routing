@@ -1,4 +1,4 @@
-.PHONY: all format lint type-check test parse reading-sample discover ontology label label-assisted prelabel cases eval-cases eval label-locked eval-locked eval-guards
+.PHONY: all format lint type-check test parse reading-sample discover ontology label label-assisted prelabel cases eval-cases eval label-locked eval-locked eval-guards demo
 
 # Run after every change: format, lint, type-check, tests.
 all: format lint type-check test
@@ -53,3 +53,6 @@ eval-locked:
 
 eval-guards:
 	uv run python -m brownbox.evaluate guards
+
+demo:
+	uv run python -m brownbox.demo $(if $(FLOW),--flow $(FLOW),)
