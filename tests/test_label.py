@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 import pytest
@@ -6,36 +5,37 @@ from conftest import MakeGold
 from pydantic import ValidationError
 
 from brownbox import label
-from brownbox.models import Conversation, Turn
+from brownbox.models import Conversation, PreLabel, Turn
 
 CHOICES = ["order_status", "cancel_order", "initiate_return"]
 KEYS = {"f": "fraud_or_takeover", "w": "wants_human", "c": "complaint"}
 
 
 @pytest.mark.parametrize(
-    ("text", "optional", "expected"),
-    [
-        ("2", False, "cancel_order"),
-        ("0", False, "other"),
-        (" 3 ", False, "initiate_return"),
-        ("", True, None),
-    ],
+    ("text", "expected"),
+    [("2", "cancel_order"), ("0", "other"), ("00", "other"), (" 3 ", "initiate_return")],
 )
-def test_parse_intent(text: str, optional: bool, expected: str | None) -> None:
-    assert label.parse_intent(text, CHOICES, optional) == expected
+def test_parse_intent(text: str, expected: str) -> None:
+    assert label.parse_intent(text, CHOICES) == expected
+
+
+def test_parse_optional_intent_reads_blank_as_none() -> None:
+    assert label.parse_optional_intent(" ", CHOICES) is None
+    assert label.parse_optional_intent("1", CHOICES) == "order_status"
 
 
 @pytest.mark.parametrize("text", ["", "4", "x", "-1"])
 def test_parse_intent_rejects_bad_input(text: str) -> None:
-    with pytest.raises(ValueError):
-        label.parse_intent(text, CHOICES, optional=False)
+    with pytest.raises(ValueError, match="number from 0 to 3"):
+        label.parse_intent(text, CHOICES)
 
 
-def test_parse_message_uses_default_and_bounds() -> None:
-    assert label.parse_message("", 3, default=1) == 1
-    assert label.parse_message("3", 3, default=1) == 3
-    with pytest.raises(ValueError):
-        label.parse_message("4", 3, default=1)
+def test_parse_message_keeps_to_its_bounds() -> None:
+    assert label.parse_message("3", 3) == 3
+    with pytest.raises(ValueError, match="from 1 to 3"):
+        label.parse_message("4", 3)
+    with pytest.raises(ValueError, match="from 2 to 3"):
+        label.parse_message("1", 3, minimum=2)  # A switch at C1 would fail GoldLabel later.
 
 
 def test_parse_guards_records_the_message_each_fires_at() -> None:
@@ -96,25 +96,23 @@ def test_switch_needs_both_fields(make_gold: MakeGold) -> None:
 
 
 def test_parse_intent_blank_accepts_the_suggestion() -> None:
-    assert label.parse_intent("", CHOICES, optional=False, default="cancel_order") == "cancel_order"
-    assert label.parse_intent("3", CHOICES, optional=False, default="cancel_order") == (
-        "initiate_return"
-    )
+    assert label.parse_intent("", CHOICES, default="cancel_order") == "cancel_order"
+    assert label.parse_intent("3", CHOICES, default="cancel_order") == "initiate_return"
 
 
 def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
-    def row(id: int, model: str, primary: str, secondary: str | None = None) -> dict[str, object]:
-        return {
-            "id": id,
-            "model": model,
-            "primary": primary,
-            "secondary": secondary,
-            "clear_at": 1,
-            "switch_at": None,
-            "switch_to": None,
-            "guards": {},
-            "ontology_version": "1",
-        }
+    def row(id: int, model: str, primary: str, secondary: str | None = None) -> PreLabel:
+        return PreLabel(
+            id=id,
+            model=model,
+            primary=primary,
+            secondary=secondary,
+            clear_at=1,
+            switch_at=None,
+            switch_to=None,
+            guards={},
+            ontology_version="1",
+        )
 
     path = tmp_path / "prelabels.jsonl"
     rows = [
@@ -125,7 +123,7 @@ def test_suggestions_only_where_every_model_agrees(tmp_path: Path) -> None:
         row(3, "a", "cancel_order"),
         row(3, "b", "cancel_order", secondary="order_status"),
     ]
-    path.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    path.write_text("".join(r.model_dump_json() + "\n" for r in rows))
     suggestions = label.load_suggestions(path)
     assert suggestions.primary == {1: "cancel_order", 3: "cancel_order"}
     assert list(suggestions.agreed) == [1]

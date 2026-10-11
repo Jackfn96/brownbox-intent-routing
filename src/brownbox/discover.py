@@ -26,8 +26,8 @@ from brownbox.paths import RESULTS, ROOT
 from brownbox.prompts import format_conversation
 
 OUT = RESULTS / "discovery"
-GOAL_MODEL = "claude-opus-5-5"
-NAME_MODEL = "claude-opus-5-5"
+GOAL_MODEL = llm.OPUS
+NAME_MODEL = llm.OPUS
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 N_CLUSTERS = 35  # Deliberately more than we expect intents: merging is easier than splitting.
 K_SWEEP = range(15, 60, 5)

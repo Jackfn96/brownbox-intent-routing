@@ -18,7 +18,7 @@ saved results, because each set alone has only a few conversations where a guard
 import argparse
 from collections import Counter
 from pathlib import Path
-from typing import Literal
+from typing import Literal, get_args
 
 from pydantic import BaseModel
 
@@ -28,8 +28,8 @@ from brownbox.classify import (
     ROUTER_MODEL,
     Routing,
     Step,
+    load_router_prompts,
     route_conversation,
-    router_prompts,
 )
 from brownbox.label import (
     ADJUDICATED,
@@ -107,6 +107,7 @@ def score_case(case: Case, steps: list[Step]) -> CaseResult:
 
 class Report(BaseModel):
     split: EvalSet
+    ontology_version: str | None = None  # None: saved before the version was recorded.
     model: str
     effort: llm.Effort | None
     labels: str  # Which labels: "hand-written" (cases), "mine" or "mine+silver".
@@ -136,7 +137,7 @@ class Report(BaseModel):
 def route_all(
     convs: list[Conversation], ontology: Ontology, model: str, effort: llm.Effort | None
 ) -> list[Routing]:
-    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
+    prompts = load_router_prompts(ontology)
     print(f"routing {len(convs)} conversations with {model}...", flush=True)
     return llm.run_all(
         lambda c: route_conversation(c, prompts, model, effort), convs, "conversations"
@@ -165,6 +166,7 @@ def build_report(
 
     return Report(
         split=split,
+        ontology_version=ontology.version,
         model=model,
         effort=effort,
         labels=label_set,
@@ -347,20 +349,24 @@ def run_guards(model: str, effort: llm.Effort | None) -> None:
         if not path.exists():
             raise SystemExit(f"no saved {split} results for {model}: run `evaluate {split}` first")
         reports.append(Report.model_validate_json(path.read_text()))
-    guards = [g.id for g in load_ontology().guards]
+    ontology = load_ontology()
     for r in reports:
-        print(f"\n{r.split} ({r.conversations} conversations)")
+        version = f"v{r.ontology_version}" if r.ontology_version else "version not recorded"
+        print(f"\n{r.split} ({r.conversations} conversations, ontology {version})")
         print("\n".join(guard_table(r.guards)))
-    pooled = [s for r in reports for s in r.by_conversation]
-    print(f"\nAll sets pooled ({len(pooled)} conversations)")
-    print("\n".join(guard_table(guard_counts(pooled, guards))))
+    # Pool only sets scored on the current ontology: mixing versions would blur both.
+    current = [r for r in reports if r.ontology_version == ontology.version]
+    pooled = [s for r in current for s in r.by_conversation]
+    names = " + ".join(r.split for r in current)
+    print(f"\nPooled on ontology v{ontology.version}: {names} ({len(pooled)} conversations)")
+    print("\n".join(guard_table(guard_counts(pooled, [g.id for g in ontology.guards]))))
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("set", choices=["cases", "practice", "locked", "guards"])
-    parser.add_argument("--model", default=ROUTER_MODEL)
-    parser.add_argument("--effort", choices=["low", "medium", "high"])
+    parser.add_argument("set", choices=[*get_args(EvalSet), "guards"])
+    parser.add_argument("--model", default=ROUTER_MODEL, choices=sorted(llm.PRICES))
+    parser.add_argument("--effort", choices=get_args(llm.Effort))
     parser.add_argument("--silver", action="store_true", help="also score the silver labels")
     args = parser.parse_args()
 

@@ -16,10 +16,10 @@ from pydantic import BaseModel, Field, create_model
 from brownbox import llm
 from brownbox.models import Conversation
 from brownbox.ontology import OTHER, UNCLEAR, Guard, Ontology
-from brownbox.parse import cut_after_customer_message
+from brownbox.parse import cut_after_customer_message, load
 from brownbox.prompts import format_conversation, render_ontology
 
-ROUTER_MODEL = "claude-haiku-4-5"
+ROUTER_MODEL = llm.HAIKU
 
 ROUTER_INSTRUCTIONS = """You route customer support conversations for BrownBox, an online \
 retailer. You see the conversation so far, up to the customer's latest message.
@@ -116,6 +116,11 @@ def router_prompts(ontology: Ontology, examples: dict[int, Conversation]) -> Rou
         schema=router_schema(ontology),
         guards={g.id: guard_system(g) for g in ontology.guards},
     )
+
+
+def load_router_prompts(ontology: Ontology) -> RouterPrompts:
+    """The router's prompts, with each intent's examples drawn from the DEV conversations."""
+    return router_prompts(ontology, {c.id: c for c in load("dev")})
 
 
 def route_conversation(

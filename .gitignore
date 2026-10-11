@@ -8,3 +8,4 @@ __pycache__/
 data/parsed.jsonl
 notes/reading-sample.md
 notes/adjudication*.md
+.coverage

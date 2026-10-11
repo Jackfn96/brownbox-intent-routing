@@ -28,8 +28,12 @@ TIMEOUT_S = 120.0
 SDK_RETRIES = 3
 WORKERS = 8  # Parallel calls in run_all.
 
+HAIKU = "claude-haiku-4-5"
+SONNET = "claude-sonnet-5-5"
+OPUS = "claude-opus-5-5"
+
 # Models that accept Anthropic's server-side refusal fallback in its "default" form.
-FALLBACK_MODELS = {"claude-opus-5-5", "claude-sonnet-5-5"}
+FALLBACK_MODELS = {OPUS, SONNET}
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
 
 Effort = Literal["low", "medium", "high"]
@@ -71,9 +75,9 @@ class Price(BaseModel):
 
 # Opus 5.5 and Sonnet 5.5 from Anthropic's model docs; Haiku 4.5 from the pricing page.
 PRICES = {
-    "claude-haiku-4-5": Price(input=1.0, output=5.0, cache_read=0.10),
-    "claude-sonnet-5-5": Price(input=2.0, output=10.0, cache_read=0.20),
-    "claude-opus-5-5": Price(input=4.0, output=20.0, cache_read=0.20),
+    HAIKU: Price(input=1.0, output=5.0, cache_read=0.10),
+    SONNET: Price(input=2.0, output=10.0, cache_read=0.20),
+    OPUS: Price(input=4.0, output=20.0, cache_read=0.20),
 }
 CACHE_WRITE_MULTIPLIER = 1.25  # 5-minute cache writes cost 1.25x the input price.
 
@@ -114,7 +118,10 @@ def structured[T: BaseModel](req: Request, schema: type[T]) -> Reply[T]:
             continue
         path.parent.mkdir(parents=True, exist_ok=True)
         record = {"output": output.model_dump(mode="json"), "usage": usage.model_dump()}
-        path.write_text(json.dumps(record))
+        # Write then rename, so an interrupted run can't leave a half-written cache entry.
+        tmp = path.with_suffix(".tmp")
+        tmp.write_text(json.dumps(record))
+        tmp.replace(path)
         return Reply(output, usage, from_cache=False)
     raise LLMError(f"{req.model}: no valid output after {MAX_ATTEMPTS} attempts: {errors}")
 
@@ -178,8 +185,13 @@ def run_all[I, O](fn: Callable[[I], O], items: list[I], label: str) -> list[O]:
     done: dict[int, O] = {}
     with ThreadPoolExecutor(WORKERS) as pool:
         futures = {pool.submit(fn, item): i for i, item in enumerate(items)}
-        for future in as_completed(futures):
-            done[futures[future]] = future.result()
-            if len(done) % 50 == 0 or len(done) == len(items):
-                print(f"  {label}: {len(done)}/{len(items)}", flush=True)
+        try:
+            for future in as_completed(futures):
+                done[futures[future]] = future.result()
+                if len(done) % 50 == 0 or len(done) == len(items):
+                    print(f"  {label}: {len(done)}/{len(items)}", flush=True)
+        except BaseException:
+            # A failure or Ctrl-C stops the run: don't pay for the calls still queued.
+            pool.shutdown(cancel_futures=True)
+            raise
     return [done[i] for i in range(len(items))]

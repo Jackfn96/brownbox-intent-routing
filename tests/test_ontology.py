@@ -1,44 +1,9 @@
-from typing import Any
-
 import pytest
+from conftest import intent_data as intent
+from conftest import ontology_data as ontology
 from pydantic import ValidationError
 
 from brownbox.ontology import Ontology, non_dev_examples, render_markdown
-
-
-def intent(id: str, **overrides: Any) -> dict[str, Any]:
-    return {
-        "id": id,
-        "name": id.replace("_", " "),
-        "domain": "orders",
-        "definition": "A customer request.",
-        "includes": ["the request"],
-        "examples": [1, 2],
-        "kind": "act",
-        "requires_verification": True,
-        "participation": "ai",
-        "agent": "orders_agent",
-        **overrides,
-    }
-
-
-def ontology(*intents: dict[str, Any], **overrides: Any) -> dict[str, Any]:
-    return {
-        "version": "1",
-        "domains": [{"id": "orders", "name": "Orders"}],
-        "intents": list(intents),
-        "guards": [
-            {
-                "id": "fraud",
-                "name": "Fraud",
-                "definition": "Someone else used the account or card.",
-                "fires_on": ["I never placed this order"],
-                "not_on": ["My parcel was stolen from my doorstep"],
-                "participation": "never",
-            }
-        ],
-        **overrides,
-    }
 
 
 def test_valid_ontology_loads() -> None:
@@ -75,7 +40,7 @@ def test_valid_ontology_loads() -> None:
         (ontology(intent("cancel_order", definiton="typo")), "definiton"),
     ],
 )
-def test_invalid_ontology_is_rejected(data: dict[str, Any], message: str) -> None:
+def test_invalid_ontology_is_rejected(data: dict[str, object], message: str) -> None:
     with pytest.raises(ValidationError, match=message):
         Ontology.model_validate(data)
 

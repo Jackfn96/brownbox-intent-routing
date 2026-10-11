@@ -60,7 +60,8 @@ class Adjudication(BaseModel):
 
 
 class Proposal(BaseModel):
-    """A label suggested by a pre-labelling model, checked against the ontology on return."""
+    """A label suggested by a pre-labelling model. Its output schema limits ids to the
+    ontology's."""
 
     model_config = ConfigDict(frozen=True)
 

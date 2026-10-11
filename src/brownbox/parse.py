@@ -3,7 +3,7 @@
 import random
 import re
 from collections import Counter
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 
 import pandas as pd
@@ -11,6 +11,7 @@ import pandas as pd
 from brownbox.models import Conversation, Split, Turn
 from brownbox.paths import DATA, ROOT
 
+RAW = DATA / "conversations.parquet"
 PARSED = DATA / "parsed.jsonl"
 LOCKED_IDS = DATA / "locked_ids.txt"
 
@@ -71,23 +72,32 @@ def load(split: Split, unlock: bool = False, path: Path = PARSED) -> list[Conver
     return [c for c in conversations if c.split == split]
 
 
-def main() -> None:
-    df = pd.read_parquet(DATA / "conversations.parquet")
-    parsed = {
-        int(i): parse_turns(text) for i, text in zip(df["id"], df["conversation"], strict=True)
-    }
+def read_transcripts(path: Path = RAW) -> dict[int, str]:
+    """Every transcript by id. Only these two columns are ever read."""
+    df = pd.read_parquet(path, columns=["id", "conversation"])
+    return {int(i): text for i, text in zip(df["id"], df["conversation"], strict=True)}
 
+
+def split_transcripts(
+    transcripts: Mapping[int, str],
+) -> tuple[dict[int, list[Turn]], dict[int, Split]]:
+    """Parse every transcript, drop any with no customer turn, and split the rest."""
+    parsed = {i: parse_turns(text) for i, text in transcripts.items()}
     usable = {i: turns for i, turns in parsed.items() if any(t.role == "customer" for t in turns)}
-    dropped = sorted(parsed.keys() - usable.keys())
+    return usable, make_split(list(usable))
 
-    split = make_split(list(usable))
+
+def main() -> None:
+    transcripts = read_transcripts()
+    usable, split = split_transcripts(transcripts)
+    dropped = sorted(transcripts.keys() - usable.keys())
     with PARSED.open("w") as f:
         for i, turns in usable.items():
             f.write(Conversation(id=i, split=split[i], turns=tuple(turns)).model_dump_json() + "\n")
     locked = sorted(i for i, s in split.items() if s == "locked")
     LOCKED_IDS.write_text("\n".join(map(str, locked)) + "\n")
 
-    print(f"parsed {len(parsed)}, dropped {len(dropped)} with no customer turn: {dropped}")
+    print(f"parsed {len(transcripts)}, dropped {len(dropped)} with no customer turn: {dropped}")
     print(f"usable {len(usable)}: {dict(Counter(split.values()))}")
     print(f"wrote {PARSED.relative_to(ROOT)} and {LOCKED_IDS.relative_to(ROOT)}")
 

@@ -26,7 +26,7 @@ from brownbox.ontology import OTHER, Ontology, load_ontology
 from brownbox.parse import load
 from brownbox.prompts import format_conversation, render_ontology
 
-MODELS = ("claude-sonnet-5-5", "claude-opus-5-5")
+MODELS = (llm.SONNET, llm.OPUS)
 NONE = "none"  # The schema uses "none" / 0 rather than null so every field has fixed choices.
 
 INSTRUCTIONS = """You label customer support conversations from BrownBox, an online retailer, \
@@ -128,23 +128,25 @@ def main() -> None:
     examples = {c.id: c for c in load("dev")}
     system = INSTRUCTIONS + "\n\n" + render_ontology(ontology, examples)
     schema = proposal_schema(ontology)
-    jobs = [(conv, model) for conv in batch for model in MODELS]
-    print(f"pre-labelling {len(batch)} conversations with {', '.join(MODELS)}...", flush=True)
+    # Skip what's already saved, before calling the model: a re-run costs nothing.
+    done = {(r.id, r.model) for r in read_prelabels(PRELABELS)}
+    jobs = [(conv, model) for conv in batch for model in MODELS if (conv.id, model) not in done]
+    print(f"pre-labelling {len(jobs)} (conversation, model) pairs not yet saved...", flush=True)
     proposals = llm.run_all(lambda job: suggest(job[0], job[1], system, schema), jobs, "labels")
 
-    done = {(r.id, r.model) for r in read_prelabels(PRELABELS)}
     PRELABELS.parent.mkdir(parents=True, exist_ok=True)
     with PRELABELS.open("a") as f:
         for (conv, model), p in zip(jobs, proposals, strict=True):
-            if (conv.id, model) not in done:
-                row = {"id": conv.id, "model": model, "ontology_version": ontology.version}
-                f.write(PreLabel.model_validate(p.model_dump() | row).model_dump_json() + "\n")
+            row = {"id": conv.id, "model": model, "ontology_version": ontology.version}
+            f.write(PreLabel.model_validate(p.model_dump() | row).model_dump_json() + "\n")
 
-    by_id: dict[int, list[Proposal]] = {}
-    for (conv, _), p in zip(jobs, proposals, strict=True):
-        by_id.setdefault(conv.id, []).append(p)
-    agree = sum(len({p.primary for p in ps}) == 1 for ps in by_id.values())
-    print(f"models agree on the primary intent for {agree} of {len(by_id)} conversations")
+    in_batch = {c.id for c in batch}
+    primaries: dict[int, set[str]] = {}
+    for r in read_prelabels(PRELABELS):
+        if r.id in in_batch:
+            primaries.setdefault(r.id, set()).add(r.primary)
+    agree = sum(len(p) == 1 for p in primaries.values())
+    print(f"models agree on the primary intent for {agree} of {len(primaries)} conversations")
 
 
 if __name__ == "__main__":

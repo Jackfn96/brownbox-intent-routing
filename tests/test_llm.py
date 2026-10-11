@@ -1,4 +1,5 @@
 import dataclasses
+import time
 from collections.abc import Callable, Iterator
 from pathlib import Path
 
@@ -112,6 +113,27 @@ def test_cache_key_changes_with_prompt_and_schema() -> None:
 
 def test_run_all_keeps_input_order() -> None:
     assert llm.run_all(lambda x: x * 2, list(range(120)), "test") == [x * 2 for x in range(120)]
+
+
+def test_run_all_stops_queued_work_after_a_failure() -> None:
+    started: list[int] = []
+
+    def work(x: int) -> int:
+        started.append(x)
+        if x == 0:
+            raise llm.LLMError("boom")
+        time.sleep(0.01)
+        return x
+
+    with pytest.raises(llm.LLMError, match="boom"):
+        llm.run_all(work, list(range(200)), "test")
+    assert len(started) < 200
+
+
+def test_cache_entries_are_written_whole(use_provider: UseProvider, cache_dir: Path) -> None:
+    use_provider(ok)
+    llm.structured(REQ, Answer)
+    assert [p.suffix for p in cache_dir.iterdir()] == [".json"]
 
 
 def test_cost_prices_each_kind_of_token() -> None:

@@ -9,10 +9,9 @@ decides after every message.
 
 import argparse
 
-from brownbox.classify import decide, route_conversation, router_prompts
+from brownbox.classify import decide, load_router_prompts, route_conversation
 from brownbox.models import Conversation, Turn
 from brownbox.ontology import load_ontology
-from brownbox.parse import load
 from brownbox.route import describe
 
 FLOWS: list[tuple[str, list[str]]] = [
@@ -65,7 +64,7 @@ def main() -> None:
     args = parser.parse_args()
 
     ontology = load_ontology()
-    prompts = router_prompts(ontology, {c.id: c for c in load("dev")})
+    prompts = load_router_prompts(ontology)
     for number, (title, messages) in enumerate(FLOWS, start=1):
         if args.flow and number != args.flow:
             continue

@@ -142,25 +142,26 @@ def guard_keys(ontology: Ontology) -> dict[str, str]:
     return keys
 
 
-def parse_intent(
-    text: str, choices: list[str], optional: bool, default: str | None = None
-) -> str | None:
-    """'0' is other, '1'..'n' an intent. Blank gives the default, or none if optional."""
+def parse_intent(text: str, choices: list[str], default: str | None = None) -> str:
+    """'0' is other, '1'..'n' an intent. Blank gives the default, if there is one."""
     text = text.strip()
-    if not text and (default or optional):
+    if not text and default:
         return default
     if not text.isdigit() or int(text) > len(choices):
         raise ValueError(f"type a number from 0 to {len(choices)}")
-    return OTHER if text == "0" else choices[int(text) - 1]
+    return OTHER if int(text) == 0 else choices[int(text) - 1]
 
 
-def parse_message(text: str, n_customer: int, default: int | None) -> int | None:
-    """A customer message number between 1 and n_customer; blank gives the default."""
+def parse_optional_intent(text: str, choices: list[str]) -> str | None:
+    """As parse_intent, but blank means none."""
+    return parse_intent(text, choices) if text.strip() else None
+
+
+def parse_message(text: str, n_customer: int, minimum: int = 1) -> int:
+    """A customer message number from `minimum` to n_customer."""
     text = text.strip()
-    if not text:
-        return default
-    if not text.isdigit() or not 1 <= int(text) <= n_customer:
-        raise ValueError(f"type a customer message number from 1 to {n_customer}")
+    if not text.isdigit() or not minimum <= int(text) <= n_customer:
+        raise ValueError(f"type a customer message number from {minimum} to {n_customer}")
     return int(text)
 
 
@@ -267,27 +268,24 @@ def label_one(
     print()
     primary = ask(
         step(1, "Primary intent", f"what they want done{hint}"),
-        lambda t: parse_intent(t, choices, optional=False, default=suggested),
+        lambda t: parse_intent(t, choices, default=suggested),
     )
-    assert primary is not None
     secondary = ask(
         step(2, "Second request", "another request added? number, or Enter for none"),
-        lambda t: parse_intent(t, choices, optional=True),
+        lambda t: parse_optional_intent(t, choices),
     )
     clear_at = ask(
         step(3, "Clear from", "customer message number, or Enter for C1"),
-        lambda t: parse_message(t, n, default=1),
+        lambda t: parse_message(t, n) if t.strip() else 1,
     )
-    assert clear_at is not None
     switch_at = ask(
         step(4, "Switch", "first request dropped? message number, or Enter for no"),
-        lambda t: parse_message(t, n, None),
+        # A switch can't be at C1: there's no earlier request to drop.
+        lambda t: parse_message(t, n, minimum=2) if t.strip() else None,
     )
     switch_to = None
     if switch_at is not None:
-        switch_to = ask(
-            step(4, "Switch to", "intent number"), lambda t: parse_intent(t, choices, False)
-        )
+        switch_to = ask(step(4, "Switch to", "intent number"), lambda t: parse_intent(t, choices))
     guard_names = {g.id: g.name for g in ontology.guards}
     legend = " · ".join(f"{k} {guard_names[g]}" for k, g in sorted(keys.items()))
     print(f"{DIM}           {legend}{RESET}")
@@ -331,7 +329,8 @@ def main() -> None:
         path = PRACTICE_LABELS
         order = labelling_order(load("practice"))
         if args.assisted:
-            if any(c.id not in load_labels(path) for c in order[:BLIND_BATCH]):
+            blind_done = load_labels(path)
+            if any(c.id not in blind_done for c in order[:BLIND_BATCH]):
                 raise SystemExit("Finish the 30 blind labels first: run without --assisted.")
             prelabels = load_suggestions(PRELABELS)
             suggestions = prelabels.primary

@@ -1,3 +1,5 @@
+from conftest import intent_data, ontology_data
+
 from brownbox.models import Conversation, Turn
 from brownbox.ontology import Ontology
 from brownbox.prompts import format_conversation, render_ontology
@@ -34,38 +36,8 @@ def test_format_conversation_numbers_customer_messages() -> None:
 
 
 def test_render_ontology_shows_definitions_boundaries_examples_and_guards() -> None:
-    def intent(id: str, examples: list[int]) -> dict[str, object]:
-        return {
-            "id": id,
-            "name": id.replace("_", " "),
-            "domain": "orders",
-            "definition": f"Wants to {id.replace('_', ' ')}.",
-            "includes": ["the request"],
-            "examples": examples,
-            "kind": "act",
-            "requires_verification": True,
-            "participation": "ai",
-            "agent": "orders_agent",
-        }
-
-    cancel = intent("cancel_order", [1, 2]) | {"boundaries": {"order_status": "Cancel ends it."}}
-    ontology = Ontology.model_validate(
-        {
-            "version": "1",
-            "domains": [{"id": "orders", "name": "Orders"}],
-            "intents": [cancel, intent("order_status", [1, 2])],
-            "guards": [
-                {
-                    "id": "fraud",
-                    "name": "Fraud",
-                    "definition": "Someone else used the account.",
-                    "fires_on": ["I never placed this order"],
-                    "not_on": ["My parcel was stolen"],
-                    "participation": "never",
-                }
-            ],
-        }
-    )
+    cancel = intent_data("cancel_order", boundaries={"order_status": "Cancel ends it."})
+    ontology = Ontology.model_validate(ontology_data(cancel, intent_data("order_status")))
     turns = (
         Turn(role="customer", speaker="Customer", text="Cancel my order."),
         Turn(role="staff", speaker="Agent", text="Which one?"),

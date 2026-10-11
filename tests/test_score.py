@@ -80,20 +80,20 @@ def test_guards_record_where_they_first_fired(make_steps: MakeSteps, make_gold: 
     assert counts["complaint"].fired == 0
 
 
-def test_rate_interval_contains_the_value(make_gold: MakeGold) -> None:
+def test_rate_interval_contains_the_value() -> None:
     r = rate([1, 1, 1, 0], [1, 1, 1, 1])
     assert r.value == pytest.approx(0.75)
     assert 0 <= r.low <= r.value <= r.high <= 1
 
 
-def test_share_gives_a_real_interval_at_100_percent(make_gold: MakeGold) -> None:
+def test_share_gives_a_real_interval_at_100_percent() -> None:
     r = share([True] * 25)
     assert r.value == 1 and r.high == 1
     assert r.low == pytest.approx(0.867, abs=0.001)  # Wilson, 95%.
     assert (share([]).low, share([]).high) == (0.0, 1.0)
 
 
-def test_message_rate_weights_by_messages(make_gold: MakeGold) -> None:
+def test_message_rate_weights_by_messages() -> None:
     assert rate([3, 0], [3, 1]).value == pytest.approx(0.75)
 
 

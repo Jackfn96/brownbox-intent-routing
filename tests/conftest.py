@@ -55,3 +55,38 @@ def make_case() -> MakeCase:
         return Case.model_validate(fields | overrides)
 
     return build
+
+
+def intent_data(id: str, **overrides: object) -> dict[str, object]:
+    """One intent as it appears in ontology.yaml, with valid defaults."""
+    return {
+        "id": id,
+        "name": id.replace("_", " "),
+        "domain": "orders",
+        "definition": "A customer request.",
+        "includes": ["the request"],
+        "examples": [1, 2],
+        "kind": "act",
+        "requires_verification": True,
+        "participation": "ai",
+        "agent": "orders_agent",
+    } | overrides
+
+
+def ontology_data(*intents: dict[str, object], **overrides: object) -> dict[str, object]:
+    """A whole ontology as it appears in ontology.yaml: one domain, one guard."""
+    return {
+        "version": "1",
+        "domains": [{"id": "orders", "name": "Orders"}],
+        "intents": list(intents),
+        "guards": [
+            {
+                "id": "fraud",
+                "name": "Fraud",
+                "definition": "Someone else used the account or card.",
+                "fires_on": ["I never placed this order"],
+                "not_on": ["My parcel was stolen from my doorstep"],
+                "participation": "never",
+            }
+        ],
+    } | overrides
