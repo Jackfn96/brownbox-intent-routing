@@ -37,12 +37,16 @@ uv run route "I can't log in and I don't know why"   # try your own messages
 make eval-cases                    # the 44 hand-written cases
 make eval                          # the 85 practice conversations
 make eval-locked                   # the locked test set (only for the version it was labelled against)
-make eval-guards                   # guard precision and recall, pooled
+make eval-guards                   # guard precision and recall, pooled on the current ontology version
 ```
 
 Saved results are in [`results/eval/`](results/eval/). Re-running calls the API (about $6 with
 Haiku for all three sets) and can differ slightly, because the model isn't fully deterministic.
 Only the `conversation` column is used; the `issue_*` columns were never loaded.
+
+In `uv run route`, when the router says "unclear", a separate small model call writes a clarifying
+question that names the likely requests, and it goes into the transcript as the agent's reply. That's
+a demo convenience: it isn't part of the router or the evaluation.
 
 ## 1. The ontology
 
@@ -198,7 +202,7 @@ mid-conversation.
 | Decision | Why |
 |---|---|
 | **Split first:** 697 DEV, 200 practice, 100 locked | The locked set stays unseen until the router is frozen, so it gives an honest score. The code refuses to open it without a flag |
-| **Ground truth labelled by me**, not by a model | A model can't be the judge of a model. 30 labelled blind first, then 55 with two models' suggestions: every case where they disagreed, plus a random 30 where they agreed, as an audit. The other 115 are trusted only as far as the audit (83% on every field) |
+| **Ground truth labelled by me**, not by a model | A model can't be the judge of a model. 30 labelled blind first, then 55 with two models' suggestions (Claude Sonnet 5.5 and Opus 5.5): every case where they disagreed, plus a random 30 where they agreed, as an audit. The other 115 are trusted only as far as the audit (83% on every field) |
 | **44 hand-written cases** | Real data has almost no switches or guards and no fraud at all. The cases test fraud mid-conversation, traps that must not fire, switches and follow-ups |
 | **Scored at the message where the request becomes clear**, and at every message | Routing happens per message. "Unclear" before the customer has said what they want isn't counted as wrong |
 | **Right intent and right agent, separately** | A wrong intent for the same agent costs little; a wrong agent costs a lot |
@@ -272,8 +276,8 @@ Good enough depends on what each error costs, so each measure gets its own bar:
 | Wrong intent changes ≤ 10% | A flip mid-conversation restarts the customer's request | 9% |
 | Wrong guards ≤ 5% | Each false alarm sends a customer to a person for nothing | 0% |
 
-**Verdict: good enough for shadow mode, not yet for unsupervised routing.** In shadow mode it
-routes alongside people, nothing is acted on, and real traffic narrows the wide interval.
+**Verdict: good enough to trial alongside people, not yet to route on its own.** In a trial it
+suggests a route and a person decides, and real traffic narrows the wide interval.
 
 I stopped tuning after three measured steps, by a rule set in advance: targets met, remaining
 errors within one agent or genuine boundary calls, the last change inside the previous
@@ -342,16 +346,24 @@ If a real BrownBox stakeholder used this tomorrow:
 
 ### 5.2 What it would take to ship
 
-1. **Shadow mode first.** Route live conversations alongside the people handling them, with
-   nothing acted on, and compare. This narrows the locked set's ±10-point interval and finds the
-   soft spots in real wording, at no risk to customers.
-2. **Turn intents on one by one** as each clears the bars on real traffic, starting with
-   low-risk questions (return policy, delivery charges), with sign-off on every risky action.
-3. **Per-customer configuration:** supported languages, which guards are on, and sign-off
+1. **Simulate first.** Replay BrownBox's past conversations and synthetic edge cases through the
+   router. No customer sees it.
+2. **Then a trial alongside people.** On live conversations it suggests a route and a person
+   decides. This narrows the locked set's ±10-point interval and finds the soft spots in real
+   wording, at no risk to customers.
+3. **Turn intents on one at a time, lowest risk first.** The ontology already records the risk:
+   the six knowledge intents only answer questions from policy, so they go first; anything that
+   moves money or changes an account goes last, with sign-off on every risky action. Each intent
+   turns on once it clears the bars on real traffic.
+4. **An off-switch per intent:** set its participation to `handoff` in `ontology.yaml`. A config
+   change, not a code change.
+5. **If the model is down, don't send everyone to people:** fail over to the same model on
+   another cloud, then to a backup model with its own tested prompt, and only send what none of
+   them can route to a person. A malformed answer is retried, not failed over, and a failed call
+   is never turned into a default answer. (Planned, not built here.)
+6. **Per-customer configuration:** supported languages, which guards are on, and sign-off
    thresholds are settings, not code.
-4. **Fail safe:** if the model is down, every conversation goes to a person. A failed call is
-   never turned into a default answer.
-5. **At volume, cut cost:** train a cheap first-pass classifier on reviewed traffic, and keep
+7. **At volume, cut cost:** train a cheap first-pass classifier on reviewed traffic, and keep
    the LLM for the uncertain rest.
 
 ## 6. Limitations
@@ -388,7 +400,11 @@ wrote and tested the code, and pushed back when it disagreed. Where I changed it
 - My blind labels came before any model suggestion.
 - The locked set stayed unopened until the router was frozen.
 - Every refactor was re-run and compared.
-- A separate agent reviewed the code.
+- A separate agent reviewed the code; its findings are fixed or listed.
+- Tests check the committed files themselves: the split reproduces from the raw data, labels come
+  only from the split they claim, the ontology was built only from DEV conversations, and the
+  generated `ONTOLOGY.md` matches the YAML.
+- I tested the live tool myself, which is how the person-request guard's miss was found.
 
 Its mistakes were caught by those checks, from API usage written from memory to a guard example
 that backfired.
