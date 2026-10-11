@@ -203,7 +203,7 @@ mid-conversation.
 |---|---|
 | **Split first:** 697 DEV, 200 practice, 100 locked | The locked set stays unseen until the router is frozen, so it gives an honest score. The code refuses to open it without a flag |
 | **Ground truth labelled by me**, not by a model | A model can't be the judge of a model. 30 labelled blind first, then 55 with two models' suggestions (Claude Sonnet 5.5 and Opus 5.5): every case where they disagreed, plus a random 30 where they agreed, as an audit. The other 115 are trusted only as far as the audit (83% on every field) |
-| **44 hand-written cases** | Real data has almost no switches or guards and no fraud at all. The cases test fraud mid-conversation, traps that must not fire, switches and follow-ups |
+| **44 hand-written cases** | Real data has almost no switches or guards and no fraud at all. The cases test fraud mid-conversation, traps that must not fire, switches and follow-ups. Drafted with Claude; I reviewed each one and made the disputed calls (e.g. a family member ordering by mistake isn't fraud) |
 | **Scored at the message where the request becomes clear**, and at every message | Routing happens per message. "Unclear" before the customer has said what they want isn't counted as wrong |
 | **Right intent and right agent, separately** | A wrong intent for the same agent costs little; a wrong agent costs a lot |
 | **Wrong intent changes and real switches** | A router that flips on follow-ups breaks the conversation even when its first answer was right |
